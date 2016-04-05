@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,9 +9,9 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.widget.Toast;
 
-import com.dreamteam.app.commons.AppContext;
-import com.dreamteam.app.commons.UMHelper;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.commons.UMHelper;
+import com.rssreader.app.ui.R;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.controller.UMSocialService;

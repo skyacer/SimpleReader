@@ -1,4 +1,4 @@
-package com.dreamteam.app.db;
+package com.rssreader.app.db;
 
 public class DbConstant 
 {

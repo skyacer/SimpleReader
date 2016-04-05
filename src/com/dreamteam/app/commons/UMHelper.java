@@ -1,4 +1,4 @@
-package com.dreamteam.app.commons;
+package com.rssreader.app.commons;
 
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;

@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import java.io.File;
 
@@ -21,13 +21,13 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
-import com.dreamteam.app.commons.ItemListEntityParser;
-import com.dreamteam.app.commons.SectionHelper;
-import com.dreamteam.app.commons.SeriaHelper;
-import com.dreamteam.app.db.DbManager;
-import com.dreamteam.app.entity.ItemListEntity;
-import com.dreamteam.app.utils.CategoryNameExchange;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.commons.ItemListEntityParser;
+import com.rssreader.app.commons.SectionHelper;
+import com.rssreader.app.commons.SeriaHelper;
+import com.rssreader.app.db.DbManager;
+import com.rssreader.app.entity.ItemListEntity;
+import com.rssreader.app.utils.CategoryNameExchange;
+import com.rssreader.app.ui.R;
 
 public class AddDialog extends DialogFragment implements OnItemSelectedListener
 {

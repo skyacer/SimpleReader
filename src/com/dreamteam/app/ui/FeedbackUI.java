@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.dreateam.app.ui.R;
+import com.rssreader.app.ui.R;
 
 public class FeedbackUI extends Activity
 {

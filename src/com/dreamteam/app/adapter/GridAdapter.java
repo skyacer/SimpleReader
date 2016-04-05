@@ -1,4 +1,4 @@
-package com.dreamteam.app.adapter;
+package com.rssreader.app.adapter;
 
 import java.util.ArrayList;
 
@@ -12,14 +12,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dreamteam.app.commons.AppContext;
-import com.dreamteam.app.commons.SectionHelper;
-import com.dreamteam.app.db.DbManager;
-import com.dreamteam.app.db.FeedDBManager;
-import com.dreamteam.app.entity.Section;
-import com.dreamteam.app.ui.Main;
-import com.dreamteam.app.utils.FileUtils;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.commons.SectionHelper;
+import com.rssreader.app.db.DbManager;
+import com.rssreader.app.db.FeedDBManager;
+import com.rssreader.app.entity.Section;
+import com.rssreader.app.ui.Main;
+import com.rssreader.app.utils.FileUtils;
+import com.rssreader.app.ui.R;
 
 public class GridAdapter extends BaseAdapter
 {

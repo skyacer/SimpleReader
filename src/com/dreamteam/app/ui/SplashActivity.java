@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-import com.dreateam.app.ui.R;
+import com.rssreader.app.ui.R;
 
 /**
  * 

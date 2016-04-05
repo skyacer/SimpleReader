@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import java.io.File;
 
@@ -17,10 +17,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.dreamteam.app.commons.AppConfig;
-import com.dreamteam.app.commons.AppContext;
-import com.dreamteam.app.utils.FileUtils;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.commons.AppConfig;
+import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.utils.FileUtils;
+import com.rssreader.app.ui.R;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;

@@ -1,4 +1,4 @@
-package com.dreamteam.custom.ui;
+package com.rssreader.custom.ui;
 
 import android.content.Context;
 import android.view.ViewGroup;

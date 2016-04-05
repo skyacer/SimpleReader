@@ -1,6 +1,6 @@
-package com.dreamteam.app.utils;
+package com.rssreader.app.utils;
 
-import com.dreateam.app.ui.R;
+import com.rssreader.app.ui.R;
 
 import android.content.Context;
 

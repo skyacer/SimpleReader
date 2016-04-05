@@ -1,4 +1,4 @@
-package com.dreamteam.app.adapter;
+package com.rssreader.app.adapter;
 
 import java.util.ArrayList;
 
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.dreamteam.app.dao.FeedCategoryDao;
-import com.dreamteam.app.entity.FeedCategory;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.dao.FeedCategoryDao;
+import com.rssreader.app.entity.FeedCategory;
+import com.rssreader.app.ui.R;
 
 /**
  * @description 

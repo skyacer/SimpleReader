@@ -1,4 +1,4 @@
-package com.dreamteam.app.commons;
+package com.rssreader.app.commons;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.dreamteam.app.dao;
+package com.rssreader.app.dao;
 
 import java.util.ArrayList;
 
@@ -6,9 +6,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.dreamteam.app.db.DbManager;
-import com.dreamteam.app.db.FeedDBManager;
-import com.dreamteam.app.entity.FeedCategory;
+import com.rssreader.app.db.DbManager;
+import com.rssreader.app.db.FeedDBManager;
+import com.rssreader.app.entity.FeedCategory;
 
 public class FeedCategoryDao
 {

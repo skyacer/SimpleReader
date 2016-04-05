@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.dreateam.app.ui.R;
+import com.rssreader.app.ui.R;
 
 public class WidgetProvider extends AppWidgetProvider
 {

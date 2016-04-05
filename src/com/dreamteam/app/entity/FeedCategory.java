@@ -1,4 +1,4 @@
-package com.dreamteam.app.entity;
+package com.rssreader.app.entity;
 
 public class FeedCategory
 {

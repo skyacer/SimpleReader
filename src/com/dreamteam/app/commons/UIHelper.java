@@ -1,6 +1,6 @@
-package com.dreamteam.app.commons;
+package com.rssreader.app.commons;
 
-import com.dreateam.app.ui.R;
+import com.rssreader.app.ui.R;
 
 import android.content.Context;
 import android.content.SharedPreferences;

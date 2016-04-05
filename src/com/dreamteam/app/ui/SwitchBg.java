@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,8 +21,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
-import com.dreamteam.app.commons.AppContext;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.ui.R;
 
 public class SwitchBg extends Activity implements
 		AdapterView.OnItemSelectedListener, ViewSwitcher.ViewFactory

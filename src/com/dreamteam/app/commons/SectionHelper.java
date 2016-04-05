@@ -1,13 +1,13 @@
-package com.dreamteam.app.commons;
+package com.rssreader.app.commons;
 
 import java.io.File;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.dreamteam.app.db.DbConstant;
-import com.dreamteam.app.utils.FileUtils;
-import com.dreamteam.app.utils.MD5;
+import com.rssreader.app.db.DbConstant;
+import com.rssreader.app.utils.FileUtils;
+import com.rssreader.app.utils.MD5;
 
 public class SectionHelper
 {

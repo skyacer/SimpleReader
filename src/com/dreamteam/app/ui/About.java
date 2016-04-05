@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
 
-import com.dreateam.app.ui.R;
+import com.rssreader.app.ui.R;
 
 public class About extends Activity 
 {

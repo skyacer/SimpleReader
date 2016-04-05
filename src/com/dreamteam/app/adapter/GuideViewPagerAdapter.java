@@ -1,4 +1,4 @@
-package com.dreamteam.app.adapter;
+package com.rssreader.app.adapter;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
-import com.dreamteam.app.ui.Main;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.ui.Main;
+import com.rssreader.app.ui.R;
 
 
 /**

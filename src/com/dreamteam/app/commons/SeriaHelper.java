@@ -1,4 +1,4 @@
-package com.dreamteam.app.commons;
+package com.rssreader.app.commons;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import java.io.OptionalDataException;
 import java.io.Serializable;
 import java.io.StreamCorruptedException;
 
-import com.dreamteam.app.entity.ItemListEntity;
+import com.rssreader.app.entity.ItemListEntity;
 
 
 /**

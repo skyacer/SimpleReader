@@ -1,4 +1,4 @@
-package com.dreamteam.app.db;
+package com.rssreader.app.db;
 
 import android.content.ContentValues;
 import android.content.Context;

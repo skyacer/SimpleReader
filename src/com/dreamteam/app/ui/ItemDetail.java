@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -20,17 +20,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dreamteam.app.commons.AppConfig;
-import com.dreamteam.app.commons.AppContext;
-import com.dreamteam.app.commons.HtmlFilter;
-import com.dreamteam.app.commons.SeriaHelper;
-import com.dreamteam.app.commons.UIHelper;
-import com.dreamteam.app.db.DbManager;
-import com.dreamteam.app.db.FavoItemDbHelper;
-import com.dreamteam.app.entity.FeedItem;
-import com.dreamteam.app.entity.ItemListEntity;
-import com.dreamteam.app.utils.MD5;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.commons.AppConfig;
+import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.commons.HtmlFilter;
+import com.rssreader.app.commons.SeriaHelper;
+import com.rssreader.app.commons.UIHelper;
+import com.rssreader.app.db.DbManager;
+import com.rssreader.app.db.FavoItemDbHelper;
+import com.rssreader.app.entity.FeedItem;
+import com.rssreader.app.entity.ItemListEntity;
+import com.rssreader.app.utils.MD5;
+import com.rssreader.app.ui.R;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.bean.UMComment;
 import com.umeng.socialize.controller.RequestType;

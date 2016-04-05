@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,8 +15,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.dreamteam.app.utils.HttpUtils;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.utils.HttpUtils;
+import com.rssreader.app.ui.R;
 
 public class ImageDialog extends Activity
 {

@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,11 +18,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.dreamteam.app.adapter.GuideViewPagerAdapter;
-import com.dreamteam.app.commons.AppConfig;
-import com.dreamteam.app.commons.AppContext;
-import com.dreamteam.app.db.FeedDBManager;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.adapter.GuideViewPagerAdapter;
+import com.rssreader.app.commons.AppConfig;
+import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.db.FeedDBManager;
+import com.rssreader.app.ui.R;
 
 /**
  * 

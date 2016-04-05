@@ -1,4 +1,4 @@
-package com.dreamteam.app.dao;
+package com.rssreader.app.dao;
 
 import java.util.ArrayList;
 
@@ -7,10 +7,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.dreamteam.app.db.DbConstant;
-import com.dreamteam.app.db.DbManager;
-import com.dreamteam.app.entity.Section;
-import com.dreamteam.app.ui.Main;
+import com.rssreader.app.db.DbConstant;
+import com.rssreader.app.db.DbManager;
+import com.rssreader.app.entity.Section;
+import com.rssreader.app.ui.Main;
 
 /**
  * @description TODO

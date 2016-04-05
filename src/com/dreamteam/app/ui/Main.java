@@ -1,4 +1,4 @@
-package com.dreamteam.app.ui;
+package com.rssreader.app.ui;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -28,20 +28,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dreamteam.app.adapter.GridAdapter;
-import com.dreamteam.app.adapter.MPagerAdapter;
-import com.dreamteam.app.commons.AppConfig;
-import com.dreamteam.app.commons.AppContext;
-import com.dreamteam.app.commons.ItemListEntityParser;
-import com.dreamteam.app.commons.SectionHelper;
-import com.dreamteam.app.commons.SeriaHelper;
-import com.dreamteam.app.commons.UIHelper;
-import com.dreamteam.app.dao.SectionDao;
-import com.dreamteam.app.entity.ItemListEntity;
-import com.dreamteam.app.entity.Section;
-import com.dreamteam.app.utils.ImageUtils;
-import com.dreamteam.custom.ui.PathAnimations;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.adapter.GridAdapter;
+import com.rssreader.app.adapter.MPagerAdapter;
+import com.rssreader.app.commons.AppConfig;
+import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.commons.ItemListEntityParser;
+import com.rssreader.app.commons.SectionHelper;
+import com.rssreader.app.commons.SeriaHelper;
+import com.rssreader.app.commons.UIHelper;
+import com.rssreader.app.dao.SectionDao;
+import com.rssreader.app.entity.ItemListEntity;
+import com.rssreader.app.entity.Section;
+import com.rssreader.app.utils.ImageUtils;
+import com.rssreader.custom.ui.PathAnimations;
+import com.rssreader.app.ui.R;
 import com.umeng.socialize.controller.UMInfoAgent;
 import com.umeng.update.UmengUpdateAgent;
 

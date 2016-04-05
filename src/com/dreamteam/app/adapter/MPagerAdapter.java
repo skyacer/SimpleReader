@@ -1,4 +1,4 @@
-package com.dreamteam.app.adapter;
+package com.rssreader.app.adapter;
 
 import java.util.ArrayList;
 

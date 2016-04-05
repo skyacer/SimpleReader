@@ -1,4 +1,4 @@
-package com.dreamteam.app.db;
+package com.rssreader.app.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

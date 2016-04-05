@@ -1,4 +1,4 @@
-package com.dreamteam.app.adapter;
+package com.rssreader.app.adapter;
 
 import java.util.ArrayList;
 
@@ -13,12 +13,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.dreamteam.app.commons.SectionHelper;
-import com.dreamteam.app.db.DbManager;
-import com.dreamteam.app.db.FeedDBManager;
-import com.dreamteam.app.entity.Feed;
-import com.dreamteam.app.ui.Main;
-import com.dreateam.app.ui.R;
+import com.rssreader.app.commons.SectionHelper;
+import com.rssreader.app.db.DbManager;
+import com.rssreader.app.db.FeedDBManager;
+import com.rssreader.app.entity.Feed;
+import com.rssreader.app.ui.Main;
+import com.rssreader.app.ui.R;
 
 /**
  * @description TODO

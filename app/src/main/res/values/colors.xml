@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    	<color name="light_black">#303030</color>
+		<color name="gray">#dad9d7</color>
+		<color name="dark_gray">#a0a0a0</color>
+		<color name="light_gray">#ecf0f1</color>
+		<color name="blue">#3598db</color>
+		<color name="item_bg">#ffeef1f3</color>
+		<!-- feed detail line color -->
+		<color name="line_color">#f4f4f4</color>
+		<color name="line_color_night">#303030</color>
+		
+		
+		<color name="window_bg">#ffeef1f3</color>
+
+		<!-- 灰色 -->
+		<color name="split_line_grey_color_e0">#e0e0e0</color>
+
+		<!-- 白色 -->
+		<color name="white">#FFFFFFFF</color>
+		<!-- 红色 -->
+		<color name="red">#FF0000</color>
+		<!-- 黑色 -->
+		<color name="black">#000000</color>
+		<!-- 透明 -->
+		<color name="transparent">#00000000</color>
+		<!-- 透明度为60%的黑色 -->
+		<color name="transparent_black_60">#99000000</color>
+		<!-- 透明度为50%的黑色 -->
+		<color name="transparent_black_50">#80000000</color>
+		<!-- 透明度为60%的白色 -->
+		<color name="white_alpha60">#99FFFFFF</color>
+		<color name="white_alpha50">#7fFFFFFF</color>
+		<color name="white_alpha40">#66FFFFFF</color>
+		<color name="white_alpha80">#ccFFFFFF</color>
+		<color name="white_alpha90">#ddFFFFFF</color>
+
+
+		<color name="black_alpha5">#0c000000</color>
+		<color name="black_alpha10">#1a000000</color>
+		<color name="black_alpha15">#26000000</color>
+		<color name="black_alpha20">#33000000</color>
+		<color name="black_alpha30">#4c000000</color>
+		<color name="black_alpha40">#66000000</color>
+		<color name="black_alpha50">#7f000000</color>
+		<color name="black_alpha54">#89000000</color>
+		<color name="black_alpha60">#99000000</color>
+		<color name="black_alpha80">#bc000000</color>
+
+		<!-- 灰色 -->
+		<color name="gray_e0">#e0e0e0</color>
+		<color name="gray_32">#323232</color>
+		<color name="gray_f0">#f0f0f0</color>
+		<color name="gray_f2">#f2f2f2</color>
+		<color name="gray_f3">#f3f3f3</color>
+		<color name="gray_f4">#f4f4f4</color>
+		<color name="gray_cc">#cccccc</color>
+		<color name="gray_80">#808080</color>
+		<color name="gray_88">#888888</color>
+		<color name="gray_35">#353535</color>
+
+		<!-- 导航栏的红色 -->
+		<color name="navigation_bar_color">@color/blue</color>
+		<color name="navigation_bar_title_color">#ffffff</color>
+		<color name="white_navigation_bar_title_color">@color/black_alpha80</color>
+
+</resources>
