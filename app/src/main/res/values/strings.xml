@@ -68,5 +68,7 @@
     <string name="feedback_title">用户反馈</string>
     <string name="about_me">关于我们</string>
 
+    <!--收藏界面-->
+    <string name="favorite_title">收藏列表</string>
     
 </resources>

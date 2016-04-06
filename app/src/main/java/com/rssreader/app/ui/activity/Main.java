@@ -291,7 +291,7 @@ public class Main extends FragmentActivity
 	private void openFavorite()
 	{
 		Intent intent = new Intent();
-		intent.setClass(Main.this, FavoriteItemList.class);
+		intent.setClass(Main.this, FavoriteItemListActivity.class);
 		Main.this.startActivity(intent);
 	}
 	

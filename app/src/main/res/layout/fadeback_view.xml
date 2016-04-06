@@ -4,26 +4,19 @@
     android:layout_height="fill_parent"
     android:background="@color/item_bg" >
 
-        <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5.0dip"
-	        android:orientation="vertical"
-            android:id="@+id/FrameLayout"
-            android:padding="5.0dip" >
-			       <EditText
-			        android:id="@+id/feedback_edit"
-			        android:layout_width="fill_parent"
-			        android:layout_height="wrap_content"
-			        android:textColor="@color/black"
-			        android:hint="你的建议就是对我最大的鼓励"
-			        android:gravity="top|left|center"
-                    android:inputType="textMultiLine"
-                    android:background="@drawable/bg_setting"
-                    android:lines="6"
-                    android:padding="5.0dip"
-                    android:maxLength="300"
-                    android:maxLines="10"
-			        />
+       <EditText
+        android:id="@+id/feedback_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:hint="你的建议就是对我最大的鼓励"
+        android:gravity="top|left|center"
+        android:inputType="textMultiLine"
+        android:background="@drawable/bg_setting"
+        android:lines="6"
+        android:padding="5.0dip"
+        android:maxLength="300"
+        android:maxLines="10"
+        />
 
 </RelativeLayout>

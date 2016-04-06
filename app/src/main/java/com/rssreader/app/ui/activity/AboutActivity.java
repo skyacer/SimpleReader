@@ -1,9 +1,6 @@
 package com.rssreader.app.ui.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.webkit.WebView;
 
 import com.rssreader.app.ui.R;
@@ -14,7 +11,7 @@ public class AboutActivity extends BaseActionBarActivity<AboutPresenter>{
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.about);
+		setRealContentView(R.layout.about);
 		initView();
 	}
 
@@ -25,7 +22,7 @@ public class AboutActivity extends BaseActionBarActivity<AboutPresenter>{
 
 	private void initView(){
 		setTitle(R.string.about_me);
-
+		showUrl();
 
 	}
 

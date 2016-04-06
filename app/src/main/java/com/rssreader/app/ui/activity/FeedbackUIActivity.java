@@ -2,13 +2,14 @@ package com.rssreader.app.ui.activity;
 
 import android.os.Bundle;
 
-import com.rssreader.app.commons.util.ResourcesUtil;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.ui.base.BaseActionBarActivity;
 import com.rssreader.app.ui.presenter.FeedbackPresenter;
 
-public class FeedbackUIActivity extends BaseActionBarActivity<FeedbackPresenter>
-{
+/**
+ * Created by LuoChangAn on 16/4/5.
+ */
+public class FeedbackUIActivity extends BaseActionBarActivity<FeedbackPresenter> {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,8 @@ public class FeedbackUIActivity extends BaseActionBarActivity<FeedbackPresenter>
 	private void initView() {
 		setTitle(R.string.submit_suggestion);
 		setRightText(R.string.submit);
-		setRightTextColor(ResourcesUtil.getColor(R.color.white));
-		findViewById(R.id.feedback_btn).setOnClickListener(presenter);
+		setRightTextColor(R.color.white);
+		findViewById(R.id.nav_right_text).setOnClickListener(presenter);
 
 	}
 
@@ -30,5 +31,6 @@ public class FeedbackUIActivity extends BaseActionBarActivity<FeedbackPresenter>
 	protected void initPresenter() {
 		presenter = new FeedbackPresenter(this);
 	}
+
 
 }
