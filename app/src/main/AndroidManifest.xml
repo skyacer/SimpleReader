@@ -44,7 +44,7 @@
         </activity>
         <activity android:name=".activity.FeedbackUIActivity" >
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.SwitchBg" >
+        <activity android:name=".activity.SwitchBgActivity" >
         </activity>
         <activity android:name="com.rssreader.app.ui.activity.ItemList" >
         </activity>

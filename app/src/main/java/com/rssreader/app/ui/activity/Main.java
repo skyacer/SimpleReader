@@ -1,8 +1,5 @@
 package com.rssreader.app.ui.activity;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -39,11 +36,14 @@ import com.rssreader.app.commons.UIHelper;
 import com.rssreader.app.dao.SectionDao;
 import com.rssreader.app.entity.ItemListEntity;
 import com.rssreader.app.entity.Section;
+import com.rssreader.app.ui.R;
 import com.rssreader.app.utils.ImageUtils;
 import com.rssreader.custom.ui.PathAnimations;
-import com.rssreader.app.ui.R;
 import com.umeng.socialize.controller.UMInfoAgent;
 import com.umeng.update.UmengUpdateAgent;
+
+import java.io.File;
+import java.util.ArrayList;
 
 public class Main extends FragmentActivity
 {
@@ -173,7 +173,7 @@ public class Main extends FragmentActivity
 						removeLastGridView();
 						removeLastGridAdapter();
 					}
-				}else if(action.equals(SwitchBg.SWITCH_HOME_BG))
+				}else if(action.equals(SwitchBgActivity.SWITCH_HOME_BG))
 				{
 					int resid = intent.getIntExtra("home_bg_id", R.drawable.home_bg_default);
 					bgLayout.setBackgroundResource(resid);
@@ -186,7 +186,7 @@ public class Main extends FragmentActivity
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(ACTION_ADD_SECTION);
 		filter.addAction(ACTION_DELETE_SECTION);
-		filter.addAction(SwitchBg.SWITCH_HOME_BG);
+		filter.addAction(SwitchBgActivity.SWITCH_HOME_BG);
 		registerReceiver(mReceiver, filter);
 	}
 
@@ -283,7 +283,7 @@ public class Main extends FragmentActivity
 	private void swithBg()
 	{
 		Intent intent = new Intent();
-		intent.setClass(Main.this, SwitchBg.class);
+		intent.setClass(Main.this, SwitchBgActivity.class);
 		Main.this.startActivity(intent);
 	}
 	

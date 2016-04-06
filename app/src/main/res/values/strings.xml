@@ -71,4 +71,7 @@
     <!--收藏界面-->
     <string name="favorite_title">收藏列表</string>
     
+    <!--设置壁纸-->
+    <string name="set_homepage_background">设置首页壁纸</string>
+    
 </resources>
