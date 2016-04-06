@@ -16,6 +16,7 @@
 		<item name="detail_btn_comment">@drawable/btn_to_comment</item>
 		<item name="detail_btn_more">@drawable/btn_more</item>
 		<item name="detail_divide_line_bg">@color/line_color</item>
+		<item name="android:windowAnimationStyle">@style/activityAnimation</item>
     </style>
 
     <!-- 夜间模式  -->
@@ -38,4 +39,17 @@
     	<item name="android:layout_height">wrap_content</item>
     	<item name="android:background">@drawable/img_btn_selector</item>
     </style>
+
+	<!-- animation 样式 -->
+	<style name="activityAnimation" parent="@android:style/Animation">
+		<item name="android:activityOpenEnterAnimation">@anim/activity_slide_right_in</item>
+		<item name="android:activityOpenExitAnimation">@anim/activity_slide_left_out</item>
+		<item name="android:activityCloseEnterAnimation">@anim/activity_slide_left_in</item>
+		<item name="android:activityCloseExitAnimation">@anim/activity_slide_right_out</item>
+		<item name="android:taskOpenEnterAnimation">@anim/activity_slide_right_in</item>
+		<item name="android:taskOpenExitAnimation">@anim/activity_slide_left_out</item>
+		<item name="android:taskCloseEnterAnimation">@anim/activity_slide_left_in</item>
+		<item name="android:taskCloseExitAnimation">@anim/activity_slide_right_out</item>
+	</style>
+
 </resources>
