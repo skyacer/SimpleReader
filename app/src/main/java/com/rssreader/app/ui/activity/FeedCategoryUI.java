@@ -14,6 +14,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.rssreader.app.adapter.FeedCategoryAdapter;
+import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.commons.util.ToastUtil;
 import com.rssreader.app.dao.FeedCategoryDao;
 import com.rssreader.app.entity.FeedCategory;
 import com.rssreader.app.ui.R;
@@ -44,13 +46,15 @@ public class FeedCategoryUI extends FragmentActivity
 			@Override
 			public void onClick(View v)
 			{
-//				if(!AppContext.isNetworkAvailable(FeedCategory.this))
-//				{
-//					Toast.makeText(FeedCategory.this, "请检查网络设置", Toast.LENGTH_SHORT).show();
-//					return;
-//				}
+				if(!AppContext.isNetworkAvailable(FeedCategoryUI.this))
+				{
+					ToastUtil.makeShortToast(R.string.please_check_network);
+					return;
+				}
+				AddFeedActivity.start(FeedCategoryUI.this);
 //				new AddDialog().show(getSupportFragmentManager(), "添加Feed");
-				Toast.makeText(FeedCategoryUI.this, "开发中功能", Toast.LENGTH_SHORT).show();
+//				Toast.makeText(FeedCategoryUI.this, "开发中功能", Toast.LENGTH_SHORT).show();
+
 			}
 		});
 		findViewById(R.id.feed_category_btn_back).setOnClickListener(new OnClickListener()

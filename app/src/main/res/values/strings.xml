@@ -60,8 +60,18 @@
     <!--公共界面-->
     <string name="please_input_content">请输入内容，谢谢！</string>
     <string name="submit">提交</string>
+    <string name="please_check_network">请检查网络</string>
 
-    
+    <!--添加rss源页面-->
+    <string name="add_feed_title">自定义RSS源</string>
+    <string name="add_feed_name">名称</string>
+    <string name="add_feed_address">地址</string>
+    <string name="add_feed_name_hint">请输入源名称</string>
+    <string name="add_feed_address_hint">请输入源地址</string>
+    <string name="add_feed_category">分类</string>
+    <string name="add_feed_category_hint">添加分类</string>
+
+
     <!--设置界面-->
     <string name="submit_suggestion">意见反馈</string>
     <string name="feedback_to_email">changan_luo@163.com</string>
