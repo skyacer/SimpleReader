@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@drawable/shap_title_bar"
 		>
         <ImageButton
@@ -16,7 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/btn_back" />
+            android:layout_centerVertical="true"
+            />
 		<TextView
 		    android:id="@+id/feed_center_tv"
 		    android:layout_width="wrap_content"
@@ -27,12 +28,13 @@
 		    android:text="订阅中心"/>        
         <ImageButton
             android:id="@+id/feed_category_add_btn"
-            style="@style/img_btn_style"
            	android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/feed_custom_btn" />
+            android:src="@drawable/feed_custom_btn"
+            android:background="@null"
+            />
     </RelativeLayout>
 
     <ListView

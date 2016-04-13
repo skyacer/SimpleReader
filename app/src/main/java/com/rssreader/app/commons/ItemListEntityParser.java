@@ -1,5 +1,18 @@
 package com.rssreader.app.commons;
 
+import android.util.Log;
+
+import com.rssreader.app.entity.FeedItem;
+import com.rssreader.app.entity.ItemListEntity;
+import com.rssreader.app.utils.DateUtils;
+import com.rssreader.app.utils.HttpUtils;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,19 +21,6 @@ import java.util.ArrayList;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.DefaultHandler;
-
-import android.util.Log;
-
-import com.rssreader.app.entity.FeedItem;
-import com.rssreader.app.entity.ItemListEntity;
-import com.rssreader.app.utils.DateUtils;
-import com.rssreader.app.utils.HttpUtils;
 
 public class ItemListEntityParser extends DefaultHandler
 {
@@ -112,7 +112,7 @@ public class ItemListEntityParser extends DefaultHandler
 
 	/**
 	 * @description TODO
-	 * @param inputStream
+	 * @param url
 	 * @return ItemListEntity
 	 */
 	public ItemListEntity parse(String url)

@@ -4,7 +4,7 @@
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="pref_imageLoad"
-            android:summary="默认WIFI自动加载图片"
+            android:summary="加载图片"
             android:title="自动接收图片" />
         <PreferenceScreen android:title="离线下载" >
             <PreferenceCategory android:title="时间设置" >
@@ -31,8 +31,8 @@
     <PreferenceCategory android:title="其他" >
         <PreferenceScreen
             android:key="pref_about"
-            android:summary="开源介绍"
-            android:title="关于开源" >
+            android:summary="作者介绍"
+            android:title="关于软件" >
         </PreferenceScreen> 
         <Preference android:title="意见反馈"
             android:key="pref_feedback"/>

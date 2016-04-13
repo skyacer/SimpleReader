@@ -1,9 +1,5 @@
 package com.rssreader.app.ui.activity;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,14 +25,18 @@ import com.rssreader.app.db.DbManager;
 import com.rssreader.app.db.FavoItemDbHelper;
 import com.rssreader.app.entity.FeedItem;
 import com.rssreader.app.entity.ItemListEntity;
-import com.rssreader.app.utils.MD5;
 import com.rssreader.app.ui.R;
+import com.rssreader.app.utils.MD5;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.bean.UMComment;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners.FetchCommetsListener;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressLint("JavascriptInterface")
 @SuppressWarnings("deprecation")
@@ -225,7 +225,7 @@ public class ItemDetail extends FragmentActivity
 //		 mWebView.addJavascriptInterface(this, "mWebViewImageListener");
 		 //是否加载图片
 		SharedPreferences pref = AppContext.getPrefrences(this);
-		if(!pref.getBoolean("pref_imageLoad", false))
+		if(!pref.getBoolean("pref_imageLoad", true))
 		{
 			itemDetail = itemDetail.replaceAll("(<|;)\\s*(IMG|img)\\s+([^;^>]*)\\s*(;|>)", "");
 		}

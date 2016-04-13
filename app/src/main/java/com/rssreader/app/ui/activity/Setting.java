@@ -1,7 +1,5 @@
 package com.rssreader.app.ui.activity;
 
-import java.io.File;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,12 +17,14 @@ import android.widget.Toast;
 
 import com.rssreader.app.commons.AppConfig;
 import com.rssreader.app.commons.AppContext;
-import com.rssreader.app.utils.FileUtils;
 import com.rssreader.app.ui.R;
+import com.rssreader.app.utils.FileUtils;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;
 import com.umeng.update.UpdateStatus;
+
+import java.io.File;
 
 public class Setting extends PreferenceActivity
 {
@@ -88,11 +88,11 @@ public class Setting extends PreferenceActivity
 				if(mPreferences.getBoolean("imageLoad", true))
 				{
 					//显示图片
-					imageLoadCb.setSummary("加载图片（WIFI默认加载图片）");
+					imageLoadCb.setSummary("加载图片");
 				}
 				else
 				{
-					imageLoadCb.setSummary("不加载图片（WIFI默认加载图片）");
+					imageLoadCb.setSummary("不加载图片");
 				}
 				return false;
 			}

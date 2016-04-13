@@ -12,16 +12,19 @@ public class DateUtils
 	/**
 	 * @description rfc实例：Tue, 08 Oct 2013 18:02:03 +0800��
 	 * 转为yy/mm/day
-	 * @param date
+	 * @param dateStr
 	 * @return String
 	 */
-	public static String rfcNormalDate(String date)
+	public static String rfcNormalDate(String dateStr)
 	{
-		String[] strs = date.split("\\s+|:");
-		
-		return enNumberMonth(strs[2])
-					   + "月" + strs[1] + "日" + ' ' + strs[4]
-					   + ":" + strs[5];
+		String[] strs = dateStr.split("\\s+|:");
+		if (strs.length>=6) {
+			return enNumberMonth(strs[2])
+					+ "月" + strs[1] + "日" + ' ' + strs[4]
+					+ ":" + strs[5];
+		}else {
+			return "";
+		}
 	}
 	
 	private static int enNumberMonth(String month)
