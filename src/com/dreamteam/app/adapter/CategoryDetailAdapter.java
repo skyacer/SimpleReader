@@ -22,7 +22,7 @@ import com.rssreader.app.ui.R;
 
 /**
  * @description TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date 2013/11/14
  */
 public class CategoryDetailAdapter extends BaseAdapter

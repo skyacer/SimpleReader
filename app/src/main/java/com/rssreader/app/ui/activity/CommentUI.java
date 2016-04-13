@@ -32,7 +32,7 @@ import com.umeng.socialize.controller.listener.SocializeListeners.MulStatusListe
 
 /**
  * @description TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date Jun 21, 2014
  */
 public class CommentUI extends Activity

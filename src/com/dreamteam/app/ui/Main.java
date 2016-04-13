@@ -62,8 +62,8 @@ public class Main extends FragmentActivity
 	private BroadcastReceiver mReceiver;
 	private boolean arePathMenuShowing;
 	public static final int PAGE_SECTION_SIZE = 8;// 一页8个section
-	public static final String ACTION_ADD_SECTION = "com.dreamteam.app.action.add_section";
-	public static final String ACTION_DELETE_SECTION = "com.dreamteam.app.action.delete_section";
+	public static final String ACTION_ADD_SECTION = "com.rssreader.app.action.add_section";
+	public static final String ACTION_DELETE_SECTION = "com.rssreader.app.action.delete_section";
 	public static final int PAGE_SIZE_INCREASE = 1;
 	public static final int PAGE_SIZE_NOT_CHANGE = 0;
 	public static final int PAGE_SIZE_DECREASE = -1;

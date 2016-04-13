@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 /**
  * @description 过滤html
- * @author zcloud
+ * @author LuoChangAn
  * @date 2013/11/14
  */
 public class HtmlFilter

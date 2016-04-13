@@ -13,7 +13,7 @@ import com.iflytek.speech.SpeechUtility;
 
 /**
  * @description	TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date 2014年2月22日
  */
 public class IFlyHelper

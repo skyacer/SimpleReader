@@ -14,7 +14,7 @@ import com.rssreader.app.utils.MD5;
 
 /**
  * @description TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date Dec 8, 2013
  */
 @SuppressWarnings("deprecation")

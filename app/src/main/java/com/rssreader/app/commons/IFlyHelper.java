@@ -1,7 +1,5 @@
 package com.rssreader.app.commons;
 
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,9 +9,11 @@ import android.net.Uri;
 
 import com.iflytek.speech.SpeechUtility;
 
+import java.util.List;
+
 /**
  * @description	TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date 2014年2月22日
  */
 public class IFlyHelper

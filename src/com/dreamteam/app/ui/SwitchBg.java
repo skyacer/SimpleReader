@@ -37,7 +37,7 @@ public class SwitchBg extends Activity implements
     private ImageButton returnBtn;
     private ImageButton okBtn;
     private int selectedPosition;
-	public static final String SWITCH_HOME_BG = "com.dreamteam.action.swtich_home_bg";
+	public static final String SWITCH_HOME_BG = "com.rssreader.action.swtich_home_bg";
     
     
 	@Override

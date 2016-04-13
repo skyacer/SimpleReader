@@ -13,7 +13,7 @@ import android.graphics.Matrix;
 import com.rssreader.app.commons.AppConfig;
 
 /**
- * @author zcloud
+ * @author LuoChangAn
  * @date 2013/11/13
  */
 public class ImageUtils

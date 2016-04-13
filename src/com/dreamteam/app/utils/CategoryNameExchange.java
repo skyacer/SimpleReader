@@ -7,7 +7,7 @@ import android.content.Context;
 
 /**
  * @description	TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date 2014年1月27日
  */
 public class CategoryNameExchange

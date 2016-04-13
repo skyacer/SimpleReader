@@ -42,7 +42,7 @@ import com.iflytek.speech.SynthesizerListener;
 
 /**
  * @description TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date 2013/11/14
  */
 public class ItemList extends Activity
@@ -66,7 +66,7 @@ public class ItemList extends Activity
 	private static final String START_WORDS = "欢迎收听";
 	private static int speechCount = 0;
 	private boolean existSpeech = false;// 退出tts
-	public static final String ACTION_UPDATE_ITEM_LIST = "com.dreamteam.action.update_item_list";
+	public static final String ACTION_UPDATE_ITEM_LIST = "com.rssreader.action.update_item_list";
 	private boolean isNight;// 是否夜间
 
 	

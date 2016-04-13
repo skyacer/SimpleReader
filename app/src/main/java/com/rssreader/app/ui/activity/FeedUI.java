@@ -22,7 +22,7 @@ import com.rssreader.app.ui.R;
 
 /**
  * @description  
- * @author zcloud
+ * @author LuoChangAn
  * @date 2013年11月14日
  */
 public class FeedUI extends Activity

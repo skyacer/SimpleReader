@@ -6,14 +6,14 @@ import com.umeng.socialize.controller.UMSocialService;
 
 /**
  * @description TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date 2014年5月9日
  *
  */
 public class UMHelper
 {
 	private final static UMSocialService mController = UMServiceFactory.
-			getUMSocialService("com.dreamteam.app.reader.umeng.usr",	RequestType.SOCIAL);
+			getUMSocialService("com.rssreader.app.reader.umeng.usr",	RequestType.SOCIAL);
 	
 	
 	public static UMSocialService getUMSocialService()

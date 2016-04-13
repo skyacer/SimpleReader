@@ -11,7 +11,7 @@ import com.rssreader.app.entity.Feed;
 
 /**
  * @description TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date 2014年10月1日
  */
 public class FeedDao

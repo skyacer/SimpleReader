@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * @description	reader.db
- * @author zcloud
+ * @author LuoChangAn
  * @date 2014年2月1日
  */
 public class DbManager extends SQLiteOpenHelper

@@ -8,7 +8,7 @@ import java.io.InputStream;
 import android.os.Environment;
 
 /**
- * @author: zcloud
+ * @author: LuoChangAn
  * 
  * 
  * @date: 2013/10/9

@@ -15,7 +15,7 @@ import com.rssreader.app.entity.ItemListEntity;
 
 /**
  * @description 
- * @author zcloud
+ * @author LuoChangAn
  * @date 2013/11/15
  */
 public class SeriaHelper

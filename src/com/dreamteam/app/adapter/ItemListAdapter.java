@@ -23,7 +23,7 @@ import com.rssreader.app.utils.ImageLoader;
 import com.rssreader.app.ui.R;
 
 /**
- * @author:	zcloud
+ * @author:	LuoChangAn
  *
  * @description: TODO
  *

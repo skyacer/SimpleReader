@@ -112,7 +112,7 @@
             	android:label="SimpleReader">
              <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            	<action android:name="com.dreamteam.action.widget.play"/>
+            	<action android:name="com.rssreader.action.widget.play"/>
             </intent-filter>
             <meta-data 
                 android:name="android.appwidget.provider"

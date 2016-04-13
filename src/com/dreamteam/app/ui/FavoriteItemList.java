@@ -23,7 +23,7 @@ import com.rssreader.app.ui.R;
 
 /**
  * @description
- * @author zcloud
+ * @author LuoChangAn
  * @date Nov 28, 2013
  */
 public class FavoriteItemList extends Activity

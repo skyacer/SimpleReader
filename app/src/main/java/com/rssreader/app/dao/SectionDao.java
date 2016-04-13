@@ -14,7 +14,7 @@ import com.rssreader.app.ui.activity.Main;
 
 /**
  * @description TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date 2014年9月11日
  */
 public class SectionDao

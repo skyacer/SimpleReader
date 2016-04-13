@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * @description feed.db助手
- * @author zcloud
+ * @author LuoChangAn
  * @date 2014年1月24日
  */
 public class FeedDBManager extends SQLiteOpenHelper

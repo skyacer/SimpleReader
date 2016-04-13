@@ -14,7 +14,7 @@ import com.rssreader.app.ui.R;
 
 /**
  * @description 
- * @author zcloud
+ * @author LuoChangAn
  * @date 2013年11月1日
  */
 public class FeedCategoryAdapter extends BaseAdapter

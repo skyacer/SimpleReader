@@ -19,7 +19,7 @@ import com.umeng.socialize.controller.listener.SocializeListeners.SocializeClien
 
 /**
  * @description TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date Dec 7, 2013
  */
 public class LoginDialog extends DialogFragment

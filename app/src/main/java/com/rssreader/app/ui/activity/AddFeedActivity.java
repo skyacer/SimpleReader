@@ -16,7 +16,6 @@ import com.rssreader.app.ui.presenter.AddFeedPresenter;
 public class AddFeedActivity extends BaseActionBarActivity<AddFeedPresenter> {
     private Spinner mSpinner;
 
-
     @Override
     protected void initPresenter() {
         presenter = new AddFeedPresenter(this);

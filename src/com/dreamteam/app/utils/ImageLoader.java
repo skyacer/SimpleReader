@@ -22,7 +22,7 @@ import com.rssreader.app.commons.AppContext;
 
 /**
  * @description 
- * @author zcloud
+ * @author LuoChangAn
  * @date 2013/11/13
  */
 public class ImageLoader

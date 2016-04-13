@@ -1,7 +1,5 @@
 package com.rssreader.app.adapter;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,12 +15,14 @@ import com.rssreader.app.commons.SectionHelper;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.db.FeedDBManager;
 import com.rssreader.app.entity.Feed;
-import com.rssreader.app.ui.activity.Main;
 import com.rssreader.app.ui.R;
+import com.rssreader.app.ui.activity.Main;
+
+import java.util.ArrayList;
 
 /**
  * @description TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date 2013/11/14
  */
 public class CategoryDetailAdapter extends BaseAdapter

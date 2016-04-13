@@ -13,7 +13,7 @@ import com.rssreader.app.ui.R;
 public class WidgetProvider extends AppWidgetProvider
 {
 	public static final String tag = "WidgetProvider";
-	public static final String ACTION_WIDGET_PLAY = "com.dreamteam.action.widget.play";
+	public static final String ACTION_WIDGET_PLAY = "com.rssreader.action.widget.play";
 	
 	
 	@Override

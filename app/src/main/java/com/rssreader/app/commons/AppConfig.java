@@ -3,12 +3,12 @@
  */
 package com.rssreader.app.commons;
 
-import java.io.File;
-
 import com.rssreader.app.utils.FileUtils;
 
+import java.io.File;
+
 /**
- * @author:	zcloud
+ * @author:	LuoChangAn
  *
  * @description: TODO
  *
@@ -30,6 +30,6 @@ public class AppConfig
 	
 	
 	//有盟
-	public static final String UM_BASE_KEY = "com.dreamteam.reader";
+	public static final String UM_BASE_KEY = "com.rssreader.reader";
 	
 }

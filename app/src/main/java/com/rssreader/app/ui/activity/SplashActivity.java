@@ -18,13 +18,6 @@ import com.rssreader.app.ui.R;
  *     class desc: 启动画面 (1)判断是否是首次加载应用--采取读取SharedPreferences的方法
  *     (2)是，则进入GuideActivity；否，则进入MainActivity (3)3s后执行(2)操作
  * 
- *     <p>
- *     Copyright: Copyright(c) 2013
- *     </p>
- * @Version 1.0
- * @Author <a href="mailto:gaolei_xj@163.com">Leo</a>
- * 
- * 
  */
 public class SplashActivity extends Activity
 {

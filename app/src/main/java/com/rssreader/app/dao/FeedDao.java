@@ -1,7 +1,5 @@
 package com.rssreader.app.dao;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,9 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import com.rssreader.app.db.FeedDBManager;
 import com.rssreader.app.entity.Feed;
 
+import java.util.ArrayList;
+
 /**
  * @description TODO
- * @author zcloud
+ * @author LuoChangAn
  * @date 2014年10月1日
  */
 public class FeedDao
