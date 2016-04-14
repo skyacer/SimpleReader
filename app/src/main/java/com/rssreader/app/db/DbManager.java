@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbManager extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "reader.db";
+    public static final String FEED_DB_NAME = "feed.db";
 	public static final String FAVORITE_ITEM_TABLE_NAME = "favorite_item";
 	
 	private static final String CREATE_SECTION_TABLE =

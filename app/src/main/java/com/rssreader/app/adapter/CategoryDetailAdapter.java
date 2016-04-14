@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.rssreader.app.commons.SectionHelper;
+import com.rssreader.app.commons.DatabaseHelper;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.db.FeedDBManager;
 import com.rssreader.app.entity.Feed;
@@ -110,7 +110,7 @@ public class CategoryDetailAdapter extends BaseAdapter
 					intent.setAction(Main.ACTION_DELETE_SECTION);
 					context.sendBroadcast(intent);
 					//删除section表中记录的数据
-					SectionHelper.removeRecord(mgr.getWritableDatabase(), url);
+					DatabaseHelper.removeRecord(mgr.getWritableDatabase(), url);
 					//更新feed.db中所对应表的状态为0
 					new FeedDBManager(context, FeedDBManager.DB_NAME, null, 1)
 								.updateState(tableName, state, url);
@@ -125,7 +125,7 @@ public class CategoryDetailAdapter extends BaseAdapter
 				context.sendBroadcast(intent);
 				//加入section表
 				SQLiteDatabase db = mgr.getWritableDatabase();
-				SectionHelper.insert(db, tableName, title, url);
+				DatabaseHelper.insertToSection(db, tableName, title, url);
 				db.close();
 				//更新feed.db中所对应表的状态为1
 				FeedDBManager feedHelper = new FeedDBManager(context, FeedDBManager.DB_NAME, null, 1);

@@ -1,7 +1,5 @@
 package com.rssreader.app.ui.activity;
 
-import java.io.File;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -21,13 +19,15 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
+import com.rssreader.app.commons.DatabaseHelper;
 import com.rssreader.app.commons.ItemListEntityParser;
-import com.rssreader.app.commons.SectionHelper;
 import com.rssreader.app.commons.SeriaHelper;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.entity.ItemListEntity;
-import com.rssreader.app.utils.CategoryNameExchange;
 import com.rssreader.app.ui.R;
+import com.rssreader.app.utils.CategoryNameExchange;
+
+import java.io.File;
 
 public class AddDialog extends DialogFragment implements OnItemSelectedListener
 {
@@ -107,7 +107,7 @@ public class AddDialog extends DialogFragment implements OnItemSelectedListener
 				//加入section表
 				DbManager mgr = new DbManager(AddDialog.this.getActivity(), DbManager.DB_NAME, null, 1);
 				SQLiteDatabase db = mgr.getWritableDatabase();
-				SectionHelper.insert(db, tableName_en, result, url);
+				DatabaseHelper.insertToSection(db, tableName_en, result, url);
 				db.close();
 				
 				Intent intent = new Intent();
@@ -130,7 +130,7 @@ public class AddDialog extends DialogFragment implements OnItemSelectedListener
 				if(entity != null)
 				{
 					SeriaHelper helper = SeriaHelper.newInstance();
-					File cache = SectionHelper.newSdCache(params[0]);
+					File cache = DatabaseHelper.newSdCache(params[0]);
 					helper.saveObject(entity, cache);
 					title = parser.getFeedTitle();
 				}

@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rssreader.app.commons.AppContext;
-import com.rssreader.app.commons.SectionHelper;
+import com.rssreader.app.commons.DatabaseHelper;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.db.FeedDBManager;
 import com.rssreader.app.entity.Section;
@@ -29,7 +29,7 @@ public class GridAdapter extends BaseAdapter
 	private int isVisible = 0;//deleteButton是否可见
 	private int[] visibleStates = {View.GONE,View.VISIBLE};
 	public static final String ACTION_INSTALL_SHORTCUT = "com.android.launcher.action.INSTALL_SHORTCUT";
-	public static final String ACTION_ENTER_BY_SHORTCUT = "com.dreateam.action.ENTER_BY_SHORTCUT";
+	public static final String ACTION_ENTER_BY_SHORTCUT = "com.rssreader.action.ENTER_BY_SHORTCUT";
 	
 	public GridAdapter(Context context, ArrayList<Section> sections)
 	{
@@ -101,8 +101,8 @@ public class GridAdapter extends BaseAdapter
 						//移除数据库中的记录
 						DbManager mgr = new DbManager(context,
 								DbManager.DB_NAME, null, 1);
-						SectionHelper.removeRecord(mgr.getWritableDatabase(),
-								url);
+						DatabaseHelper.removeRecord(mgr.getWritableDatabase(),
+                                url);
 						//修改数据库feed.db的状态
 						new FeedDBManager(context, FeedDBManager.DB_NAME, null,
 								1).updateState(tableName, 0, url);

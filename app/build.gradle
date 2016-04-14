@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.dreateam.app.ui"
+        applicationId "com.rssreader.app.ui"
         minSdkVersion 11
         targetSdkVersion 18
     }

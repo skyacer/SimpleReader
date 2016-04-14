@@ -29,7 +29,7 @@ import com.rssreader.app.adapter.MPagerAdapter;
 import com.rssreader.app.commons.AppConfig;
 import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.commons.ItemListEntityParser;
-import com.rssreader.app.commons.SectionHelper;
+import com.rssreader.app.commons.DatabaseHelper;
 import com.rssreader.app.commons.SeriaHelper;
 import com.rssreader.app.commons.UIHelper;
 import com.rssreader.app.dao.SectionDao;
@@ -122,8 +122,6 @@ public class Main extends FragmentActivity implements View.OnClickListener
 				if (action.equals(ACTION_ADD_SECTION))
 				{
 					// 最后一个adapter为空或已满，新生一个gridView
-//					Log.d(tag, gridAdapters.size() + "adapters");
-//					Log.d(tag, gridViews.size() + "views");
 					GridAdapter lastGridAdapter = getLastGridAdapter();
 					if (lastGridAdapter == null || lastGridAdapter.isFull())
 					{
@@ -357,7 +355,7 @@ public class Main extends FragmentActivity implements View.OnClickListener
 				mIntent.setClass(Main.this, ItemList.class);
 				
 				//读取缓存
-				File cache = SectionHelper.getSdCache(url);
+				File cache = DatabaseHelper.getSdCache(url);
 				if(cache.exists())
 				{
 					Main.this.startActivity(mIntent);
@@ -574,7 +572,7 @@ public class Main extends FragmentActivity implements View.OnClickListener
 			if(entity != null)
 			{
 				SeriaHelper helper = SeriaHelper.newInstance();
-				File cache = SectionHelper.newSdCache(params[0]);
+				File cache = DatabaseHelper.newSdCache(params[0]);
 				helper.saveObject(entity, cache);
 			}
 			return entity;

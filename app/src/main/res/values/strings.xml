@@ -13,6 +13,7 @@
         <item>名人博客</item>
         <item>外语资讯</item>
         <item>娱乐八卦</item>
+        <item>其他分类</item>
     </string-array>
     
     <string-array name="feed_category_en">
@@ -75,6 +76,8 @@
     <string name="add_feed_address_hint">请输入源地址</string>
     <string name="add_feed_category">分类</string>
     <string name="add_feed_category_hint">添加分类</string>
+    <string name="add_feed_fail">抱歉，暂不支持该rss</string>
+    <string name="add_feed_success">添加成功!</string>
 
 
     <!--设置界面-->

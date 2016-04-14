@@ -27,7 +27,7 @@ import com.rssreader.app.adapter.ItemListAdapter;
 import com.rssreader.app.commons.HtmlFilter;
 import com.rssreader.app.commons.IFlyHelper;
 import com.rssreader.app.commons.ItemListEntityParser;
-import com.rssreader.app.commons.SectionHelper;
+import com.rssreader.app.commons.DatabaseHelper;
 import com.rssreader.app.commons.SeriaHelper;
 import com.rssreader.app.commons.UIHelper;
 import com.rssreader.app.entity.FeedItem;
@@ -228,7 +228,7 @@ public class ItemList extends Activity
 						public void run()
 						{
 							SeriaHelper helper = SeriaHelper.newInstance();
-							File cache = SectionHelper.getSdCache(sectionUrl);
+							File cache = DatabaseHelper.getSdCache(sectionUrl);
 							ItemListEntity entity = new ItemListEntity();
 							for (FeedItem i : mItems)
 							{
@@ -273,7 +273,7 @@ public class ItemList extends Activity
 		sectionUrl = intent.getStringExtra("url");
 		feedTitleTv.setText(sectionTitle);
 
-		File file = SectionHelper.getSdCache(sectionUrl);
+		File file = DatabaseHelper.getSdCache(sectionUrl);
 		if (file.exists())
 		{
 			seriaHelper = SeriaHelper.newInstance();
@@ -308,7 +308,7 @@ public class ItemList extends Activity
 				return;
 			}
 			ArrayList<FeedItem> newItems = new ArrayList<FeedItem>();
-			File cache = SectionHelper.getSdCache(sectionUrl);
+			File cache = DatabaseHelper.getSdCache(sectionUrl);
 			SeriaHelper helper = SeriaHelper.newInstance();
 			ArrayList<FeedItem> items = result.getItemList();
 			ItemListEntity old = (ItemListEntity) helper.readObject(cache);

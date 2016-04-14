@@ -29,7 +29,7 @@ public class GridAdapter extends BaseAdapter
 	private int isVisible = 0;//deleteButton是否可见
 	private int[] visibleStates = {View.GONE,View.VISIBLE};
 	public static final String ACTION_INSTALL_SHORTCUT = "com.android.launcher.action.INSTALL_SHORTCUT";
-	public static final String ACTION_ENTER_BY_SHORTCUT = "com.dreateam.action.ENTER_BY_SHORTCUT";
+	public static final String ACTION_ENTER_BY_SHORTCUT = "com.rssreader.action.ENTER_BY_SHORTCUT";
 	
 	public GridAdapter(Context context, ArrayList<Section> sections)
 	{

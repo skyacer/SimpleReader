@@ -1,7 +1,5 @@
 package com.rssreader.app.commons;
 
-import java.io.File;
-
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -9,7 +7,9 @@ import com.rssreader.app.db.DbConstant;
 import com.rssreader.app.utils.FileUtils;
 import com.rssreader.app.utils.MD5;
 
-public class SectionHelper
+import java.io.File;
+
+public class DatabaseHelper
 {
 	
 	public static void removeRecord(SQLiteDatabase db, String url)
@@ -18,7 +18,7 @@ public class SectionHelper
 		db.close();
 	}
 	
-	public static void insert(SQLiteDatabase db, String tableName, String title, String url)
+	public static void insertToSection(SQLiteDatabase db, String tableName, String title, String url)
 	{
 		ContentValues values = new ContentValues();
 		values.put("table_name", tableName);
@@ -26,6 +26,14 @@ public class SectionHelper
 		values.put("url", url);
 		db.insert(DbConstant.SECTION_TABLE_NAME, null, values);
 	}
+
+    public static void insertToFeed(SQLiteDatabase db,String fname,String url,int cid){
+        ContentValues values = new ContentValues();
+        values.put("fname",fname);
+        values.put("url",url);
+        values.put("cid",cid);
+        db.insert(DbConstant.FEED_TABLE_NAME,null,values);
+    }
 
 	public static File newSdCache(String url)
 	{
