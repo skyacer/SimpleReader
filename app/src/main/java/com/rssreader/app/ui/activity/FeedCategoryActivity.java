@@ -19,9 +19,10 @@ import com.rssreader.app.ui.R;
 
 import java.util.ArrayList;
 
-public class FeedCategoryUI extends FragmentActivity
+public class FeedCategoryActivity extends FragmentActivity
 {
-	public static final String tag = "FeedCategoryUI";
+	public static final String tag = "FeedCategoryActivity";
+	public static final int REQUEST_CODE_CATEGORY = 1;
 	private ListView categoryLv;
 	private TextView addBtnTv;
 	private ArrayList<FeedCategory> fcList = new ArrayList<FeedCategory>();
@@ -43,13 +44,13 @@ public class FeedCategoryUI extends FragmentActivity
 		addBtnTv.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (!AppContext.isNetworkAvailable(FeedCategoryUI.this)) {
+				if (!AppContext.isNetworkAvailable(FeedCategoryActivity.this)) {
 					ToastUtil.makeShortToast(R.string.please_check_network);
 					return;
 				}
-				AddFeedActivity.start(FeedCategoryUI.this);
+				AddFeedActivity.start(FeedCategoryActivity.this);
 //				new AddDialog().show(getSupportFragmentManager(), "添加Feed");
-//				Toast.makeText(FeedCategoryUI.this, "开发中功能", Toast.LENGTH_SHORT).show();
+//				Toast.makeText(FeedCategoryActivity.this, "开发中功能", Toast.LENGTH_SHORT).show();
 
 			}
 		});
@@ -73,9 +74,19 @@ public class FeedCategoryUI extends FragmentActivity
 			{
 				Intent intent = new Intent();
 				intent.putExtra("category", fcList.get(position).getId());
-				intent.setClass(FeedCategoryUI.this, FeedUIActivity.class);
-				FeedCategoryUI.this.startActivity(intent);
+				intent.setClass(FeedCategoryActivity.this, FeedUIActivity.class);
+				FeedCategoryActivity.this.startActivityForResult(intent, REQUEST_CODE_CATEGORY);
 			}
 		});
 	}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_CATEGORY){
+            if (resultCode == RESULT_OK){
+                finish();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

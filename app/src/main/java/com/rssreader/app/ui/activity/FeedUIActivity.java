@@ -24,8 +24,7 @@ public class FeedUIActivity extends BaseActionBarActivity<FeedUIPresenter>
 	private ListView detailList;
 	private ArrayList<Feed> feeds = new ArrayList<Feed>();
 	private CategoryDetailAdapter mAdapter;
-	private FeedDao mDao;
-	
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -37,12 +36,12 @@ public class FeedUIActivity extends BaseActionBarActivity<FeedUIPresenter>
 
 	@Override
 	protected void initPresenter() {
-
+        presenter = new FeedUIPresenter(this);
 	}
 
 	private void initData()
 	{
-		mDao = new FeedDao(this);
+		FeedDao mDao = new FeedDao(this);
 		Intent intent = getIntent();
 		int cid = intent.getIntExtra("category", 1);
 		Log.i(tag, "category.id = " + cid);
@@ -61,6 +60,9 @@ public class FeedUIActivity extends BaseActionBarActivity<FeedUIPresenter>
 
 		detailList = (ListView) findViewById(R.id.catagory_detail_lv_feed);
 		detailList.setOnItemClickListener(presenter);
+
+        (findViewById(R.id.nav_right_container)).setOnClickListener(presenter);
+
 	}
 }
 

@@ -12,7 +12,7 @@ import com.rssreader.app.ui.base.BasePresenter;
 /**
  * Created by LuoChangAn on 16/4/14.
  */
-public class FeedUIPresenter extends BasePresenter<FeedUIActivity> implements AdapterView.OnItemClickListener {
+public class FeedUIPresenter extends BasePresenter<FeedUIActivity> implements AdapterView.OnItemClickListener, View.OnClickListener {
     public FeedUIPresenter(FeedUIActivity target) {
         super(target);
     }
@@ -22,6 +22,18 @@ public class FeedUIPresenter extends BasePresenter<FeedUIActivity> implements Ad
         if(!AppContext.isNetworkAvailable(target))
         {
             ToastUtil.makeShortToast(R.string.no_network);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.nav_right_container:
+                target.setResult(target.RESULT_OK);
+                target.finish();
+                break;
+            default:
+                break;
         }
     }
 }

@@ -272,7 +272,7 @@ public class Main extends FragmentActivity implements View.OnClickListener
 	private void openSubscribeCenter()
 	{
 		Intent intent = new Intent();
-		intent.setClass(this, FeedCategoryUI.class);
+		intent.setClass(this, FeedCategoryActivity.class);
 		startActivity(intent);
 	}
 
