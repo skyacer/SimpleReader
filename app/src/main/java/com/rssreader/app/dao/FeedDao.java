@@ -10,9 +10,7 @@ import com.rssreader.app.entity.Feed;
 import java.util.ArrayList;
 
 /**
- * @description TODO
  * @author LuoChangAn
- * @date 2014年10月1日
  */
 public class FeedDao
 {

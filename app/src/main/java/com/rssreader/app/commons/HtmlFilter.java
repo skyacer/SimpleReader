@@ -9,9 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @description 过滤html
  * @author LuoChangAn
- * @date 2013/11/14
  */
 public class HtmlFilter
 {

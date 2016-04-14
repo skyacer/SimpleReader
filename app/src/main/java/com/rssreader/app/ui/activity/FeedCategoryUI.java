@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.rssreader.app.adapter.FeedCategoryAdapter;
 import com.rssreader.app.commons.AppContext;
@@ -23,7 +23,7 @@ public class FeedCategoryUI extends FragmentActivity
 {
 	public static final String tag = "FeedCategoryUI";
 	private ListView categoryLv;
-	private ImageButton addImgBtn;
+	private TextView addBtnTv;
 	private ArrayList<FeedCategory> fcList = new ArrayList<FeedCategory>();
 	private FeedCategoryAdapter mAdapter;
 	private FeedCategoryDao fcDao;
@@ -39,14 +39,11 @@ public class FeedCategoryUI extends FragmentActivity
 	{
 		setContentView(R.layout.feed_category);
 		categoryLv = (ListView) findViewById(R.id.feed_category_lsit);
-		addImgBtn = (ImageButton) findViewById(R.id.feed_category_add_btn);
-		addImgBtn.setOnClickListener(new OnClickListener()
-		{
+		addBtnTv = (TextView) findViewById(R.id.feed_category_add_btn);
+		addBtnTv.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
-				if(!AppContext.isNetworkAvailable(FeedCategoryUI.this))
-				{
+			public void onClick(View v) {
+				if (!AppContext.isNetworkAvailable(FeedCategoryUI.this)) {
 					ToastUtil.makeShortToast(R.string.please_check_network);
 					return;
 				}

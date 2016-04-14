@@ -2,9 +2,7 @@ package com.rssreader.app.utils;
 
 
 /**
- * @description 
  * @author LuoChangAn
- * @date 2013/11/13
  */
 public class DateUtils
 {

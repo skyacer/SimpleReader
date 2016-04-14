@@ -12,9 +12,7 @@ import com.iflytek.speech.SpeechUtility;
 import java.util.List;
 
 /**
- * @description	TODO
  * @author LuoChangAn
- * @date 2014年2月22日
  */
 public class IFlyHelper
 {

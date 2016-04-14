@@ -18,9 +18,7 @@ import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners.SocializeClientListener;
 
 /**
- * @description TODO
  * @author LuoChangAn
- * @date Dec 7, 2013
  */
 public class LoginDialog extends DialogFragment
 {

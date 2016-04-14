@@ -1,7 +1,5 @@
 package com.rssreader.app.adapter;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +10,10 @@ import android.widget.TextView;
 import com.rssreader.app.entity.FeedCategory;
 import com.rssreader.app.ui.R;
 
+import java.util.ArrayList;
+
 /**
- * @description 
  * @author LuoChangAn
- * @date 2013年11月1日
  */
 public class FeedCategoryAdapter extends BaseAdapter
 {

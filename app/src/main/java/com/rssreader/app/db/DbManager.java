@@ -6,9 +6,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * @description	reader.db
  * @author LuoChangAn
- * @date 2014年2月1日
  */
 public class DbManager extends SQLiteOpenHelper
 {

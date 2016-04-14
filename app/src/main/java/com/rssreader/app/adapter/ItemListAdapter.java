@@ -3,8 +3,6 @@
  */
 package com.rssreader.app.adapter;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -19,16 +17,13 @@ import android.widget.TextView;
 
 import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.entity.FeedItem;
-import com.rssreader.app.utils.ImageLoader;
 import com.rssreader.app.ui.R;
+import com.rssreader.app.utils.ImageLoader;
+
+import java.util.ArrayList;
 
 /**
- * @author:	LuoChangAn
- *
  * @description: TODO
- *
- * @date: 2013/10/14
- *
  */
 public class ItemListAdapter extends BaseAdapter
 {

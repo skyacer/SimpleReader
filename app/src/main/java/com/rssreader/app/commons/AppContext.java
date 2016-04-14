@@ -1,7 +1,5 @@
 package com.rssreader.app.commons;
 
-import java.io.File;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -12,10 +10,10 @@ import android.webkit.CacheManager;
 import com.rssreader.app.utils.FileUtils;
 import com.rssreader.app.utils.MD5;
 
+import java.io.File;
+
 /**
- * @description TODO
  * @author LuoChangAn
- * @date Dec 8, 2013
  */
 @SuppressWarnings("deprecation")
 public class AppContext

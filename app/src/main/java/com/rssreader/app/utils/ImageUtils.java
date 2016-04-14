@@ -1,10 +1,5 @@
 package com.rssreader.app.utils;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -12,9 +7,13 @@ import android.graphics.Matrix;
 
 import com.rssreader.app.commons.AppConfig;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * @author LuoChangAn
- * @date 2013/11/13
  */
 public class ImageUtils
 {

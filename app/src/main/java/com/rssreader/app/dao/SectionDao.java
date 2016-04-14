@@ -1,7 +1,5 @@
 package com.rssreader.app.dao;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,10 +10,10 @@ import com.rssreader.app.db.DbManager;
 import com.rssreader.app.entity.Section;
 import com.rssreader.app.ui.activity.Main;
 
+import java.util.ArrayList;
+
 /**
- * @description TODO
  * @author LuoChangAn
- * @date 2014年9月11日
  */
 public class SectionDao
 {

@@ -1,10 +1,5 @@
 package com.rssreader.app.ui.activity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.HttpStatus;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -17,12 +12,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.rssreader.app.adapter.CommentAdapter;
-import com.rssreader.app.commons.UMHelper;
-import com.rssreader.app.ui.R;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.rssreader.app.adapter.CommentAdapter;
+import com.rssreader.app.commons.UMHelper;
+import com.rssreader.app.ui.R;
 import com.umeng.socialize.bean.MultiStatus;
 import com.umeng.socialize.bean.SocializeConfig;
 import com.umeng.socialize.bean.SocializeEntity;
@@ -30,10 +25,13 @@ import com.umeng.socialize.bean.UMComment;
 import com.umeng.socialize.controller.listener.SocializeListeners.FetchCommetsListener;
 import com.umeng.socialize.controller.listener.SocializeListeners.MulStatusListener;
 
+import org.apache.http.HttpStatus;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * @description TODO
  * @author LuoChangAn
- * @date Jun 21, 2014
  */
 public class CommentUI extends Activity
 {

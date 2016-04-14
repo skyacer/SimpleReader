@@ -1,4 +1,6 @@
 package com.rssreader.app.commons;
+import com.rssreader.app.entity.ItemListEntity;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,13 +12,9 @@ import java.io.OptionalDataException;
 import java.io.Serializable;
 import java.io.StreamCorruptedException;
 
-import com.rssreader.app.entity.ItemListEntity;
-
 
 /**
- * @description 
  * @author LuoChangAn
- * @date 2013/11/15
  */
 public class SeriaHelper
 {

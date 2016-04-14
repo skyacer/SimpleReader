@@ -5,9 +5,7 @@ import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 
 /**
- * @description TODO
  * @author LuoChangAn
- * @date 2014年5月9日
  *
  */
 public class UMHelper

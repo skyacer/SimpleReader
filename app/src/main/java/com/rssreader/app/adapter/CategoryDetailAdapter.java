@@ -21,9 +21,7 @@ import com.rssreader.app.ui.activity.Main;
 import java.util.ArrayList;
 
 /**
- * @description TODO
  * @author LuoChangAn
- * @date 2013/11/14
  */
 public class CategoryDetailAdapter extends BaseAdapter
 {

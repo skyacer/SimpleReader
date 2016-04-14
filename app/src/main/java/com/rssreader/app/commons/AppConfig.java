@@ -9,11 +9,6 @@ import java.io.File;
 
 /**
  * @author:	LuoChangAn
- *
- * @description: TODO
- *
- * @date: 2013/10/11
- *
  */
 public class AppConfig
 {

@@ -1,11 +1,5 @@
 package com.rssreader.app.ui.activity;
 
-import java.io.File;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -23,6 +17,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.iflytek.speech.SpeechConstant;
+import com.iflytek.speech.SpeechSynthesizer;
+import com.iflytek.speech.SynthesizerListener;
 import com.rssreader.app.adapter.ItemListAdapter;
 import com.rssreader.app.commons.HtmlFilter;
 import com.rssreader.app.commons.IFlyHelper;
@@ -33,17 +33,15 @@ import com.rssreader.app.commons.UIHelper;
 import com.rssreader.app.entity.FeedItem;
 import com.rssreader.app.entity.ItemListEntity;
 import com.rssreader.app.ui.R;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.iflytek.speech.SpeechConstant;
-import com.iflytek.speech.SpeechSynthesizer;
-import com.iflytek.speech.SynthesizerListener;
+
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
- * @description TODO
  * @author LuoChangAn
- * @date 2013/11/14
  */
 public class ItemList extends Activity
 {

@@ -65,6 +65,7 @@
     <string name="submit">提交</string>
     <string name="please_check_network">请检查网络</string>
     <string name="complete">完成</string>
+    <string name="add">新增</string>
 
     <!--添加rss源页面-->
     <string name="add_feed_title">自定义RSS源</string>

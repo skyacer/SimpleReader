@@ -1,14 +1,12 @@
 package com.rssreader.app.utils;
 
-import com.rssreader.app.ui.R;
-
 import android.content.Context;
+
+import com.rssreader.app.ui.R;
 
 
 /**
- * @description	TODO
  * @author LuoChangAn
- * @date 2014年1月27日
  */
 public class CategoryNameExchange
 {

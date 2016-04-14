@@ -25,15 +25,16 @@
 		    android:layout_centerInParent="true"
 		    android:textSize="20sp"
 		    android:textColor="@color/white"
-		    android:text="订阅中心"/>        
-        <ImageButton
+		    android:text="@string/subscribe_rss_center"/>
+        <TextView
             android:id="@+id/feed_category_add_btn"
            	android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/feed_custom_btn"
-            android:background="@null"
+            android:textColor="@color/white"
+            android:text="@string/add"
+            android:textSize="18sp"
             />
     </RelativeLayout>
 

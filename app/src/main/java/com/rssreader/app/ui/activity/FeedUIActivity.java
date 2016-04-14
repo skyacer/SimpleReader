@@ -15,9 +15,7 @@ import com.rssreader.app.ui.presenter.FeedUIPresenter;
 import java.util.ArrayList;
 
 /**
- * @description  
  * @author LuoChangAn
- * @date 2013年11月14日
  */
 public class FeedUIActivity extends BaseActionBarActivity<FeedUIPresenter>
 {

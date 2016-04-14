@@ -10,9 +10,6 @@ import android.os.Environment;
 /**
  * @author: LuoChangAn
  * 
- * 
- * @date: 2013/10/9
- * 
  */
 
 public class FileUtils

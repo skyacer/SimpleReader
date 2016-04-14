@@ -2,9 +2,7 @@ package com.rssreader.app.entity;
 
 
 /**
- * @description TODO
  * @author LuoChangAn
- * @date 2013/11/10
  */
 public class Feed
 {

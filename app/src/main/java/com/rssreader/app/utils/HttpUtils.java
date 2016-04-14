@@ -1,19 +1,15 @@
 package com.rssreader.app.utils;
 
+import android.util.Log;
+
+import org.apache.http.HttpStatus;
+
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.apache.http.HttpStatus;
-
-import android.util.Log;
-
 /**
  * @author:	LuoChangAn
- *
- * @description: TODO
- *
- * @date: 2013/10/10
  *
  */
 public class HttpUtils

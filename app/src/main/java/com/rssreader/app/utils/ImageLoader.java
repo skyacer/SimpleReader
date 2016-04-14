@@ -1,5 +1,14 @@
 package com.rssreader.app.utils;
 
+import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+
+import com.rssreader.app.commons.AppContext;
+
 import java.io.File;
 import java.io.InputStream;
 import java.lang.ref.SoftReference;
@@ -10,20 +19,9 @@ import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-
-import com.rssreader.app.commons.AppContext;
-
 
 /**
- * @description 
  * @author LuoChangAn
- * @date 2013/11/13
  */
 public class ImageLoader
 {
