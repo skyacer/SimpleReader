@@ -37,8 +37,15 @@
     <style name="img_btn_style">
         <item name="android:layout_width">wrap_content</item>
     	<item name="android:layout_height">wrap_content</item>
-    	<item name="android:background">@drawable/selector_back_btn_navigationbar_white</item>
+    	<item name="android:background">@drawable/img_btn_selector</item>
     </style>
+
+	<style name="img_back_btn_style">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_centerVertical">true</item>
+		<item name="android:background">@drawable/selector_back_btn_navigationbar_white</item>
+	</style>
 
 	<!-- animation 样式 -->
 	<style name="activityAnimation" parent="@android:style/Animation">

@@ -176,7 +176,7 @@ public class Setting extends PreferenceActivity
 			            UmengUpdateAgent.showUpdateDialog(mContext, updateInfo);
 			            break;
 			        case UpdateStatus.No: // has no update
-			            Toast.makeText(mContext, "没有更新", Toast.LENGTH_SHORT).show();
+			            Toast.makeText(mContext, "已是最新版本", Toast.LENGTH_SHORT).show();
 			            break;
 			        case UpdateStatus.NoneWifi: // none wifi
 			            Toast.makeText(mContext, "没有wifi连接， 只在wifi下更新", Toast.LENGTH_SHORT).show();

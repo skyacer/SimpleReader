@@ -31,6 +31,7 @@ public class AddFeedActivity extends BaseActionBarActivity<AddFeedPresenter> {
     private void initView() {
         setTitle(R.string.add_feed_title);
         setRightText(R.string.submit);
+        setRightTextColor(R.color.white);
 
         mSpinner = (Spinner) findViewById(R.id.spinner_rss_category_right);
         ArrayAdapter<CharSequence> cateAdapter = ArrayAdapter.createFromResource(AddFeedActivity.this

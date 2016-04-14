@@ -11,7 +11,7 @@
 	        android:background="@drawable/shap_title_bar">
 	        <ImageButton
 	            android:id="@+id/setting_return_btn"
-	            style="@style/img_btn_style"
+	            style="@style/img_back_btn_style"
 				android:layout_centerVertical="true"
 				/>
 	        <TextView

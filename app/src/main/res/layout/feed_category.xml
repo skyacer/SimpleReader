@@ -12,7 +12,7 @@
 		>
         <ImageButton
             android:id="@+id/feed_category_btn_back"
-            style="@style/img_btn_style"
+            style="@style/img_back_btn_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"

@@ -1,36 +1,29 @@
 package com.rssreader.app.ui.activity;
 
-import java.util.ArrayList;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.rssreader.app.adapter.CategoryDetailAdapter;
-import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.dao.FeedDao;
 import com.rssreader.app.entity.Feed;
 import com.rssreader.app.ui.R;
+import com.rssreader.app.ui.base.BaseActionBarActivity;
+import com.rssreader.app.ui.presenter.FeedUIPresenter;
+
+import java.util.ArrayList;
 
 /**
  * @description  
  * @author LuoChangAn
  * @date 2013年11月14日
  */
-public class FeedUI extends Activity
+public class FeedUIActivity extends BaseActionBarActivity<FeedUIPresenter>
 {
 	public static final String tag = "CategoryDetail";
 	
 	private ListView detailList;
-	private TextView titleTv;
 	private ArrayList<Feed> feeds = new ArrayList<Feed>();
 	private CategoryDetailAdapter mAdapter;
 	private FeedDao mDao;
@@ -42,6 +35,11 @@ public class FeedUI extends Activity
 		super.onCreate(savedInstanceState);
 		initView();
 		initData();
+	}
+
+	@Override
+	protected void initPresenter() {
+
 	}
 
 	private void initData()
@@ -59,31 +57,12 @@ public class FeedUI extends Activity
 
 	private void initView()
 	{
-		setContentView(R.layout.category_detail);
-		titleTv = (TextView) findViewById(R.id.cd_title_tv);
-		findViewById(R.id.category_detail_btn_back).setOnClickListener(new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				finish();
-			}
-		});
+		setRealContentView(R.layout.category_detail);
+		setTitle(R.string.subscribe_rss_center);
+		setRightText(R.string.complete);
+
 		detailList = (ListView) findViewById(R.id.catagory_detail_lv_feed);
-		detailList.setOnItemClickListener(new OnItemClickListener()
-		{
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3)
-			{
-				if(!AppContext.isNetworkAvailable(FeedUI.this))
-				{
-					Toast.makeText(FeedUI.this, "请检查网络设置", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				//feed预览
-			}
-		});
+		detailList.setOnItemClickListener(presenter);
 	}
 }
 

@@ -57,10 +57,14 @@
 	
     <string name="bg_switch_success">设置成功</string>
 
+    <!--订阅中心-->
+    <string name="subscribe_rss_center">订阅中心</string>
+
     <!--公共界面-->
     <string name="please_input_content">请输入内容，谢谢！</string>
     <string name="submit">提交</string>
     <string name="please_check_network">请检查网络</string>
+    <string name="complete">完成</string>
 
     <!--添加rss源页面-->
     <string name="add_feed_title">自定义RSS源</string>

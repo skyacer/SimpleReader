@@ -1,7 +1,5 @@
 package com.rssreader.app.ui.activity;
 
-import java.util.ArrayList;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -11,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.rssreader.app.adapter.FeedCategoryAdapter;
 import com.rssreader.app.commons.AppContext;
@@ -19,6 +16,8 @@ import com.rssreader.app.commons.util.ToastUtil;
 import com.rssreader.app.dao.FeedCategoryDao;
 import com.rssreader.app.entity.FeedCategory;
 import com.rssreader.app.ui.R;
+
+import java.util.ArrayList;
 
 public class FeedCategoryUI extends FragmentActivity
 {
@@ -77,7 +76,7 @@ public class FeedCategoryUI extends FragmentActivity
 			{
 				Intent intent = new Intent();
 				intent.putExtra("category", fcList.get(position).getId());
-				intent.setClass(FeedCategoryUI.this, FeedUI.class);
+				intent.setClass(FeedCategoryUI.this, FeedUIActivity.class);
 				FeedCategoryUI.this.startActivity(intent);
 			}
 		});

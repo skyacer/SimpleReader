@@ -13,7 +13,6 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -45,7 +44,7 @@ import com.umeng.update.UmengUpdateAgent;
 import java.io.File;
 import java.util.ArrayList;
 
-public class Main extends FragmentActivity
+public class Main extends FragmentActivity implements View.OnClickListener
 {
 	public static final String tag = "Main";
 	private ViewPager mPager;
@@ -194,61 +193,16 @@ public class Main extends FragmentActivity
 	{
 		PathAnimations.initOffset(this);
 		composerWrapper = (RelativeLayout) findViewById(R.id.composer_wrapper);
-		composerShowHideBtn = (RelativeLayout) findViewById(R.id.composer_show_hide_button);
+
 		composerShowHideIconIv = (ImageView) findViewById(R.id.composer_show_hide_button_icon);
-		composerShowHideBtn.setOnClickListener(new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				if (!arePathMenuShowing)
-				{
-					PathAnimations.startAnimationsIn(composerWrapper, 300);
-					composerShowHideIconIv.startAnimation(PathAnimations
-							.getRotateAnimation(0, -270, 300));
-				} else
-				{
-					PathAnimations.startAnimationsOut(composerWrapper, 300);
-					composerShowHideIconIv.startAnimation(PathAnimations
-							.getRotateAnimation(-270, 0, 300));
-				}
-				arePathMenuShowing = !arePathMenuShowing;
-			}
-		});
+
+		composerShowHideBtn = (RelativeLayout) findViewById(R.id.composer_show_hide_button);
+		composerShowHideBtn.setOnClickListener(this);
 
 		// Buttons事件处理
 		for (int i = 0; i < composerWrapper.getChildCount(); i++)
 		{
-			composerWrapper.getChildAt(i).setOnClickListener(
-					new View.OnClickListener()
-					{
-						@Override
-						public void onClick(View v)
-						{
-							switch (v.getId())
-							{
-							case R.id.composer_btn_user:
-								login();
-								break;
-							case R.id.composer_btn_setting:
-								openSetting();
-								break;
-							case R.id.composer_btn_favorite:
-								openFavorite();
-								break;
-							case R.id.composer_btn_switch_bg:
-								swithBg();
-								break;
-							case R.id.composer_btn_add:
-								openSubscribeCenter();
-								break;
-							case R.id.composer_btn_moon:
-								switchMode();
-								break;
-							}
-						}
-
-					});
+			composerWrapper.getChildAt(i).setOnClickListener(this);
 		}
 		composerShowHideBtn.startAnimation(PathAnimations.getRotateAnimation(0,
 				360, 200));
@@ -422,12 +376,10 @@ public class Main extends FragmentActivity
 			}
 		});
 		//长按进入删除section状态
-		grid.setOnItemLongClickListener(new OnItemLongClickListener()
-		{
+		grid.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view,
-					int position, long id)
-			{
+										   int position, long id) {
 				inSectionEdit();
 				return false;
 			}
@@ -530,7 +482,60 @@ public class Main extends FragmentActivity
 			pageSize = sectionCount / PAGE_SECTION_SIZE + 1;
 		return pageSize;
 	}
-	
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()){
+			case R.id.composer_btn_user:
+				login();
+				break;
+			case R.id.composer_btn_setting:
+				openSetting();
+				break;
+			case R.id.composer_btn_favorite:
+				openFavorite();
+				break;
+			case R.id.composer_btn_switch_bg:
+				swithBg();
+				break;
+			case R.id.composer_btn_add:
+				openSubscribeCenter();
+				break;
+			case R.id.composer_btn_moon:
+				switchMode();
+				break;
+			case R.id.composer_show_hide_button:
+				showHideButton();
+				break;
+			default:
+				break;
+		}
+	}
+
+
+
+	private void showHideButton() {
+		if (!arePathMenuShowing) {
+			PathAnimations.startAnimationsIn(composerWrapper, 300);
+			composerShowHideIconIv.startAnimation(PathAnimations
+					.getRotateAnimation(0, -270, 300));
+		} else {
+			PathAnimations.startAnimationsOut(composerWrapper, 300);
+			composerShowHideIconIv.startAnimation(PathAnimations
+					.getRotateAnimation(-270, 0, 300));
+		}
+		arePathMenuShowing = !arePathMenuShowing;
+	}
+
+	private void hideButton() {
+		if (arePathMenuShowing) {
+			PathAnimations.startAnimationsOut(composerWrapper, 300);
+			composerShowHideIconIv.startAnimation(PathAnimations
+					.getRotateAnimation(-270, 0, 300));
+			arePathMenuShowing = !arePathMenuShowing;
+		}
+	}
+
 	private class LoadDataTask extends AsyncTask<String, Integer, ItemListEntity>
 	{
 
