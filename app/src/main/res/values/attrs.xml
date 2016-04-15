@@ -12,4 +12,7 @@
     <attr name="detail_btn_comment" format="reference"/>
     <attr name="detail_btn_more" format="reference"/>
     <attr name="detail_divide_line_bg" format="color"/>
+    <declare-styleable name="swipelistviewstyle">
+        <attr name="right_width" format="dimension"/>
+    </declare-styleable>
 </resources>

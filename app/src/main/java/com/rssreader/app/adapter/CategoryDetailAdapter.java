@@ -9,6 +9,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 import com.rssreader.app.commons.DatabaseHelper;
@@ -30,6 +33,7 @@ public class CategoryDetailAdapter extends BaseAdapter
 	private Context context;
 	private ArrayList<Feed> feeds;
 	private String tableName;//所分类对应的表名
+    private int mRightWidth;
 	public static final String SECTION_TABLE_NAME = "section";
 	private int[] imgIds = {
 			R.drawable.add,
@@ -37,11 +41,12 @@ public class CategoryDetailAdapter extends BaseAdapter
 	};
 	
 	
-	public CategoryDetailAdapter(Context context, ArrayList<Feed> feeds, String tableName)
+	public CategoryDetailAdapter(Context context, ArrayList<Feed> feeds, String tableName,int rightWidth)
 	{
 		this.context = context;
 		this.feeds = feeds;
 		this.tableName = tableName;
+        this.mRightWidth = rightWidth;
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 	
@@ -80,12 +85,23 @@ public class CategoryDetailAdapter extends BaseAdapter
 			holder = new ViewHolder();
 			holder.feedTitle = (TextView) convertView.findViewById(R.id.category_detail_feed_title);
 			holder.addBtn = (ImageButton) convertView.findViewById(R.id.category_detail_add);
-			convertView.setTag(holder);
+            holder.item_left = (RelativeLayout) convertView.findViewById(R.id.category_left_rv);
+            holder.item_right = (RelativeLayout)convertView.findViewById(R.id.category_right_rv);
+
+            holder.item_right_txt = (TextView) convertView.findViewById(R.id.item_right_txt);
+            convertView.setTag(holder);
 		}
 		else
 		{
 			holder = (ViewHolder) convertView.getTag();
 		}
+        LinearLayout.LayoutParams lp1 = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        holder.item_right.setLayoutParams(lp1);
+
+        LinearLayout.LayoutParams lp2 = new LayoutParams(mRightWidth, LayoutParams.MATCH_PARENT);
+        holder.item_right.setLayoutParams(lp2);
+
+
 		holder.addBtn.setOnClickListener(new OnClickListener()
 		{
 			@Override
@@ -142,8 +158,26 @@ public class CategoryDetailAdapter extends BaseAdapter
 	
 	private static final class ViewHolder
 	{
-		TextView feedTitle;
+        RelativeLayout item_left;
+        RelativeLayout item_right;
+
+        TextView feedTitle;
 		ImageButton addBtn;
-	}
+
+        TextView item_right_txt;
+    }
+
+    /**
+     * 单击事件监听器
+     */
+    private onRightItemClickListener mListener = null;
+
+    public void setOnRightItemClickListener(onRightItemClickListener listener){
+        mListener = listener;
+    }
+
+    public interface onRightItemClickListener {
+        void onRightItemClick(View v, int position);
+    }
 	
 }

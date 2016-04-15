@@ -3,13 +3,13 @@ package com.rssreader.app.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ListView;
 
 import com.rssreader.app.adapter.CategoryDetailAdapter;
 import com.rssreader.app.dao.FeedDao;
 import com.rssreader.app.entity.Feed;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.ui.base.BaseActionBarActivity;
+import com.rssreader.app.ui.common.SwipeListView;
 import com.rssreader.app.ui.presenter.FeedUIPresenter;
 
 import java.util.ArrayList;
@@ -21,7 +21,8 @@ public class FeedUIActivity extends BaseActionBarActivity<FeedUIPresenter>
 {
 	public static final String tag = "CategoryDetail";
 	
-	private ListView detailList;
+	private SwipeListView detailList;
+
 	private ArrayList<Feed> feeds = new ArrayList<Feed>();
 	private CategoryDetailAdapter mAdapter;
 
@@ -48,7 +49,7 @@ public class FeedUIActivity extends BaseActionBarActivity<FeedUIPresenter>
 		String id = String.valueOf(cid);
 		feeds = mDao.getListByCategoryId(id);
 		//设置适配器
-		mAdapter = new CategoryDetailAdapter(this, feeds, "feed");
+		mAdapter = new CategoryDetailAdapter(this, feeds, "feed",detailList.getRightViewWidth());
 		detailList.setAdapter(mAdapter);
 	}
 
@@ -58,7 +59,7 @@ public class FeedUIActivity extends BaseActionBarActivity<FeedUIPresenter>
 		setTitle(R.string.subscribe_rss_center);
 		setRightText(R.string.complete);
 
-		detailList = (ListView) findViewById(R.id.catagory_detail_lv_feed);
+		detailList = (SwipeListView) findViewById(R.id.catagory_detail_lv_feed);
 		detailList.setOnItemClickListener(presenter);
 
         (findViewById(R.id.nav_right_container)).setOnClickListener(presenter);
