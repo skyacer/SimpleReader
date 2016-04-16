@@ -65,5 +65,6 @@ public class FeedUIActivity extends BaseActionBarActivity<FeedUIPresenter>
         (findViewById(R.id.nav_right_container)).setOnClickListener(presenter);
 
 	}
+
 }
 

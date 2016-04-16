@@ -16,4 +16,5 @@ public class ThreadUtil {
         public static boolean isMainLoop() {
             return Looper.getMainLooper() == Looper.myLooper();
         }
+
 }

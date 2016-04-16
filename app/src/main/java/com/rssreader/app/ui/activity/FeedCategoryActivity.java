@@ -49,8 +49,6 @@ public class FeedCategoryActivity extends FragmentActivity
 					return;
 				}
 				AddFeedActivity.start(FeedCategoryActivity.this);
-//				new AddDialog().show(getSupportFragmentManager(), "添加Feed");
-//				Toast.makeText(FeedCategoryActivity.this, "开发中功能", Toast.LENGTH_SHORT).show();
 
 			}
 		});

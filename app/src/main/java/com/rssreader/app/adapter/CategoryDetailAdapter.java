@@ -10,11 +10,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.rssreader.app.commons.DatabaseHelper;
+import com.rssreader.app.commons.util.ThreadUtil;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.db.FeedDBManager;
 import com.rssreader.app.entity.Feed;
@@ -39,6 +40,11 @@ public class CategoryDetailAdapter extends BaseAdapter
 			R.drawable.add,
 			R.drawable.added
 	};
+
+    /**
+     * 单击事件监听器
+     */
+    private onRightItemClickListener mListener = null;
 	
 	
 	public CategoryDetailAdapter(Context context, ArrayList<Feed> feeds, String tableName,int rightWidth)
@@ -78,12 +84,13 @@ public class CategoryDetailAdapter extends BaseAdapter
 	public View getView(final int position, View convertView, ViewGroup parent)
 	{
 		final ViewHolder holder;
-		
+
 		if(convertView == null)
 		{
 			convertView = inflater.inflate(R.layout.category_detail_item, null);
 			holder = new ViewHolder();
-			holder.feedTitle = (TextView) convertView.findViewById(R.id.category_detail_feed_title);
+
+            holder.feedTitle = (TextView) convertView.findViewById(R.id.category_detail_feed_title);
 			holder.addBtn = (ImageButton) convertView.findViewById(R.id.category_detail_add);
             holder.item_left = (RelativeLayout) convertView.findViewById(R.id.category_left_rv);
             holder.item_right = (RelativeLayout)convertView.findViewById(R.id.category_right_rv);
@@ -96,10 +103,22 @@ public class CategoryDetailAdapter extends BaseAdapter
 			holder = (ViewHolder) convertView.getTag();
 		}
         LinearLayout.LayoutParams lp1 = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        holder.item_right.setLayoutParams(lp1);
+        holder.item_left.setLayoutParams(lp1);
 
         LinearLayout.LayoutParams lp2 = new LayoutParams(mRightWidth, LayoutParams.MATCH_PARENT);
         holder.item_right.setLayoutParams(lp2);
+
+        holder.item_right.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteFeed(holder.feedTitle);
+                feeds.remove(position);
+                updateData(feeds);
+                deleteAnimator();
+            }
+        }
+
+     );
 
 
 		holder.addBtn.setOnClickListener(new OnClickListener()
@@ -150,13 +169,32 @@ public class CategoryDetailAdapter extends BaseAdapter
 		});
 		Feed feed = feeds.get(position);
 		holder.feedTitle.setText((CharSequence)
-				feed.getTitle());
+                feed.getTitle());
 		//addBtn状态图标设置
 		holder.addBtn.setImageResource(imgIds[feed.getSelectStatus()]);
-		return convertView;
+        //每次删除后恢复默认x值
+        convertView.setScrollX(0);
+
+        return convertView;
 	}
-	
-	private static final class ViewHolder
+
+    private void deleteAnimator() {
+
+    }
+
+    private void deleteFeed(final TextView feedTitle) {
+        ThreadUtil.runOnAnsy(new Runnable() {
+            @Override
+            public void run() {
+                String title = feedTitle.getText().toString();
+                DbManager mgr = new DbManager(context, DbManager.FEED_DB_NAME, null, 1);
+                SQLiteDatabase db = mgr.getWritableDatabase();
+                DatabaseHelper.removeRecordFromFeed(db, title);
+            }
+        },"Delete Feed");
+    }
+
+    private static final class ViewHolder
 	{
         RelativeLayout item_left;
         RelativeLayout item_right;
@@ -167,10 +205,7 @@ public class CategoryDetailAdapter extends BaseAdapter
         TextView item_right_txt;
     }
 
-    /**
-     * 单击事件监听器
-     */
-    private onRightItemClickListener mListener = null;
+
 
     public void setOnRightItemClickListener(onRightItemClickListener listener){
         mListener = listener;

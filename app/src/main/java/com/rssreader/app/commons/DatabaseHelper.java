@@ -28,11 +28,23 @@ public class DatabaseHelper
 	}
 
     public static void insertToFeed(SQLiteDatabase db,String fname,String url,int cid){
+        if (db==null||fname==null||url==null||cid<=0||cid>=9){
+            return;
+        }
         ContentValues values = new ContentValues();
         values.put("fname",fname);
         values.put("url",url);
         values.put("cid",cid);
         db.insert(DbConstant.FEED_TABLE_NAME,null,values);
+    }
+
+    public static void removeRecordFromFeed(SQLiteDatabase db,String fname){
+        if (db==null||fname==null){
+            return;
+        }
+
+        String[] args = {fname};
+        db.delete(DbConstant.FEED_TABLE_NAME,"fname=?",args);
     }
 
 	public static File newSdCache(String url)

@@ -72,10 +72,8 @@ public class AddFeedPresenter extends BasePresenter<AddFeedActivity> implements 
                 ToastUtil.makeShortToast(R.string.add_feed_success);
 
                 //加入section表
-                DbManager mgr = new DbManager(target, DbManager.FEED_DB_NAME, null, 1);
-                SQLiteDatabase db = mgr.getWritableDatabase();
-                DatabaseHelper.insertToFeed(db, title, url, tableCid);
-                db.close();
+
+                insertToFeedDB(title,url);
 
                 Intent intent = new Intent();
                 intent.setAction(Main.ACTION_ADD_SECTION);
@@ -106,5 +104,12 @@ public class AddFeedPresenter extends BasePresenter<AddFeedActivity> implements 
             }
 
         }.execute(url);
+    }
+
+    private void insertToFeedDB(String title,String url){
+        DbManager mgr = new DbManager(target, DbManager.FEED_DB_NAME, null, 1);
+        SQLiteDatabase db = mgr.getWritableDatabase();
+        DatabaseHelper.insertToFeed(db, title, url, tableCid);
+        db.close();
     }
 }
