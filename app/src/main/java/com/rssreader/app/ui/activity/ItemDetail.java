@@ -55,6 +55,7 @@ public class ItemDetail extends FragmentActivity {
     private ImageButton shareBtn;
     private ImageButton commentBtn;
     private TextView countTv;//评论列表
+    private TextView mReadTitleTv;
     private static WebView mWebView;
     private String sectionTitle;
     private String sectionUrl;
@@ -88,7 +89,7 @@ public class ItemDetail extends FragmentActivity {
         @Override
         public void handleMessage(Message msg) {
             Intent intent = new Intent();
-            intent.setAction(ItemList.ACTION_UPDATE_ITEM_LIST);
+            intent.setAction(ItemListActivity.ACTION_UPDATE_ITEM_LIST);
             sendBroadcast(intent);
             super.handleMessage(msg);
         }
@@ -114,6 +115,16 @@ public class ItemDetail extends FragmentActivity {
 
     @SuppressLint("SetJavaScriptEnabled")
     private void initView() {
+        Intent intent = getIntent();
+        sectionTitle = intent.getStringExtra("section_title");
+        sectionUrl = intent.getStringExtra("section_url");
+        firstImgUrl = intent.getStringExtra("first_img_url");
+
+        title = intent.getStringExtra("title");
+        pubdate = intent.getStringExtra("pubdate");
+        itemDetail = intent.getStringExtra("item_detail");
+        link = intent.getStringExtra("link");
+
         SharedPreferences prefs = AppContext.getPrefrences(this);
         if (prefs.getBoolean("day_night_mode", false)) {
             setTheme(R.style.AppNightTheme);
@@ -123,7 +134,6 @@ public class ItemDetail extends FragmentActivity {
                     R.drawable.btn_favorite_full_night
             };
         }
-
         isFavorite = getIntent().getBooleanExtra("is_favorite", false);
         setContentView(R.layout.feed_item_detail);
         shareBtn = (ImageButton) findViewById(R.id.fid_btn_share);
@@ -168,7 +178,7 @@ public class ItemDetail extends FragmentActivity {
                 Intent intent = new Intent();
                 intent.putExtra("link", link);
                 intent.putExtra("is_favorite", isFavorite);
-                intent.setAction(ItemList.ACTION_UPDATE_ITEM_LIST);
+                intent.setAction(ItemListActivity.ACTION_UPDATE_ITEM_LIST);
                 sendBroadcast(intent);
 
                 new Thread() {
@@ -189,6 +199,15 @@ public class ItemDetail extends FragmentActivity {
                 }.start();
             }
         });
+        //回退箭头
+        findViewById(R.id.read_return_btn).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        mReadTitleTv = (TextView) findViewById(R.id.read_title_tv);
+        mReadTitleTv.setText(sectionTitle);
         countTv = (TextView) findViewById(R.id.fid_tv_comment_count);
         mWebView = (WebView) findViewById(R.id.my_web_view);
         mWebView.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
@@ -196,16 +215,7 @@ public class ItemDetail extends FragmentActivity {
     }
 
     private void loadData() {
-        Intent intent = getIntent();
-        sectionTitle = intent.getStringExtra("section_title");
-        sectionUrl = intent.getStringExtra("section_url");
-        firstImgUrl = intent.getStringExtra("first_img_url");
-
         StringBuffer sb = new StringBuffer();
-        title = intent.getStringExtra("title");
-        pubdate = intent.getStringExtra("pubdate");
-        itemDetail = intent.getStringExtra("item_detail");
-        link = intent.getStringExtra("link");
         //过滤style
         itemDetail = itemDetail.replaceAll(HtmlFilter.regexpForStyle, "");
         //过滤img宽和高

@@ -104,7 +104,7 @@ public class Main extends FragmentActivity implements View.OnClickListener
 				Intent indirectIntent = new Intent();
 				indirectIntent.putExtra("section_title", intent.getStringExtra("section_title"));
 				indirectIntent.putExtra("url", intent.getStringExtra("url"));
-				indirectIntent.setClass(this, ItemList.class);
+				indirectIntent.setClass(this, ItemListActivity.class);
 				startActivity(indirectIntent);
 			}
 		}
@@ -351,7 +351,7 @@ public class Main extends FragmentActivity implements View.OnClickListener
 				mIntent = new Intent();
 				mIntent.putExtra("section_title", title);
 				mIntent.putExtra("url", url);
-				mIntent.setClass(Main.this, ItemList.class);
+				mIntent.setClass(Main.this, ItemListActivity.class);
 				
 				//读取缓存
 				File cache = DatabaseHelper.getSdCache(url);

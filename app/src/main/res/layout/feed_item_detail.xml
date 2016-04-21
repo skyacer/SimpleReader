@@ -2,6 +2,25 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_45dp"
+        android:background="@drawable/shap_title_bar">
+        <ImageButton
+            android:id="@+id/read_return_btn"
+            style="@style/img_back_btn_style"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:id="@+id/read_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:textSize="8pt"
+            android:textColor="@color/white"
+            android:text="@string/read_title"/>
+    </RelativeLayout>
 	<WebView
 	    android:id="@+id/my_web_view"
 	    android:layout_weight="1"

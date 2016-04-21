@@ -62,7 +62,7 @@ public class SplashActivity extends Activity
 			String title =intent.getStringExtra("section_title");
 			if(title != null)
 			{
-				intent.setClass(this, ItemList.class);
+				intent.setClass(this, ItemListActivity.class);
 				startActivity(intent);
 			}
 		}

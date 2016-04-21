@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import com.rssreader.app.entity.FeedItem;
 import com.rssreader.app.ui.activity.FavoriteItemListActivity;
 import com.rssreader.app.ui.activity.ItemDetail;
-import com.rssreader.app.ui.activity.ItemList;
+import com.rssreader.app.ui.activity.ItemListActivity;
 import com.rssreader.app.ui.base.BasePresenter;
 
 /**
@@ -50,7 +50,7 @@ public class FavoriteItemListPresenter extends BasePresenter<FavoriteItemListAct
             }
         };
         IntentFilter filter = new IntentFilter();
-        filter.addAction(ItemList.ACTION_UPDATE_ITEM_LIST);
+        filter.addAction(ItemListActivity.ACTION_UPDATE_ITEM_LIST);
         target.registerReceiver(mReceiver, filter);
     }
 
