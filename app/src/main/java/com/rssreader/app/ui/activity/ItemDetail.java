@@ -27,9 +27,9 @@ import com.rssreader.app.entity.FeedItem;
 import com.rssreader.app.entity.ItemListEntity;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.utils.MD5;
+import com.umeng.socialize.bean.RequestType;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.bean.UMComment;
-import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners.FetchCommetsListener;
@@ -245,7 +245,7 @@ public class ItemDetail extends FragmentActivity
 	private void openCommentUi()
 	{
 		Intent intent = new Intent();
-		intent.setClass(ItemDetail.this, CommentUI.class);
+		intent.setClass(ItemDetail.this, CommentActivity.class);
 		ItemDetail.this.startActivity(intent);
 	}
 }

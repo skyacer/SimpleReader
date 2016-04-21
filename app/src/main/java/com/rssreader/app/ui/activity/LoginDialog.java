@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.commons.UMHelper;
+import com.rssreader.app.commons.util.ToastUtil;
 import com.rssreader.app.ui.R;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
@@ -28,7 +29,7 @@ public class LoginDialog extends DialogFragment
 	private static final int POS_SINA_WEIBO = 0;
 	private static final int POS_QQZONE = 1;
 	private static final int POS_RENREN = 2;
-	private UMSocialService mController = UMHelper.getUMSocialService();
+	private UMSocialService mController = UMHelper.getUMSocialService(getActivity());
 
 	
 	@Override
@@ -54,7 +55,7 @@ public class LoginDialog extends DialogFragment
 					mController.login(mActivity, SHARE_MEDIA.SINA, monitor);
 					break;
 				case POS_QQZONE:
-					mController.login(mActivity, SHARE_MEDIA.QZONE, monitor);
+					mController.login(mActivity, SHARE_MEDIA.QQ, monitor);
 					break;
 				case POS_RENREN:
 					mController.login(mActivity, SHARE_MEDIA.RENREN, monitor);
@@ -76,8 +77,9 @@ public class LoginDialog extends DialogFragment
 		{
 			if(status == 200)
 			{
-				Toast.makeText(mActivity, "登陆成功！", Toast.LENGTH_SHORT).show();
-			}
+//				Toast.makeText(mActivity, "登陆成功！", Toast.LENGTH_SHORT).show();
+                ToastUtil.makeShortToast(entity.getNickName());
+            }
 			else
 			{
 				Toast.makeText(mActivity, "网络异常！", Toast.LENGTH_SHORT).show();

@@ -122,7 +122,7 @@
         </receiver>
         <activity android:name="com.rssreader.app.ui.activity.ImageDialog"></activity>
         <activity android:name="com.rssreader.app.ui.activity.AboutActivity"></activity>
-        <activity android:name="com.rssreader.app.ui.activity.CommentUI"></activity>
+        <activity android:name="com.rssreader.app.ui.activity.CommentActivity"></activity>
     </application>
 
 </manifest>

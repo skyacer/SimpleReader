@@ -1,6 +1,7 @@
 package com.rssreader.app.commons;
 
-import com.umeng.socialize.controller.RequestType;
+import android.content.Context;
+
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 
@@ -10,11 +11,13 @@ import com.umeng.socialize.controller.UMSocialService;
  */
 public class UMHelper
 {
-	private final static UMSocialService mController = UMServiceFactory.
-			getUMSocialService("com.rssreader.app.reader.umeng.usr",	RequestType.SOCIAL);
-	
-	
-	public static UMSocialService getUMSocialService()
+    private UMHelper(){}
+
+	private final static UMSocialService mController = UMServiceFactory
+            .getUMSocialService("com.umeng.share");
+
+
+    public static UMSocialService getUMSocialService(Context context)
 	{
 		return mController;
 	}

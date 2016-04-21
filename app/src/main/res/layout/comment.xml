@@ -7,26 +7,6 @@
     android:background="@color/white"
     >
     
-	<RelativeLayout 
-	    android:background="?attr/title_bar_bg"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content">
-		<ImageButton
-		    android:layout_alignParentLeft="true"
-		    android:id="@+id/comment_return"
-		    style="@style/img_btn_style"
-		    android:src="@drawable/btn_back"
-		    android:layout_width="wrap_content" 
-		    android:layout_height="wrap_content" 
-			/>
-		<TextView
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_centerInParent="true"
-		    android:textSize="20sp"
-		    android:textColor="@color/white"
-		    android:text="评论列表" />
-	</RelativeLayout>
 	<com.handmark.pulltorefresh.library.PullToRefreshListView
 	    android:id="@+id/comment_Lv"
 	    android:divider="@drawable/listview_divider_line"

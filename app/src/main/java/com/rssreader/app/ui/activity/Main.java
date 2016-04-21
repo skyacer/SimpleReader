@@ -28,8 +28,8 @@ import com.rssreader.app.adapter.GridAdapter;
 import com.rssreader.app.adapter.MPagerAdapter;
 import com.rssreader.app.commons.AppConfig;
 import com.rssreader.app.commons.AppContext;
-import com.rssreader.app.commons.ItemListEntityParser;
 import com.rssreader.app.commons.DatabaseHelper;
+import com.rssreader.app.commons.ItemListEntityParser;
 import com.rssreader.app.commons.SeriaHelper;
 import com.rssreader.app.commons.UIHelper;
 import com.rssreader.app.dao.SectionDao;
@@ -38,7 +38,6 @@ import com.rssreader.app.entity.Section;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.utils.ImageUtils;
 import com.rssreader.custom.ui.PathAnimations;
-import com.umeng.socialize.controller.UMInfoAgent;
 import com.umeng.update.UmengUpdateAgent;
 
 import java.io.File;
@@ -203,7 +202,7 @@ public class Main extends FragmentActivity implements View.OnClickListener
 			composerWrapper.getChildAt(i).setOnClickListener(this);
 		}
 		composerShowHideBtn.startAnimation(PathAnimations.getRotateAnimation(0,
-				360, 200));
+                360, 200));
 	}
 
 	private void switchMode()
@@ -258,13 +257,13 @@ public class Main extends FragmentActivity implements View.OnClickListener
 	//登陆
 	private void login()
 	{
-		if(UMInfoAgent.isLogin(this))
-		{
-			Toast.makeText(this, R.string.loggedon, Toast.LENGTH_SHORT).show();
-			return;
-		}
-		new LoginDialog().show(getSupportFragmentManager(), tag);
-	}
+//		if(UMHelper.getUMSocialService(this).isLogin(this))
+//		{
+//			Toast.makeText(this, R.string.loggedon, Toast.LENGTH_SHORT).show();
+//			return;
+//		}
+        new LoginDialog().show(getSupportFragmentManager(), tag);
+    }
 	
 	// 打开订阅中心
 	private void openSubscribeCenter()

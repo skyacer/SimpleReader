@@ -14,6 +14,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于评论模块分享位置信息 -->
  	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 	<uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <!-- QQ、QQ空间所需权限 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:name="com.rssreader.app.application.RssApplication"
@@ -65,9 +67,39 @@
         </activity>
 
         <!-- ############ QQ空间和QQ SSO授权的Activity注册 ############ -->
-        <activity android:name="com.tencent.tauth.AuthActivity" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- 100424468，如果你使用的公用账号，则不需要修改；否则修改成你在QQ开放平台申请的 APP ID-->
+                <data android:scheme="tencent1105267281" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.tencent.connect.common.AssistActivity"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:screenOrientation="portrait">
+        </activity>
+
+        <!--微信的回调-->
+        <activity
+            android:name="com.rssreader.app.wxapi.WXEntryActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
 
         <!-- ###################添加UmengAppkey###################### -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="57173cfee0f55a74df00089e" >
+        </meta-data>
 
 
         <!-- 查看评论页 -->
@@ -101,10 +133,6 @@
 		    android:theme="@android:style/Theme.Translucent.NoTitleBar" >
 		</activity>
         
-        <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="5269be4956240b2d8b048955" >
-        </meta-data>
 
         <activity android:name=".activity.FavoriteItemListActivity" >
         </activity>
@@ -120,7 +148,7 @@
         </receiver>
         <activity android:name="com.rssreader.app.ui.activity.ImageDialog"></activity>
         <activity android:name=".activity.AboutActivity"></activity>
-        <activity android:name="com.rssreader.app.ui.activity.CommentUI"></activity>
+        <activity android:name=".activity.CommentActivity"></activity>
     </application>
 
 </manifest>
