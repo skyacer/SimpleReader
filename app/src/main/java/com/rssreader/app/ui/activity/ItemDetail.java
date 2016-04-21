@@ -213,9 +213,9 @@ public class ItemDetail extends FragmentActivity {
         itemDetail = itemDetail.replaceAll(
                 "(<img[^>]*?)\\s+height\\s*=\\s*\\S+", "$1");
 //		//图片双击
-//		 itemDetail = itemDetail.replaceAll("(<img[^>]+src=\")(\\S+)\"",
-//					"$1$2\" onClick=\"javascript:mWebViewImageListener.onImageClick('$2')\"");
-//		 mWebView.addJavascriptInterface(this, "mWebViewImageListener");
+		 itemDetail = itemDetail.replaceAll("(<img[^>]+src=\")(\\S+)\"",
+					"$1$2\" onClick=\"javascript:mWebViewImageListener.onImageClick('$2')\"");
+		 mWebView.addJavascriptInterface(this, "mWebViewImageListener");
         //是否加载图片
         SharedPreferences pref = AppContext.getPrefrences(this);
         if (!pref.getBoolean("pref_imageLoad", true)) {
