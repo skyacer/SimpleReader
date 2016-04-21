@@ -1,5 +1,5 @@
 
-package com.rssreader.app.wxapi;
+package com.rssreader.app.ui.wxapi;
 
 import com.umeng.socialize.weixin.view.WXCallbackActivity;
 

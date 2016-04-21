@@ -94,5 +94,8 @@
     
     <!--设置壁纸-->
     <string name="set_homepage_background">设置首页壁纸</string>
+
+    <!--阅读界面-->
+    <string name="share_content_format">我在易悦阅读器上看到一篇不错的文章:%1$s,你也来看看吧%2$s</string>
     
 </resources>
