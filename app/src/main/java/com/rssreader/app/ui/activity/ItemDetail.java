@@ -1,13 +1,13 @@
 package com.rssreader.app.ui.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebSettings.LayoutAlgorithm;
@@ -50,7 +50,7 @@ import java.util.List;
 
 @SuppressLint("JavascriptInterface")
 @SuppressWarnings("deprecation")
-public class ItemDetail extends FragmentActivity {
+public class ItemDetail extends Activity {
     private ImageButton collectBtn;
     private ImageButton shareBtn;
     private ImageButton commentBtn;

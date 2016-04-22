@@ -205,21 +205,25 @@ public class ItemListPresenter extends BasePresenter<ItemListActivity> implement
 
     @Override
     public void onClick(View v) {
-        if(!IFlyHelper.checkSpeechServiceInstall(target))
-        {
-            IFlyHelper.openDownloadDialog(target);
-            return;
+        switch (v.getId()) {
+            case R.id.nav_right_img:
+            {
+                if (!IFlyHelper.checkSpeechServiceInstall(target)) {
+                    IFlyHelper.openDownloadDialog(target);
+                    return;
+                }
+                if (existSpeech) {
+                    tts.stopSpeaking(mTtsListener);
+                    existSpeech = false;
+                    return;
+                }
+                startSpeech();
+                existSpeech = true;
+                Toast.makeText(target, "再按一次退出播放", Toast.LENGTH_SHORT)
+                        .show();
+                break;
+            }
         }
-        if (existSpeech)
-        {
-            tts.stopSpeaking(mTtsListener);
-            existSpeech = false;
-            return;
-        }
-        startSpeech();
-        existSpeech = true;
-        Toast.makeText(target, "再按一次退出播放", Toast.LENGTH_SHORT)
-                .show();
     }
 
     private void startSpeech()
