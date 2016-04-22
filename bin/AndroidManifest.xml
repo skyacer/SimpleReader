@@ -52,7 +52,7 @@
         </activity>
         <activity android:name="com.rssreader.app.ui.activity.ItemListActivity" >
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.ItemDetail" >
+        <activity android:name="com.rssreader.app.ui.activity.ItemDetailActivity" >
         </activity>
 
         <!-- ###################注册SDK使用的Activity###################### -->

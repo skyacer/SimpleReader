@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 
 import com.rssreader.app.entity.FeedItem;
 import com.rssreader.app.ui.activity.FavoriteItemListActivity;
-import com.rssreader.app.ui.activity.ItemDetail;
+import com.rssreader.app.ui.activity.ItemDetailActivity;
 import com.rssreader.app.ui.activity.ItemListActivity;
 import com.rssreader.app.ui.base.BasePresenter;
 
@@ -70,7 +70,7 @@ public class FavoriteItemListPresenter extends BasePresenter<FavoriteItemListAct
         intent.putExtra("link", link);
         intent.putExtra("section_url", target.sectionUrl);
 
-        intent.setClass(target, ItemDetail.class);
+        intent.setClass(target, ItemDetailActivity.class);
         target.startActivity(intent);
     }
 

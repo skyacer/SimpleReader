@@ -20,7 +20,7 @@ import com.rssreader.app.commons.util.ToastUtil;
 import com.rssreader.app.entity.FeedItem;
 import com.rssreader.app.entity.ItemListEntity;
 import com.rssreader.app.ui.R;
-import com.rssreader.app.ui.activity.ItemDetail;
+import com.rssreader.app.ui.activity.ItemDetailActivity;
 import com.rssreader.app.ui.activity.ItemListActivity;
 import com.rssreader.app.ui.base.BasePresenter;
 
@@ -158,7 +158,7 @@ public class ItemListPresenter extends BasePresenter<ItemListActivity> implement
         intent.putExtra("link", link);
         intent.putExtra("is_favorite", isFavorite);
         intent.putExtra("first_img_url", firstImgUrl);
-        intent.setClass(target, ItemDetail.class);
+        intent.setClass(target, ItemDetailActivity.class);
         target.startActivity(intent);
     }
 
