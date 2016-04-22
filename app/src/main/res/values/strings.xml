@@ -90,6 +90,10 @@
     <string name="feedback_title">用户反馈</string>
     <string name="about_me">关于我们</string>
 
+    <!--登录界面-->
+    <string name="login_failed">登录失败</string>
+    <string name="login_success">登陆成功,欢迎%s</string>
+
     <!--收藏界面-->
     <string name="favorite_title">收藏列表</string>
     

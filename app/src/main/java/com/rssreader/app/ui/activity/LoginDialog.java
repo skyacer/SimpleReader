@@ -12,7 +12,9 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.commons.util.ResourcesUtil;
 import com.rssreader.app.commons.util.ToastUtil;
+import com.rssreader.app.entity.SinaPersonalInfo;
 import com.rssreader.app.ui.R;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
@@ -23,6 +25,7 @@ import com.umeng.socialize.controller.listener.SocializeListeners;
 import com.umeng.socialize.controller.listener.SocializeListeners.SocializeClientListener;
 import com.umeng.socialize.exception.SocializeException;
 import com.umeng.socialize.sso.QZoneSsoHandler;
+import com.umeng.socialize.sso.SinaSsoHandler;
 import com.umeng.socialize.sso.UMQQSsoHandler;
 import com.umeng.socialize.sso.UMSsoHandler;
 
@@ -41,6 +44,9 @@ public class LoginDialog extends DialogFragment
     private static final int POS_SINA_WEIBO_LOGOUT = 1;
 	private static final int POS_QQZONE = 2;
 	private static final int POS_QQZONE_LOGOUT = 3;
+
+    private SinaPersonalInfo sinaPersonalInfo;
+
     // 整个平台的Controller, 负责管理整个SDK的配置、操作等处理
     private UMSocialService mController = UMServiceFactory
             .getUMSocialService(DESCRIPTOR);
@@ -51,6 +57,9 @@ public class LoginDialog extends DialogFragment
 		mActivity = getActivity();
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         addQZoneQQPlatform();
+        //设置新浪sso登录
+        mController.getConfig().setSsoHandler(new SinaSsoHandler());
+        sinaPersonalInfo = new SinaPersonalInfo();
 		builder.setItems(R.array.login_accounts, new OnClickListener()
 		{
 			@Override
@@ -86,21 +95,21 @@ public class LoginDialog extends DialogFragment
 
             @Override
             public void onStart(SHARE_MEDIA platform) {
-                ToastUtil.makeShortToast("start");
+
             }
 
             @Override
             public void onError(SocializeException e, SHARE_MEDIA platform) {
+                ToastUtil.makeShortToast(R.string.login_failed);
             }
 
             @Override
             public void onComplete(Bundle value, SHARE_MEDIA platform) {
-                ToastUtil.makeShortToast("onComplete");
                 String uid = value.getString("uid");
                 if (!TextUtils.isEmpty(uid)) {
                     getUserInfo(platform);
                 } else {
-                    ToastUtil.makeShortToast("授权失败...");
+                    ToastUtil.makeShortToast(R.string.login_failed);
                 }
             }
 
@@ -128,7 +137,7 @@ public class LoginDialog extends DialogFragment
                 if (status != StatusCode.ST_CODE_SUCCESSED) {
                     showText = "解除" + platform.toString() + "平台授权失败[" + status + "]";
                 }
-                Toast.makeText(getActivity(), showText, Toast.LENGTH_SHORT).show();
+                ToastUtil.makeShortToast(showText);
             }
         });
     }
@@ -137,7 +146,7 @@ public class LoginDialog extends DialogFragment
     /**
      * 获取授权平台的用户信息</br>
      */
-    private void getUserInfo(SHARE_MEDIA platform) {
+    private void getUserInfo(final SHARE_MEDIA platform) {
         mController.getPlatformInfo(mActivity, platform, new SocializeListeners.UMDataListener() {
 
             @Override
@@ -148,7 +157,14 @@ public class LoginDialog extends DialogFragment
             @Override
             public void onComplete(int status, Map<String, Object> info) {
                 if (info != null) {
-                    ToastUtil.makeLongToast(info.toString());
+                    if (platform == SHARE_MEDIA.SINA) {
+                        if (info.get("screen_name")!=null) {
+                            sinaPersonalInfo.setScreen_name((String) info.get("screen_name"));
+                            ToastUtil.makeShortToast(ResourcesUtil.stringFormat(R.string.login_success, sinaPersonalInfo.getScreen_name()));
+                        }
+                    }else if(platform == SHARE_MEDIA.QQ){
+                        ToastUtil.makeShortToast(info.toString());
+                    }
                 }
             }
         });
@@ -157,8 +173,8 @@ public class LoginDialog extends DialogFragment
 
 
     private void addQZoneQQPlatform() {
-        String appId = "1105267281";
-        String appKey = "pWvrIZZ2VSDTBQUk";
+        String appId = "100424468";
+        String appKey = "c7394704798a158208a74ab60104f0ba";
         // 添加QQ支持, 并且设置QQ分享内容的target url
         UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(getActivity(),
                 appId, appKey);
@@ -171,27 +187,6 @@ public class LoginDialog extends DialogFragment
     }
 
 
-    private final class ScializeMonitor implements SocializeClientListener
-	{
-
-		@Override
-		public void onStart(){}
-		
-		@Override
-		public void onComplete(int status, SocializeEntity entity)
-		{
-			if(status == 200)
-			{
-//				Toast.makeText(mActivity, "登陆成功！", Toast.LENGTH_SHORT).show();
-                ToastUtil.makeShortToast(entity.getNickName());
-            }
-			else
-			{
-				Toast.makeText(mActivity, "网络异常！", Toast.LENGTH_SHORT).show();
-			}
-		}
-		
-	}
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
