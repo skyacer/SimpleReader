@@ -3,15 +3,13 @@ package com.rssreader.app.ui.presenter;
 import android.content.Intent;
 import android.view.View;
 
-import com.rssreader.app.commons.AppConfig;
 import com.rssreader.app.commons.util.ResourcesUtil;
 import com.rssreader.app.ui.R;
-import com.rssreader.app.ui.activity.CommentActivity;
 import com.rssreader.app.ui.activity.ImageDialog;
 import com.rssreader.app.ui.activity.ItemDetailActivity;
 import com.rssreader.app.ui.base.BasePresenter;
+import com.rssreader.app.ui.common.Constants;
 import com.rssreader.app.utils.MD5;
-import com.umeng.socialize.bean.RequestType;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.bean.UMComment;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -40,7 +38,7 @@ public class ItemDetailPresenter extends BasePresenter<ItemDetailActivity> imple
     private String pubdate;
     private String itemDetail;
     private String firstImgUrl;
-    private UMSocialService mController;
+    public UMSocialService mController;
 
 
     public ItemDetailPresenter(ItemDetailActivity target) {
@@ -71,8 +69,7 @@ public class ItemDetailPresenter extends BasePresenter<ItemDetailActivity> imple
 
     private void initComments() {
         String key = MD5.Md5(link);
-        mController = UMServiceFactory.getUMSocialService(AppConfig.UM_BASE_KEY + key,
-                RequestType.SOCIAL);
+        mController = UMServiceFactory.getUMSocialService(Constants.DESCRIPTOR);
         mController.getComments(target, new SocializeListeners.FetchCommetsListener() {
             @Override
             public void onStart() {
@@ -163,12 +160,6 @@ public class ItemDetailPresenter extends BasePresenter<ItemDetailActivity> imple
         wxCircleHandler.addToSocialSDK();
     }
 
-    private void openCommentUi() {
-        Intent intent = new Intent();
-        intent.setClass(target, CommentActivity.class);
-        target.startActivity(intent);
-    }
-
     public void onImageClick(String url) {
         Intent intent = new Intent();
         intent.putExtra("url", url);
@@ -183,7 +174,7 @@ public class ItemDetailPresenter extends BasePresenter<ItemDetailActivity> imple
                 mController.openShare(target, false);
                 break;
             case R.id.fid_btn_comment:
-                openCommentUi();
+                mController.openComment(target, false);
                 break;
         }
     }

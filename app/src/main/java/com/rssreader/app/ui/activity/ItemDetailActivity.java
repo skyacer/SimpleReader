@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebSettings.LayoutAlgorithm;
@@ -26,6 +27,7 @@ import com.rssreader.app.entity.ItemListEntity;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.ui.base.BaseActionBarActivity;
 import com.rssreader.app.ui.presenter.ItemDetailPresenter;
+import com.umeng.socialize.sso.UMSsoHandler;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -180,6 +182,17 @@ public class ItemDetailActivity extends BaseActionBarActivity<ItemDetailPresente
         sb.append("<h1>" + title + "</h1>");
         sb.append("<body>" + itemDetail + "</body>");
         mWebView.loadDataWithBaseURL(null, css + sb.toString(), "text/html", "UTF-8", null);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMSsoHandler ssoHandler = presenter.mController.getConfig().getSsoHandler(
+                requestCode);
+        if (ssoHandler != null) {
+            ssoHandler.authorizeCallBack(requestCode, resultCode, data);
+            Log.d("", "#### ssoHandler.authorizeCallBack");
+        }
     }
 
 }

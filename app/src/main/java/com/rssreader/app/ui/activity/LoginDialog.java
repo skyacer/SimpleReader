@@ -16,6 +16,7 @@ import com.rssreader.app.commons.util.ResourcesUtil;
 import com.rssreader.app.commons.util.ToastUtil;
 import com.rssreader.app.entity.SinaPersonalInfo;
 import com.rssreader.app.ui.R;
+import com.rssreader.app.ui.common.Constants;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.bean.StatusCode;
@@ -38,7 +39,6 @@ public class LoginDialog extends DialogFragment
 {
 
 	public static final String tag = "LoginDialog";
-    public static final String DESCRIPTOR = "com.rsssreader.ui.app";
 	private Activity mActivity;
 	private static final int POS_SINA_WEIBO = 0;
     private static final int POS_SINA_WEIBO_LOGOUT = 1;
@@ -49,7 +49,7 @@ public class LoginDialog extends DialogFragment
 
     // 整个平台的Controller, 负责管理整个SDK的配置、操作等处理
     private UMSocialService mController = UMServiceFactory
-            .getUMSocialService(DESCRIPTOR);
+            .getUMSocialService(Constants.DESCRIPTOR);
 	
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState)
