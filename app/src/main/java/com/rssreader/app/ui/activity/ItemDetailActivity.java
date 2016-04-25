@@ -52,6 +52,7 @@ public class ItemDetailActivity extends BaseActionBarActivity<ItemDetailPresente
             R.drawable.btn_favorite_full
     };//0为空
 
+    public String speechText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,9 +102,12 @@ public class ItemDetailActivity extends BaseActionBarActivity<ItemDetailPresente
             };
         }
         isFavorite = getIntent().getBooleanExtra("is_favorite", false);
+
         setRealContentView(R.layout.feed_item_detail);
         setTitle(sectionTitle);
+        setRightView(R.drawable.btn_play);
 
+        findViewById(R.id.nav_right_img).setOnClickListener(presenter);
         findViewById(R.id.fid_btn_share).setOnClickListener(presenter);
         findViewById(R.id.fid_btn_comment).setOnClickListener(presenter);
 
@@ -182,6 +186,8 @@ public class ItemDetailActivity extends BaseActionBarActivity<ItemDetailPresente
         sb.append("<h1>" + title + "</h1>");
         sb.append("<body>" + itemDetail + "</body>");
         mWebView.loadDataWithBaseURL(null, css + sb.toString(), "text/html", "UTF-8", null);
+
+        speechText = HtmlFilter.filterHtml(title+itemDetail);
     }
 
     @Override

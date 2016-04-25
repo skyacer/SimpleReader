@@ -85,7 +85,6 @@ public class ItemListActivity extends BaseActionBarActivity<ItemListPresenter>
 	{
 		UIHelper.initTheme(this);
 		setRealContentView(R.layout.feed_item_list);
-        setRightView(R.drawable.btn_play);
 
         Intent intent = getIntent();
         sectionUrl = intent.getStringExtra("url");
@@ -93,7 +92,6 @@ public class ItemListActivity extends BaseActionBarActivity<ItemListPresenter>
 
         setTitle(sectionTitle);
 
-		findViewById(R.id.nav_right_img).setOnClickListener(presenter);
 
 		itemLv = (PullToRefreshListView) findViewById(R.id.fil_lv_feed_item);
 

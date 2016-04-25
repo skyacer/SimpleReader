@@ -1,8 +1,14 @@
 package com.rssreader.app.ui.presenter;
 
 import android.content.Intent;
+import android.os.RemoteException;
 import android.view.View;
+import android.widget.Toast;
 
+import com.iflytek.speech.SpeechConstant;
+import com.iflytek.speech.SpeechSynthesizer;
+import com.iflytek.speech.SynthesizerListener;
+import com.rssreader.app.commons.IFlyHelper;
 import com.rssreader.app.commons.util.ResourcesUtil;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.ui.activity.ImageDialog;
@@ -25,6 +31,9 @@ import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.umeng.socialize.weixin.media.CircleShareContent;
 import com.umeng.socialize.weixin.media.WeiXinShareContent;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,6 +49,14 @@ public class ItemDetailPresenter extends BasePresenter<ItemDetailActivity> imple
     private String firstImgUrl;
     public UMSocialService mController;
 
+    //讯飞语音
+    private SpeechSynthesizer tts;
+    private SynthesizerListener mTtsListener;
+    private static int speechCount = 0;
+    private boolean existSpeech = false;// 退出tts
+    // 开始词
+    private static final String START_WORDS = "欢迎收听";
+    private boolean isFinishReading = false;
 
     public ItemDetailPresenter(ItemDetailActivity target) {
         super(target);
@@ -49,6 +66,7 @@ public class ItemDetailPresenter extends BasePresenter<ItemDetailActivity> imple
     public void onCreate() {
         super.onCreate();
         initData();
+        initTts();
         initComments();
         configPlatforms();
         setShareContent();
@@ -167,6 +185,55 @@ public class ItemDetailPresenter extends BasePresenter<ItemDetailActivity> imple
         target.startActivity(intent);
     }
 
+    private void initTts()
+    {
+        tts = new SpeechSynthesizer(target, null);
+        tts.setParameter(SpeechConstant.ENGINE_TYPE, "local");
+        tts.setParameter(SpeechSynthesizer.SPEED, "50");
+        tts.setParameter(SpeechSynthesizer.PITCH, "50");
+        mTtsListener = new SynthesizerListener.Stub()
+        {
+            @Override
+            public void onSpeakResumed() throws RemoteException
+            {
+            }
+            @Override
+            public void onSpeakProgress(int arg0) throws RemoteException
+            {
+            }
+            @Override
+            public void onSpeakPaused() throws RemoteException
+            {
+            }
+            @Override
+            public void onSpeakBegin() throws RemoteException
+            {
+            }
+
+            @Override
+            public void onCompleted(int arg0) throws RemoteException
+            {
+                tts.stopSpeaking(mTtsListener);
+
+            }
+
+            @Override
+            public void onBufferProgress(int arg0) throws RemoteException
+            {
+            }
+        };
+    }
+
+    private void startSpeech()
+    {
+        DateFormat df = SimpleDateFormat.getTimeInstance();
+        String time = df.format(new Date());
+        String timeTip = "现在是：" + time;
+        tts.startSpeaking(START_WORDS + sectionTitle + "频道" + timeTip
+                + target.speechText, mTtsListener);
+    }
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -176,8 +243,30 @@ public class ItemDetailPresenter extends BasePresenter<ItemDetailActivity> imple
             case R.id.fid_btn_comment:
                 mController.openComment(target, false);
                 break;
+            case R.id.nav_right_img:
+            {
+                if (!IFlyHelper.checkSpeechServiceInstall(target)) {
+                    IFlyHelper.openDownloadDialog(target);
+                    return;
+                }
+                if (existSpeech) {
+                    tts.stopSpeaking(mTtsListener);
+                    existSpeech = false;
+                    return;
+                }
+                startSpeech();
+                existSpeech = true;
+                Toast.makeText(target, "讯飞语音正在初始化,请稍等,如需退出请再按一次", Toast.LENGTH_LONG)
+                        .show();
+                break;
+            }
         }
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        tts.stopSpeaking(mTtsListener);
+        tts.destory();
+    }
 }
