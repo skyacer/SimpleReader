@@ -103,5 +103,8 @@
     <!--阅读界面-->
     <string name="share_content_format">我在易悦阅读器上看到一篇不错的文章:%1$s,你也来看看吧%2$s</string>
     <string name="read_title">阅读界面</string>
-    
+
+    <!--个人中心-->
+    <string name="personal_info_title">个人中心</string>
+
 </resources>
