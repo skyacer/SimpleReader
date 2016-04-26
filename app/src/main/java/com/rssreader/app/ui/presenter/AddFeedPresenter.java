@@ -14,7 +14,7 @@ import com.rssreader.app.db.DbManager;
 import com.rssreader.app.entity.ItemListEntity;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.ui.activity.AddFeedActivity;
-import com.rssreader.app.ui.activity.Main;
+import com.rssreader.app.ui.activity.MainActivity;
 import com.rssreader.app.ui.base.BasePresenter;
 import com.rssreader.app.utils.CategoryNameExchange;
 
@@ -76,7 +76,7 @@ public class AddFeedPresenter extends BasePresenter<AddFeedActivity> implements 
                 insertToFeedDB(title,url);
 
                 Intent intent = new Intent();
-                intent.setAction(Main.ACTION_ADD_SECTION);
+                intent.setAction(MainActivity.ACTION_ADD_SECTION);
                 target.sendBroadcast(intent);
                 target.finish();
             }

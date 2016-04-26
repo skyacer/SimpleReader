@@ -17,7 +17,7 @@ import com.rssreader.app.commons.DatabaseHelper;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.db.FeedDBManager;
 import com.rssreader.app.entity.Section;
-import com.rssreader.app.ui.activity.Main;
+import com.rssreader.app.ui.activity.MainActivity;
 import com.rssreader.app.utils.FileUtils;
 import com.rssreader.app.ui.R;
 
@@ -91,7 +91,7 @@ public class GridAdapter extends BaseAdapter
 				final String tableName = section.getTableName();
 				//删除当前section
 				Intent intent = new Intent();
-				intent.setAction(Main.ACTION_DELETE_SECTION);
+				intent.setAction(MainActivity.ACTION_DELETE_SECTION);
 				intent.putExtra("url", url);
 				context.sendBroadcast(intent);
 				new Thread()
@@ -159,7 +159,7 @@ public class GridAdapter extends BaseAdapter
 	{
 		Intent entryIntent = new Intent();
 		entryIntent.setAction(ACTION_ENTER_BY_SHORTCUT);
-		entryIntent.setClass(context, Main.class);
+		entryIntent.setClass(context, MainActivity.class);
 		entryIntent.putExtra("section_title", name);
 		entryIntent.putExtra("url", sectionUrl);
 		entryIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -195,6 +195,6 @@ public class GridAdapter extends BaseAdapter
 
 	public boolean isFull()
 	{
-		return sections.size() >= Main.PAGE_SECTION_SIZE;
+		return sections.size() >= MainActivity.PAGE_SECTION_SIZE;
 	}
 }

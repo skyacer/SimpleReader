@@ -126,7 +126,7 @@ public class ItemListEntityParser extends DefaultHandler
 		{
 			inputStream = HttpUtils.getInputStream(url);
 //			String encoding = HtmlFilter.getEncoding(inputStream);
-//			Log.d(tag, encoding);
+//			Log.d(TAG, encoding);
 //			InputStreamReader isr = new InputStreamReader(inputStream, encoding);不可用
 			inputSource = new InputSource(inputStream);
 			saxp = saxpf.newSAXParser();

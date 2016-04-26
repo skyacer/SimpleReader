@@ -8,7 +8,7 @@ import android.util.Log;
 import com.rssreader.app.db.DbConstant;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.entity.Section;
-import com.rssreader.app.ui.activity.Main;
+import com.rssreader.app.ui.activity.MainActivity;
 
 import java.util.ArrayList;
 
@@ -41,12 +41,12 @@ public class SectionDao
 		len = cursor.getCount();
 		db.close();
 		
-		start = page * Main.PAGE_SECTION_SIZE;
+		start = page * MainActivity.PAGE_SECTION_SIZE;
 		if (cursor.moveToPosition(start))
 		{
 			list = new ArrayList<Section>();
 
-			int offset = start + Main.PAGE_SECTION_SIZE;
+			int offset = start + MainActivity.PAGE_SECTION_SIZE;
 			end = len < offset ? len : offset;
 			for (int i = start; i < end; i++)
 			{

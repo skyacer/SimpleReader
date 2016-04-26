@@ -111,7 +111,7 @@ public class AddDialog extends DialogFragment implements OnItemSelectedListener
 				db.close();
 				
 				Intent intent = new Intent();
-				intent.setAction(Main.ACTION_ADD_SECTION);
+				intent.setAction(MainActivity.ACTION_ADD_SECTION);
 				getActivity().sendBroadcast(intent);
 			}
 

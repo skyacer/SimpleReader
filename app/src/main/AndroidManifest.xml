@@ -31,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.Main" >
+        <activity android:name=".activity.MainActivity" >
            <intent-filter>
                 <action android:name="com.rssreader.action.ENTER_BY_SHORTCUT"/>
             </intent-filter>

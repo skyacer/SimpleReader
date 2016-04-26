@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
-import com.rssreader.app.ui.activity.Main;
+import com.rssreader.app.ui.activity.MainActivity;
 import com.rssreader.app.ui.R;
 
 
@@ -97,7 +97,7 @@ public class GuideViewPagerAdapter extends PagerAdapter
 	private void goHome()
 	{
 		// 跳转
-		Intent intent = new Intent(activity, Main.class);
+		Intent intent = new Intent(activity, MainActivity.class);
 		activity.startActivity(intent);
 		activity.finish();
 	}

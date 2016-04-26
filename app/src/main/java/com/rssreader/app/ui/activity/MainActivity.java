@@ -4,10 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
@@ -26,7 +24,6 @@ import android.widget.Toast;
 
 import com.rssreader.app.adapter.GridAdapter;
 import com.rssreader.app.adapter.MPagerAdapter;
-import com.rssreader.app.commons.AppConfig;
 import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.commons.DatabaseHelper;
 import com.rssreader.app.commons.ItemListEntityParser;
@@ -36,27 +33,28 @@ import com.rssreader.app.dao.SectionDao;
 import com.rssreader.app.entity.ItemListEntity;
 import com.rssreader.app.entity.Section;
 import com.rssreader.app.ui.R;
+import com.rssreader.app.ui.base.BaseActivity;
+import com.rssreader.app.ui.presenter.MainPresenter;
 import com.rssreader.app.utils.ImageUtils;
 import com.rssreader.custom.ui.PathAnimations;
-import com.umeng.update.UmengUpdateAgent;
 
 import java.io.File;
 import java.util.ArrayList;
 
-public class Main extends FragmentActivity implements View.OnClickListener
+public class MainActivity extends BaseActivity<MainPresenter>
 {
-	public static final String tag = "Main";
+	public static final String TAG = "MainActivity";
 	private ViewPager mPager;
 	private MPagerAdapter mPagerAdapter;
 	private RelativeLayout composerWrapper;
 	private RelativeLayout composerShowHideBtn;
-	private RelativeLayout bgLayout;
+	public RelativeLayout bgLayout;
 	private ImageView composerShowHideIconIv;
 	private TextView pageTv;
-	private ImageButton switchModeBtn;
+	public ImageButton switchModeBtn;
 	private RelativeLayout homeLoadingLayout;
-	private ArrayList<GridView> gridViews = new ArrayList<GridView>();
-	private ArrayList<GridAdapter> gridAdapters = new ArrayList<GridAdapter>();
+	public ArrayList<GridView> gridViews = new ArrayList<GridView>();
+	public ArrayList<GridAdapter> gridAdapters = new ArrayList<GridAdapter>();
 	private BroadcastReceiver mReceiver;
 	private boolean arePathMenuShowing;
 	public static final int PAGE_SECTION_SIZE = 8;// 一页8个section
@@ -68,47 +66,23 @@ public class Main extends FragmentActivity implements View.OnClickListener
 	private Intent mIntent;
 	private boolean exit = false;//双击退出
 	private boolean isEdting = false;//是否编辑section中
-	private boolean isNight;//是否为夜间模式
-	private SectionDao sectionDAO;
+	public SectionDao sectionDAO;
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		checkShortcutMsg();
 		initView();
 		initPathMenu();
 		initPager();
 		initBroadcast();
-		checkDeprecated();
-		checkVersion();
 	}
-	
-	//检测新版本
-	public void checkVersion()
-	{
-		UmengUpdateAgent.setUpdateOnlyWifi(true);
-		UmengUpdateAgent.update(this);
-	}
-	
-	//检查是否来自shortcut的动作
-	private void checkShortcutMsg()
-	{
-		Intent intent = getIntent();
-		if(intent != null)
-		{
-			String action = intent.getAction();
-			if(action != null && action.equals(GridAdapter.ACTION_ENTER_BY_SHORTCUT))
-			{
-				Intent indirectIntent = new Intent();
-				indirectIntent.putExtra("section_title", intent.getStringExtra("section_title"));
-				indirectIntent.putExtra("url", intent.getStringExtra("url"));
-				indirectIntent.setClass(this, ItemListActivity.class);
-				startActivity(indirectIntent);
-			}
-		}
-	}
+
+    @Override
+    protected void initPresenter() {
+        presenter = new MainPresenter(this);
+    }
 	
 	private void initBroadcast()
 	{
@@ -117,66 +91,7 @@ public class Main extends FragmentActivity implements View.OnClickListener
 			@Override
 			public void onReceive(Context context, Intent intent)
 			{
-				String action = intent.getAction();
-				if (action.equals(ACTION_ADD_SECTION))
-				{
-					// 最后一个adapter为空或已满，新生一个gridView
-					GridAdapter lastGridAdapter = getLastGridAdapter();
-					if (lastGridAdapter == null || lastGridAdapter.isFull())
-					{
-						addGridView();
-					} else
-					{
-						// 最后一个gridAdapter添加section
-						lastGridAdapter.addItem(sectionDAO.getLast());
-					}
-				} else if (action.equals(ACTION_DELETE_SECTION))
-				{
-					// 根据移除此section
-					GridAdapter deCreaseAdapter = null;
-
-					String url = intent.getStringExtra("url");
-					for (int i = 0; i < gridAdapters.size(); i++)
-					{
-						deCreaseAdapter = gridAdapters.get(i);
-						if (deCreaseAdapter.removeItem(url))
-						{
-							break;
-						}
-					}
-					GridAdapter lastAdapter = getLastGridAdapter();
-					if (lastAdapter.isEmpty())
-					{
-						if (gridViews.size() <= 1)
-						{
-							return;
-						}
-						removeLastGridView();
-						return;
-					}
-					if (!lastAdapter.equals(deCreaseAdapter))
-					{
-						Section section = lastAdapter.getLastItem();
-						deCreaseAdapter.addItem(section);
-						lastAdapter.removeItem(section.getUrl());
-					}
-					if (lastAdapter.isEmpty())
-					{
-						if (gridViews.size() <= 1)
-						{
-							return;
-						}
-						removeLastGridView();
-						removeLastGridAdapter();
-					}
-				}else if(action.equals(SwitchBgActivity.SWITCH_HOME_BG))
-				{
-					int resid = intent.getIntExtra("home_bg_id", R.drawable.home_bg_default);
-					bgLayout.setBackgroundResource(resid);
-					Editor editor = AppContext.getPrefrences(Main.this).edit();
-					editor.putInt("home_bg_id", resid);
-					editor.commit();
-				}
+                presenter.initReceive(context,intent);
 			}
 		};
 		IntentFilter filter = new IntentFilter();
@@ -194,83 +109,15 @@ public class Main extends FragmentActivity implements View.OnClickListener
 		composerShowHideIconIv = (ImageView) findViewById(R.id.composer_show_hide_button_icon);
 
 		composerShowHideBtn = (RelativeLayout) findViewById(R.id.composer_show_hide_button);
-		composerShowHideBtn.setOnClickListener(this);
+		composerShowHideBtn.setOnClickListener(presenter);
 
 		// Buttons事件处理
 		for (int i = 0; i < composerWrapper.getChildCount(); i++)
 		{
-			composerWrapper.getChildAt(i).setOnClickListener(this);
+			composerWrapper.getChildAt(i).setOnClickListener(presenter);
 		}
 		composerShowHideBtn.startAnimation(PathAnimations.getRotateAnimation(0,
                 360, 200));
-	}
-
-	private void switchMode()
-	{
-		isNight = AppContext.getPrefrences(this).getBoolean("day_night_mode", false);
-		Editor editor = AppContext.getPrefrences(this).edit();
-		//切回日间模式
-		if(isNight)
-		{
-			isNight = false;
-			int resid = AppContext.getPrefrences(this).getInt("home_bg", R.drawable.home_bg_default);
-			bgLayout.setBackgroundResource(resid);
-			switchModeBtn.setImageResource(R.drawable.composer_sun);
-			Toast.makeText(Main.this, R.string.switch2Day, Toast.LENGTH_SHORT).show();
-		}
-		else
-		{
-			//切回夜间模式
-			isNight = true;
-			bgLayout.setBackgroundResource(R.drawable.home_bg_night);
-			switchModeBtn.setImageResource(R.drawable.composer_moon);
-			Toast.makeText(Main.this, R.string.switch2Night, Toast.LENGTH_SHORT).show();
-		}
-		editor.putBoolean("day_night_mode", isNight);
-		editor.commit();
-	}
-	
-	//切换壁纸
-	private void swithBg()
-	{
-		Intent intent = new Intent();
-		intent.setClass(Main.this, SwitchBgActivity.class);
-		Main.this.startActivity(intent);
-	}
-	
-	//收藏列表
-	private void openFavorite()
-	{
-		Intent intent = new Intent();
-		intent.setClass(Main.this, FavoriteItemListActivity.class);
-		Main.this.startActivity(intent);
-	}
-	
-	//打开设置界面
-	private void openSetting()
-	{
-		Intent intent = new Intent();
-		intent.setClass(Main.this, Setting.class);
-		Main.this.startActivity(intent);
-	}
-	
-	//登陆
-	private void login()
-	{
-//		if(UMHelper.getUMSocialService(this).isLogin(this))
-//		{
-//			Toast.makeText(this, R.string.loggedon, Toast.LENGTH_SHORT).show();
-//			return;
-//		}
-        new LoginDialog().show(getSupportFragmentManager(), tag);
-    }
-	
-	// 打开订阅中心
-	private void openSubscribeCenter()
-	{
-		Intent intent = new Intent();
-		intent.setClass(this, FeedCategoryActivity.class);
-		startActivity(intent);
 	}
 
 	/**
@@ -346,28 +193,28 @@ public class Main extends FragmentActivity implements View.OnClickListener
 				Section section = (Section) adapter.getItem(position);
 				String title = section.getTitle();
 				String url = section.getUrl();
-				Log.d(tag, url);
+				Log.d(TAG, url);
 				//初始intent
 				mIntent = new Intent();
 				mIntent.putExtra("section_title", title);
 				mIntent.putExtra("url", url);
-				mIntent.setClass(Main.this, ItemListActivity.class);
+				mIntent.setClass(MainActivity.this, ItemListActivity.class);
 				
 				//读取缓存
 				File cache = DatabaseHelper.getSdCache(url);
 				if(cache.exists())
 				{
-					Main.this.startActivity(mIntent);
+					MainActivity.this.startActivity(mIntent);
 				}
 				else
 				{
-					if(!AppContext.isNetworkAvailable(Main.this))
+					if(!AppContext.isNetworkAvailable(MainActivity.this))
 					{
-						Toast.makeText(Main.this, R.string.no_network, Toast.LENGTH_SHORT).show();
+						Toast.makeText(MainActivity.this, R.string.no_network, Toast.LENGTH_SHORT).show();
 						return;
 					}
 					//异步加载数据
-					Log.d(tag, "" + url);
+					Log.d(TAG, "" + url);
 					new LoadDataTask().execute(url);
 				}
 			}
@@ -429,14 +276,16 @@ public class Main extends FragmentActivity implements View.OnClickListener
 	}
 	
 	@Override
-	protected void onDestroy()
+	public void onDestroy()
 	{
 		super.onDestroy();
 		// 销毁广播接收器
 		unregisterReceiver(mReceiver);
 	}
 
-	private void addGridView()
+
+
+    public void addGridView()
 	{
 		int lastPage = getPageSize() - 1;
 		GridView grid = newGridView(lastPage);
@@ -444,7 +293,7 @@ public class Main extends FragmentActivity implements View.OnClickListener
 		mPagerAdapter.notifyDataSetChanged();
 	}
 
-	private void removeLastGridView()
+	public void removeLastGridView()
 	{
 		if (gridViews.isEmpty())
 			return;
@@ -452,14 +301,14 @@ public class Main extends FragmentActivity implements View.OnClickListener
 		mPagerAdapter.notifyDataSetChanged();
 	}
 
-	private GridAdapter getLastGridAdapter()
+	public GridAdapter getLastGridAdapter()
 	{
 		if (gridAdapters.isEmpty())
 			return null;
 		return gridAdapters.get(gridAdapters.size() - 1);
 	}
 
-	private void removeLastGridAdapter()
+	public void removeLastGridAdapter()
 	{
 		if (gridAdapters.isEmpty())
 			return;
@@ -480,38 +329,7 @@ public class Main extends FragmentActivity implements View.OnClickListener
 		return pageSize;
 	}
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()){
-			case R.id.composer_btn_user:
-				login();
-				break;
-			case R.id.composer_btn_setting:
-				openSetting();
-				break;
-			case R.id.composer_btn_favorite:
-				openFavorite();
-				break;
-			case R.id.composer_btn_switch_bg:
-				swithBg();
-				break;
-			case R.id.composer_btn_add:
-				openSubscribeCenter();
-				break;
-			case R.id.composer_btn_moon:
-				switchMode();
-				break;
-			case R.id.composer_show_hide_button:
-				showHideButton();
-				break;
-			default:
-				break;
-		}
-	}
-
-
-
-	private void showHideButton() {
+	public void showHideButton() {
 		if (!arePathMenuShowing) {
 			PathAnimations.startAnimationsIn(composerWrapper, 300);
 			composerShowHideIconIv.startAnimation(PathAnimations
@@ -522,15 +340,6 @@ public class Main extends FragmentActivity implements View.OnClickListener
 					.getRotateAnimation(-270, 0, 300));
 		}
 		arePathMenuShowing = !arePathMenuShowing;
-	}
-
-	private void hideButton() {
-		if (arePathMenuShowing) {
-			PathAnimations.startAnimationsOut(composerWrapper, 300);
-			composerShowHideIconIv.startAnimation(PathAnimations
-					.getRotateAnimation(-270, 0, 300));
-			arePathMenuShowing = !arePathMenuShowing;
-		}
 	}
 
 	private class LoadDataTask extends AsyncTask<String, Integer, ItemListEntity>
@@ -555,11 +364,11 @@ public class Main extends FragmentActivity implements View.OnClickListener
 			//跳转界面
 			if(result != null && mIntent != null && !result.getItemList().isEmpty())
 			{
-				Main.this.startActivity(mIntent);
+				MainActivity.this.startActivity(mIntent);
 			}
 			else
 			{
-				Toast.makeText(Main.this, R.string.networkexception, Toast.LENGTH_SHORT).show();
+				Toast.makeText(MainActivity.this, R.string.networkexception, Toast.LENGTH_SHORT).show();
 			}
 		}
 
@@ -595,32 +404,16 @@ public class Main extends FragmentActivity implements View.OnClickListener
 			{
 				if(exit)
 				{
-					Log.d(tag, "exit");
+					Log.d(TAG, "exit");
 					finish();
 					return true;
 				}
 				Toast.makeText(this, R.string.twice2Exit, Toast.LENGTH_SHORT).show();
 				exit = true;
-				Log.d(tag, "after toast");
+				Log.d(TAG, "after toast");
 			}
 		}
 		return false;
 	}
-	
-	/**
-	 * @description 检查缓存文件是否过期
-	 */
-	private void checkDeprecated()
-	{
-		String fileName = getFilesDir().getAbsolutePath() + File.separator 
-							+ AppConfig.PREF_DEPRECATED;
-		File file = new File(fileName);
-		int day = (int) (System.currentTimeMillis() - file.lastModified())/(24*60*60*1000);
-		Log.d(tag, "day = " + day);
-		if(day >= 7)
-		{
-			AppContext.clearCache(this);
-			file.setLastModified(System.currentTimeMillis());
-		}
-	}
+
  }

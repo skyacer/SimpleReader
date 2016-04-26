@@ -20,7 +20,7 @@ import com.rssreader.app.db.DbManager;
 import com.rssreader.app.db.FeedDBManager;
 import com.rssreader.app.entity.Feed;
 import com.rssreader.app.ui.R;
-import com.rssreader.app.ui.activity.Main;
+import com.rssreader.app.ui.activity.MainActivity;
 
 import java.util.ArrayList;
 
@@ -142,7 +142,7 @@ public class CategoryDetailAdapter extends BaseAdapter
 					holder.addBtn.setImageResource(imgIds[0]);
 					//更新主界面
 					intent.putExtra("url", feed.getUrl());
-					intent.setAction(Main.ACTION_DELETE_SECTION);
+					intent.setAction(MainActivity.ACTION_DELETE_SECTION);
 					context.sendBroadcast(intent);
 					//删除section表中记录的数据
 					DatabaseHelper.removeRecord(mgr.getWritableDatabase(), url);
@@ -156,7 +156,7 @@ public class CategoryDetailAdapter extends BaseAdapter
 				feed.setSelectStatus(state);
 				holder.addBtn.setImageResource(imgIds[1]);
 				//更新主界面
-				intent.setAction(Main.ACTION_ADD_SECTION);
+				intent.setAction(MainActivity.ACTION_ADD_SECTION);
 				context.sendBroadcast(intent);
 				//加入section表
 				SQLiteDatabase db = mgr.getWritableDatabase();
