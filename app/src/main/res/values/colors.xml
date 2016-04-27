@@ -9,9 +9,14 @@
 		<!-- feed detail line color -->
 		<color name="line_color">#f4f4f4</color>
 		<color name="line_color_night">#303030</color>
-		
-		
-		<color name="window_bg">#ffeef1f3</color>
+
+        <!--个人信息-->
+        <color name="personal_info_hint">#6E6E6E</color>
+        <color name="personal_info_avatar_stroke">#f1f1f1</color>
+        <color name="personal_info_avatar_hint">#909090</color>
+
+
+    <color name="window_bg">#ffeef1f3</color>
 
 		<!-- 灰色 -->
 		<color name="split_line_grey_color_e0">#e0e0e0</color>

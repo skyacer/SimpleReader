@@ -54,6 +54,8 @@
         </activity>
         <activity android:name="com.rssreader.app.ui.activity.AddFeedActivity">
         </activity>
+        <activity android:name=".activity.UserInfoActivity">
+        </activity>
 
         <!-- ###################注册SDK使用的Activity###################### -->
         <!-- 分享编辑页 -->

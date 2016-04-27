@@ -1,5 +1,7 @@
 package com.rssreader.app.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.rssreader.app.ui.R;
@@ -15,6 +17,11 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
         presenter = new UserInfoPresenter(this);
     }
 
+    public static void startActivity(Activity activity){
+        Intent intent = new Intent(activity,UserInfoActivity.class);
+        activity.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,5 +30,7 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
 
     private void initView() {
         setTitle(R.string.personal_info_title);
+        setRealContentView(R.layout.activity_personal_info);
+
     }
 }

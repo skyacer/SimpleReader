@@ -18,6 +18,7 @@ import com.rssreader.app.ui.activity.ItemListActivity;
 import com.rssreader.app.ui.activity.MainActivity;
 import com.rssreader.app.ui.activity.Setting;
 import com.rssreader.app.ui.activity.SwitchBgActivity;
+import com.rssreader.app.ui.activity.UserInfoActivity;
 import com.rssreader.app.ui.base.BasePresenter;
 import com.umeng.update.UmengUpdateAgent;
 
@@ -145,12 +146,7 @@ public class MainPresenter extends BasePresenter<MainActivity> implements View.O
     //登陆
     private void login()
     {
-//		if(UMHelper.getUMSocialService(this).isLogin(this))
-//		{
-//			Toast.makeText(this, R.string.loggedon, Toast.LENGTH_SHORT).show();
-//			return;
-//		}
-//        new LoginDialog().show(getSupportFragmentManager(), TAG);
+        UserInfoActivity.startActivity(target);
     }
 
     public void initReceive(Context context, Intent intent){

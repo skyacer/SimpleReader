@@ -106,5 +106,13 @@
 
     <!--个人中心-->
     <string name="personal_info_title">个人中心</string>
+    <string name="personal_info_id">用户ID</string>
+    <string name="personal_info_nickname">昵称</string>
+    <string name="personal_info_sex">性别</string>
+    <string name="personal_info_sex_male">男</string>
+    <string name="personal_info_sex_female">女</string>
+    <string name="personal_info_area">地区</string>
+    <string name="personal_info_login">点击登录</string>
+    <string name="personal_info_logout">点击注销</string>
 
 </resources>

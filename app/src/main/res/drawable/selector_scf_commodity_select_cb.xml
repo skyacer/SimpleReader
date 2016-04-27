@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="false" android:state_enabled="false">
+        <bitmap android:src="@drawable/ic_list_check_dim" />
+    </item>
+    <item android:state_checked="false" android:state_enabled="true">
+        <bitmap android:src="@drawable/ic_list_check_nor" />
+    </item>
+    <item android:state_checked="true">
+        <bitmap android:src="@drawable/ic_list_check_pressed" />
+    </item>
+</selector>
