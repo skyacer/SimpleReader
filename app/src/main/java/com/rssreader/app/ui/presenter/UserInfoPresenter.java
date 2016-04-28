@@ -103,18 +103,48 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
             public void onComplete(int status, Map<String, Object> info) {
                 if (info != null) {
                     if (platform == SHARE_MEDIA.SINA) {
-                        if (info.get("screen_name")!=null) {
-                            sinaPersonalInfo.setScreen_name((String) info.get("screen_name"));
-                            sinaPersonalInfo.setGender((Integer) info.get("gender"));
-
+                        if ((Long)info.get("uid")!=0) {
+                            target.setUid((Long)info.get("uid")+"");
                         }
+                        if (info.get("screen_name")!=null){
+                            target.setNickName((String)info.get("screen_name"));
+                        }
+                        if (info.get("gender")!=null){
+                            target.setSex((Integer)info.get("gender"));
+                        }
+                        if (info.get("location")!=null){
+                            target.setArea((String)info.get("location"));
+                        }
+
                     }else if(platform == SHARE_MEDIA.TENCENT){
-                        ToastUtil.makeShortToast(info.toString());
+                        if (info.get("uid")!=null) {
+                            target.setUid((String)info.get("uid"));
+                        }
+                        if (info.get("screen_name")!=null){
+                            target.setNickName((String)info.get("screen_name"));
+                        }
+                        if (info.get("gender")!=null){
+                            target.setSex((Integer)info.get("gender"));
+                        }
+                        if (info.get("location")!=null){
+                            target.setArea((String)info.get("location"));
+                        }
 
                     }else if (platform == SHARE_MEDIA.DOUBAN){
-
+                        if (info.get("uid")!=null) {
+                            target.setUid((String)info.get("uid"));
+                        }
+                        if (info.get("screen_name")!=null){
+                            target.setNickName((String)info.get("screen_name"));
+                        }
+                        if (info.get("gender")!=null){
+                            target.setSex((Integer)info.get("gender"));
+                        }
+                        if (info.get("location")!=null){
+                            target.setArea((String)info.get("location"));
+                        }
                     }else {
-
+                        ToastUtil.makeShortToast(R.string.login_failed);
                     }
                 }
             }

@@ -4,8 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:paddingLeft="@dimen/default_content_padding"
-              android:background="@color/white"
->
+              android:background="@color/white">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_54dp"
