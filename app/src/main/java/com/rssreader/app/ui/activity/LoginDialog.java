@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.rssreader.app.commons.AppContext;
-import com.rssreader.app.commons.util.ResourcesUtil;
 import com.rssreader.app.commons.util.ToastUtil;
 import com.rssreader.app.entity.SinaPersonalInfo;
 import com.rssreader.app.ui.R;
@@ -41,9 +40,7 @@ public class LoginDialog extends DialogFragment
 	public static final String tag = "LoginDialog";
 	private Activity mActivity;
 	private static final int POS_SINA_WEIBO = 0;
-    private static final int POS_SINA_WEIBO_LOGOUT = 1;
-	private static final int POS_QQZONE = 2;
-	private static final int POS_QQZONE_LOGOUT = 3;
+	private static final int POS_TENCENT = 1;
 
     private SinaPersonalInfo sinaPersonalInfo;
 
@@ -75,14 +72,8 @@ public class LoginDialog extends DialogFragment
                     case POS_SINA_WEIBO:
                         login(SHARE_MEDIA.SINA);
                         break;
-                    case POS_SINA_WEIBO_LOGOUT:
-                        logout(SHARE_MEDIA.SINA);
-                        break;
-                    case POS_QQZONE:
-                        login(SHARE_MEDIA.QQ);
-                        break;
-                    case POS_QQZONE_LOGOUT:
-                        logout(SHARE_MEDIA.QQ);
+                    case POS_TENCENT:
+                        login(SHARE_MEDIA.TENCENT);
                         break;
 				}
 			}
@@ -160,10 +151,12 @@ public class LoginDialog extends DialogFragment
                     if (platform == SHARE_MEDIA.SINA) {
                         if (info.get("screen_name")!=null) {
                             sinaPersonalInfo.setScreen_name((String) info.get("screen_name"));
-                            ToastUtil.makeShortToast(ResourcesUtil.stringFormat(R.string.login_success, sinaPersonalInfo.getScreen_name()));
+                            sinaPersonalInfo.setGender((Integer) info.get("gender"));
+
                         }
-                    }else if(platform == SHARE_MEDIA.QQ){
+                    }else if(platform == SHARE_MEDIA.TENCENT){
                         ToastUtil.makeShortToast(info.toString());
+
                     }
                 }
             }

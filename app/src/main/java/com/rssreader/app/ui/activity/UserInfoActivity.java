@@ -32,5 +32,9 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
         setTitle(R.string.personal_info_title);
         setRealContentView(R.layout.activity_personal_info);
 
+        findViewById(R.id.btn_login_douban).setOnClickListener(presenter);
+        findViewById(R.id.btn_login_tencentwb).setOnClickListener(presenter);
+        findViewById(R.id.btn_login_weibo).setOnClickListener(presenter);
     }
+
 }

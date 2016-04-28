@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/rv_avatar_personal"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_170dp"
+                android:layout_height="@dimen/size_200dp"
                 android:background="@color/white"
 >
     <ImageView
@@ -13,15 +13,59 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/item_personal_info_avatar"
     />
-    <TextView
-        android:id="@+id/personal_info_avatar_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text = "@string/personal_info_login"
-        android:textSize="@dimen/text_size_15"
-        android:textColor="@color/personal_info_avatar_hint"
+    <include
+        android:id="@+id/item_logout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_54dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/size_30dp"
+        layout="@layout/item_personal_info_logout"
+        android:visibility="gone"
     />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_70dp"
+        android:layout_weight="1"
+        android:layout_alignParentBottom="true"
+    >
+
+        <TextView
+            android:id="@+id/tv_support_third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/size_10dp"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:includeFontPadding="false"
+            android:text="@string/personal_info_third_login"
+            android:textColor="@color/black_alpha50"
+            android:textSize="@dimen/text_size_13" />
+
+        <ImageButton
+            android:id="@+id/btn_login_douban"
+            android:layout_width="@dimen/size_30dp"
+            android:layout_height="@dimen/size_30dp"
+            android:layout_above="@+id/tv_support_third"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ic_share_douban" />
+
+        <ImageButton
+            android:id="@+id/btn_login_tencentwb"
+            android:layout_width="@dimen/size_30dp"
+            android:layout_height="@dimen/size_30dp"
+            android:layout_alignBottom="@+id/btn_login_douban"
+            android:layout_marginLeft="@dimen/size_66dp"
+            android:background="@drawable/ic_share_tencentwb" />
+
+        <ImageButton
+            android:id="@+id/btn_login_weibo"
+            android:layout_width="@dimen/size_30dp"
+            android:layout_height="@dimen/size_30dp"
+            android:layout_alignBottom="@+id/btn_login_douban"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/size_66dp"
+            android:background="@drawable/ic_share_weibo" />
+    </RelativeLayout>
+
 </RelativeLayout>
