@@ -55,7 +55,7 @@
             android:layout_marginRight="@dimen/size_23dp"
             android:text="@string/personal_info_nickname"
         />
-        <EditText
+        <TextView
             android:id="@+id/tv_edit_detail_right_nickname"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -146,7 +146,7 @@
             android:layout_marginRight="@dimen/size_23dp"
             android:text="@string/personal_info_area"
         />
-        <EditText
+        <TextView
             android:id="@+id/tv_edit_detail_right_area"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
