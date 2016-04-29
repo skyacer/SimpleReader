@@ -103,6 +103,9 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
             public void onComplete(int status, Map<String, Object> info) {
                 if (info != null) {
                     if (platform == SHARE_MEDIA.SINA) {
+                        if (info.get("profile_image_url")!=null){
+                            target.setAvatar((String)info.get("profile_image_url"));
+                        }
                         if ((Long)info.get("uid")!=0) {
                             target.setUid((Long)info.get("uid")+"");
                         }
@@ -117,6 +120,9 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
                         }
 
                     }else if(platform == SHARE_MEDIA.TENCENT){
+                        if (info.get("profile_image_url")!=null){
+                            target.setAvatar((String)info.get("profile_image_url"));
+                        }
                         if (info.get("uid")!=null) {
                             target.setUid((String)info.get("uid"));
                         }
@@ -131,6 +137,9 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
                         }
 
                     }else if (platform == SHARE_MEDIA.DOUBAN){
+                        if (info.get("profile_image_url")!=null){
+                            target.setAvatar((String)info.get("profile_image_url"));
+                        }
                         if (info.get("uid")!=null) {
                             target.setUid((String)info.get("uid"));
                         }

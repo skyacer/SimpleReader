@@ -2,13 +2,26 @@ package com.rssreader.app.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.rssreader.app.commons.util.ThreadUtil;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.ui.base.BaseActionBarActivity;
 import com.rssreader.app.ui.presenter.UserInfoPresenter;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.ref.WeakReference;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by LuoChangAn on 16/4/26.
@@ -18,6 +31,12 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
     TextView mNickNameTv;
     RadioGroup mSexRg;
     TextView mDistrictTv;
+    ImageView mAvatarIv;
+    //头像
+    Bitmap avatarBitmap;
+    private final MyHandler mHandler = new MyHandler(this);
+    public static final int GET_AVATAR = 1;
+
 
     @Override
     protected void initPresenter() {
@@ -43,6 +62,7 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
         mNickNameTv = (TextView) findViewById(R.id.tv_edit_detail_right_nickname);
         mSexRg = (RadioGroup) findViewById(R.id.personal_info_sex_rg);
         mDistrictTv = (TextView) findViewById(R.id.tv_edit_detail_right_area);
+        mAvatarIv = (ImageView) findViewById(R.id.personal_info_avatar_img);
 
         findViewById(R.id.btn_login_douban).setOnClickListener(presenter);
         findViewById(R.id.btn_login_tencentwb).setOnClickListener(presenter);
@@ -67,6 +87,50 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
 
     public void setArea(String s){
         mDistrictTv.setText(s);
+    }
+
+    public void setAvatar(final String params){
+        ThreadUtil.runOnAnsy(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL(params);
+                    HttpURLConnection conn  = (HttpURLConnection)url.openConnection();
+                    conn.setDoInput(true);
+                    conn.connect();
+                    InputStream inputStream=conn.getInputStream();
+                    avatarBitmap = BitmapFactory.decodeStream(inputStream);
+                    Message msg=new Message();
+                    msg.what=GET_AVATAR;
+                    mHandler.sendMessage(msg);
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        },"AvatarThread");
+
+    }
+
+    private static class MyHandler extends Handler {
+        private final WeakReference<UserInfoActivity> mActivity;
+
+        public MyHandler(UserInfoActivity activity) {
+            mActivity = new WeakReference<UserInfoActivity>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            UserInfoActivity activity = mActivity.get();
+            if (activity != null) {
+                switch (msg.what){
+                    case GET_AVATAR:
+                        activity.mAvatarIv.setImageBitmap(activity.avatarBitmap);
+                }
+            }
+        }
     }
 
 }
