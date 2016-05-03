@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.rssreader.app.application.UserInfo;
 import com.rssreader.app.commons.util.ToastUtil;
-import com.rssreader.app.entity.SinaPersonalInfo;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.ui.activity.UserInfoActivity;
 import com.rssreader.app.ui.base.BasePresenter;
@@ -26,16 +26,10 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
     private UMSocialService mController = UMServiceFactory
             .getUMSocialService(Constants.DESCRIPTOR);
 
-    private SinaPersonalInfo sinaPersonalInfo;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        initData();
-    }
-
-    private void initData() {
-        sinaPersonalInfo = new SinaPersonalInfo();
     }
 
     public UserInfoPresenter(UserInfoActivity target) {
@@ -105,53 +99,47 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
                     if (platform == SHARE_MEDIA.SINA) {
                         if (info.get("profile_image_url")!=null){
                             target.setAvatar((String)info.get("profile_image_url"));
+                            UserInfo.setUserAvatar((String)info.get("profile_image_url"));
                         }
                         if ((Long)info.get("uid")!=0) {
-                            target.setUid((Long)info.get("uid")+"");
+                            target.setUid(info.get("uid")+"");
+                            UserInfo.setUserInfoId(info.get("uid")+"");
                         }
                         if (info.get("screen_name")!=null){
                             target.setNickName((String)info.get("screen_name"));
+                            UserInfo.setUserNickName((String)info.get("screen_name"));
                         }
                         if (info.get("gender")!=null){
                             target.setSex((Integer)info.get("gender"));
+                            UserInfo.setUserGender((Integer)info.get("gender"));
                         }
                         if (info.get("location")!=null){
                             target.setArea((String)info.get("location"));
+                            UserInfo.setUserArea((String)info.get("location"));
                         }
 
-                    }else if(platform == SHARE_MEDIA.TENCENT){
+                    }else if(platform == SHARE_MEDIA.TENCENT || platform == SHARE_MEDIA.DOUBAN){
                         if (info.get("profile_image_url")!=null){
                             target.setAvatar((String)info.get("profile_image_url"));
+                            UserInfo.setUserAvatar((String)info.get("profile_image_url"));
                         }
                         if (info.get("uid")!=null) {
                             target.setUid((String)info.get("uid"));
+                            UserInfo.setUserInfoId((String)info.get("uid"));
                         }
                         if (info.get("screen_name")!=null){
                             target.setNickName((String)info.get("screen_name"));
+                            UserInfo.setUserNickName((String)info.get("screen_name"));
                         }
                         if (info.get("gender")!=null){
                             target.setSex((Integer)info.get("gender"));
+                            UserInfo.setUserGender((Integer)info.get("gender"));
                         }
                         if (info.get("location")!=null){
                             target.setArea((String)info.get("location"));
+                            UserInfo.setUserArea((String)info.get("location"));
                         }
 
-                    }else if (platform == SHARE_MEDIA.DOUBAN){
-                        if (info.get("profile_image_url")!=null){
-                            target.setAvatar((String)info.get("profile_image_url"));
-                        }
-                        if (info.get("uid")!=null) {
-                            target.setUid((String)info.get("uid"));
-                        }
-                        if (info.get("screen_name")!=null){
-                            target.setNickName((String)info.get("screen_name"));
-                        }
-                        if (info.get("gender")!=null){
-                            target.setSex((Integer)info.get("gender"));
-                        }
-                        if (info.get("location")!=null){
-                            target.setArea((String)info.get("location"));
-                        }
                     }else {
                         ToastUtil.makeShortToast(R.string.login_failed);
                     }

@@ -7,15 +7,20 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.rssreader.app.application.UserInfo;
+import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.commons.util.ThreadUtil;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.ui.base.BaseActionBarActivity;
 import com.rssreader.app.ui.presenter.UserInfoPresenter;
+import com.rssreader.app.utils.ImageUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
@@ -52,6 +57,7 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
+        initData();
     }
 
     private void initView() {
@@ -67,6 +73,24 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
         findViewById(R.id.btn_login_douban).setOnClickListener(presenter);
         findViewById(R.id.btn_login_tencentwb).setOnClickListener(presenter);
         findViewById(R.id.btn_login_weibo).setOnClickListener(presenter);
+    }
+
+    private void initData() {
+        if (UserInfo.getUserNickName()!=null) {
+            setNickName(UserInfo.getUserNickName());
+        }
+        if (UserInfo.getUserInfoId()!=null){
+            setUid(UserInfo.getUserInfoId());
+        }
+        if (UserInfo.getUserArea()!=null){
+            setArea(UserInfo.getUserArea());
+        }
+        if (UserInfo.getUserGender()!=-1) {
+            setSex(UserInfo.getUserGender());
+        }
+        if (UserInfo.getUserAvatar()!=null){
+            setAvatar(UserInfo.getUserAvatar());
+        }
     }
 
     public void setUid(String s){
@@ -90,28 +114,44 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
     }
 
     public void setAvatar(final String params){
-        ThreadUtil.runOnAnsy(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL(params);
-                    HttpURLConnection conn  = (HttpURLConnection)url.openConnection();
-                    conn.setDoInput(true);
-                    conn.connect();
-                    InputStream inputStream=conn.getInputStream();
-                    avatarBitmap = BitmapFactory.decodeStream(inputStream);
-                    Message msg=new Message();
-                    msg.what=GET_AVATAR;
-                    mHandler.sendMessage(msg);
+        if (TextUtils.isEmpty(params)){
+            return;
+        }
 
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
+        if (params.equals(UserInfo.getUserAvatar())){
+            File file = AppContext.getSdImgCache(params);
+            if(file.exists()) {
+                try {
+                    avatarBitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                    mAvatarIv.setImageBitmap(avatarBitmap);
+                } catch (OutOfMemoryError e) {
                     e.printStackTrace();
                 }
             }
-        },"AvatarThread");
+        }else {
+            ThreadUtil.runOnAnsy(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        URL url = new URL(params);
+                        HttpURLConnection conn  = (HttpURLConnection)url.openConnection();
+                        conn.setDoInput(true);
+                        conn.connect();
+                        InputStream inputStream=conn.getInputStream();
+                        avatarBitmap = BitmapFactory.decodeStream(inputStream);
+                        ImageUtils.saveImageToSD(avatarBitmap,params);
+                        Message msg=new Message();
+                        msg.what=GET_AVATAR;
+                        mHandler.sendMessage(msg);
 
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            },"AvatarThread");
+        }
     }
 
     private static class MyHandler extends Handler {
