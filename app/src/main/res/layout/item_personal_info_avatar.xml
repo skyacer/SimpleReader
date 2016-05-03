@@ -23,6 +23,7 @@
     />
 
     <RelativeLayout
+        android:id="@+id/item_login_rl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_70dp"
         android:layout_weight="1"

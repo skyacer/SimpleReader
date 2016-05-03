@@ -13,6 +13,7 @@ public class UserInfo {
     private static String USER_ID_KEY = "user_id";
     private static String USER_NICK_NAME_KEY="user_nickname";
     private static String USER_AREA_KEY = "user_area";
+    private static String USER_LOGIN_PLATFORM_KEY = "user_login_platform";
 
     public static void setUserAvatar(String avatar){
         SharePreferenceHelper.putString(USER_SP,USER_AVATAR_ADDRESS, avatar);
@@ -52,5 +53,13 @@ public class UserInfo {
 
     public static String getUserArea(){
         return SharePreferenceHelper.getString(USER_SP,USER_AREA_KEY,null);
+    }
+
+    public static void setUserPlatForm(int platform){
+        SharePreferenceHelper.putInt(USER_SP,USER_LOGIN_PLATFORM_KEY,platform);
+    }
+
+    public static int getUserPlatForm(){
+        return SharePreferenceHelper.getInt(USER_SP,USER_LOGIN_PLATFORM_KEY,-1);
     }
 }

@@ -113,5 +113,7 @@
     <string name="personal_info_login">点击登录</string>
     <string name="personal_info_logout">退出登录</string>
     <string name="personal_info_third_login">支持第三方登录</string>
+    <string name="personal_info_logout_success">注销成功</string>
+    <string name="personal_info_logout_failed">注销失败,错误码是%s</string>
 
 </resources>

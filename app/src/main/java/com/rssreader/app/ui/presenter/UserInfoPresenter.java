@@ -5,12 +5,15 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.rssreader.app.application.UserInfo;
+import com.rssreader.app.commons.util.ResourcesUtil;
 import com.rssreader.app.commons.util.ToastUtil;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.ui.activity.UserInfoActivity;
 import com.rssreader.app.ui.base.BasePresenter;
 import com.rssreader.app.ui.common.Constants;
 import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.bean.SocializeEntity;
+import com.umeng.socialize.bean.StatusCode;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners;
@@ -48,6 +51,21 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
             case R.id.btn_login_tencentwb:
                 login(SHARE_MEDIA.TENCENT);
                 break;
+            case R.id.item_logout:
+                    switch (UserInfo.getUserPlatForm()){
+                        case 1:
+                            logout(SHARE_MEDIA.SINA);
+                            break;
+                        case 2:
+                            logout(SHARE_MEDIA.DOUBAN);
+                            break;
+                        case 3:
+                            logout(SHARE_MEDIA.TENCENT);
+                            break;
+                        default:
+                            break;
+                }
+                break;
             default:
                 break;
         }
@@ -71,6 +89,19 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
                 String uid = value.getString("uid");
                 if (!TextUtils.isEmpty(uid)) {
                     getUserInfo(platform);
+                    switch (platform){
+                        case SINA:
+                            UserInfo.setUserPlatForm(1);
+                            break;
+                        case DOUBAN:
+                            UserInfo.setUserPlatForm(2);
+                            break;
+                        case TENCENT:
+                            UserInfo.setUserPlatForm(3);
+                            break;
+                        default:
+                            break;
+                    }
                 } else {
                     ToastUtil.makeShortToast(R.string.login_failed);
                 }
@@ -80,6 +111,35 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
             public void onCancel(SHARE_MEDIA platform) {
             }
         });
+    }
+
+    /**
+     * 注销本次登录</br>
+     */
+    private void logout(final SHARE_MEDIA platform) {
+        mController.deleteOauth(target, platform, new SocializeListeners.SocializeClientListener() {
+
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onComplete(int status, SocializeEntity entity) {
+                if (status != StatusCode.ST_CODE_SUCCESSED) {
+                    ToastUtil.makeShortToast(ResourcesUtil.stringFormat(R.string.personal_info_logout_failed,status));
+                }else {
+                    ToastUtil.makeShortToast(ResourcesUtil.stringFormat(R.string.personal_info_logout_success));
+                    target.showHideLoginButton();
+                    clearData();
+                }
+            }
+        });
+    }
+
+    private void clearData(){
+        target.setAvatar(null);
+        target.setArea("");
     }
 
     /**
