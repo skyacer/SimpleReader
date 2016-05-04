@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -39,7 +38,7 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
     TextView mDistrictTv;
     ImageView mAvatarIv;
     //头像
-    Bitmap avatarBitmap;
+    Bitmap mAvatarBitmap;
     private final MyHandler mHandler = new MyHandler(this);
     public static final int GET_AVATAR = 1;
 
@@ -71,20 +70,11 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
         mDistrictTv = (TextView) findViewById(R.id.tv_edit_detail_right_area);
         mAvatarIv = (ImageView) findViewById(R.id.personal_info_avatar_img);
 
-    }
+        findViewById(R.id.btn_login_douban).setOnClickListener(presenter);
+        findViewById(R.id.btn_login_tencentwb).setOnClickListener(presenter);
+        findViewById(R.id.btn_login_weibo).setOnClickListener(presenter);
+        findViewById(R.id.item_logout).setOnClickListener(presenter);
 
-    public void showHideLoginButton(){
-        if (UserInfo.getUserInfoId()!=null){
-            findViewById(R.id.item_login_rl).setVisibility(View.GONE);
-            findViewById(R.id.item_logout).setVisibility(View.VISIBLE);
-            findViewById(R.id.item_logout).setOnClickListener(presenter);
-        }else {
-            findViewById(R.id.item_login_rl).setVisibility(View.VISIBLE);
-            findViewById(R.id.item_logout).setVisibility(View.GONE);
-            findViewById(R.id.btn_login_douban).setOnClickListener(presenter);
-            findViewById(R.id.btn_login_tencentwb).setOnClickListener(presenter);
-            findViewById(R.id.btn_login_weibo).setOnClickListener(presenter);
-        }
     }
 
     private void initData() {
@@ -105,6 +95,15 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
         }
     }
 
+    public void clearPersonalInfo(){
+        setUid("");
+        setNickName("");
+        setSex(-1);
+        setArea("");
+        mAvatarIv.setImageBitmap(null);
+        UserInfo.clearData();
+    }
+
     public void setUid(String s){
         mUidTv.setText(s);
     }
@@ -116,7 +115,10 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
     public void setSex(int sex){
         if (sex == 1){
             mSexRg.check(R.id.personal_info_sex_male);
-        }else {
+        }else if(sex == -1){
+            mSexRg.clearCheck();
+        }
+        else {
             mSexRg.check(R.id.personal_info_sex_female);
         }
     }
@@ -134,8 +136,8 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
             File file = AppContext.getSdImgCache(params);
             if(file.exists()) {
                 try {
-                    avatarBitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-                    mAvatarIv.setImageBitmap(avatarBitmap);
+                    mAvatarBitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                    mAvatarIv.setImageBitmap(mAvatarBitmap);
                 } catch (OutOfMemoryError e) {
                     e.printStackTrace();
                 }
@@ -150,8 +152,8 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
                         conn.setDoInput(true);
                         conn.connect();
                         InputStream inputStream=conn.getInputStream();
-                        avatarBitmap = BitmapFactory.decodeStream(inputStream);
-                        ImageUtils.saveImageToSD(avatarBitmap,params);
+                        mAvatarBitmap = BitmapFactory.decodeStream(inputStream);
+                        ImageUtils.saveImageToSD(mAvatarBitmap,params);
                         Message msg=new Message();
                         msg.what=GET_AVATAR;
                         mHandler.sendMessage(msg);
@@ -179,7 +181,7 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
             if (activity != null) {
                 switch (msg.what){
                     case GET_AVATAR:
-                        activity.mAvatarIv.setImageBitmap(activity.avatarBitmap);
+                        activity.mAvatarIv.setImageBitmap(activity.mAvatarBitmap);
                 }
             }
         }

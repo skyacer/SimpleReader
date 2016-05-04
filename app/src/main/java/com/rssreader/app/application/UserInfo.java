@@ -62,4 +62,8 @@ public class UserInfo {
     public static int getUserPlatForm(){
         return SharePreferenceHelper.getInt(USER_SP,USER_LOGIN_PLATFORM_KEY,-1);
     }
+
+    public static void clearData(){
+        SharePreferenceHelper.deleteSharePreference(USER_SP);
+    }
 }

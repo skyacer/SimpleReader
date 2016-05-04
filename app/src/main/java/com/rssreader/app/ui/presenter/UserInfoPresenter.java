@@ -13,7 +13,6 @@ import com.rssreader.app.ui.base.BasePresenter;
 import com.rssreader.app.ui.common.Constants;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.bean.SocializeEntity;
-import com.umeng.socialize.bean.StatusCode;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners;
@@ -43,16 +42,29 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_login_douban:
-                login(SHARE_MEDIA.DOUBAN);
+                if (UserInfo.getUserPlatForm() ==-1) {
+                    login(SHARE_MEDIA.DOUBAN);
+                }else {
+                    ToastUtil.makeShortToast(R.string.personal_info_logout_first);
+                }
                 break;
             case R.id.btn_login_weibo:
-                login(SHARE_MEDIA.SINA);
+                if (UserInfo.getUserPlatForm() == -1) {
+                    login(SHARE_MEDIA.SINA);
+                }else {
+                    ToastUtil.makeShortToast(R.string.personal_info_logout_first);
+                }
                 break;
             case R.id.btn_login_tencentwb:
-                login(SHARE_MEDIA.TENCENT);
+                if (UserInfo.getUserPlatForm() == -1) {
+                    login(SHARE_MEDIA.TENCENT);
+                }else {
+                    ToastUtil.makeShortToast(R.string.personal_info_logout_first);
+                }
                 break;
             case R.id.item_logout:
-                    switch (UserInfo.getUserPlatForm()){
+                if (UserInfo.getUserPlatForm()!=-1) {
+                    switch (UserInfo.getUserPlatForm()) {
                         case 1:
                             logout(SHARE_MEDIA.SINA);
                             break;
@@ -64,6 +76,9 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
                             break;
                         default:
                             break;
+                    }
+                }else {
+                    ToastUtil.makeShortToast(R.string.personal_info_login_first);
                 }
                 break;
             default:
@@ -126,21 +141,12 @@ public class UserInfoPresenter extends BasePresenter<UserInfoActivity> implement
 
             @Override
             public void onComplete(int status, SocializeEntity entity) {
-                if (status != StatusCode.ST_CODE_SUCCESSED) {
-                    ToastUtil.makeShortToast(ResourcesUtil.stringFormat(R.string.personal_info_logout_failed,status));
-                }else {
-                    ToastUtil.makeShortToast(ResourcesUtil.stringFormat(R.string.personal_info_logout_success));
-                    target.showHideLoginButton();
-                    clearData();
-                }
+                ToastUtil.makeShortToast(ResourcesUtil.stringFormat(R.string.personal_info_logout_success));
+                target.clearPersonalInfo();
             }
         });
     }
 
-    private void clearData(){
-        target.setAvatar(null);
-        target.setArea("");
-    }
 
     /**
      * 获取授权平台的用户信息</br>
