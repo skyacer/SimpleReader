@@ -1,10 +1,13 @@
 package com.rssreader.app.ui.activity;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 
 import com.rssreader.app.commons.AppConfig;
 import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.commons.util.ToastUtil;
 import com.rssreader.app.service.PushService;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.utils.FileUtils;
@@ -34,6 +38,8 @@ public class SettingActivity extends PreferenceActivity
     private CheckBoxPreference mPushSwitch;
 	private Preference clearCachePref;
 	private Preference feedbackPref;
+    private PushService mPushService;
+    private static boolean isServiceBind = false;
 	
 	
 	protected void onCreate(Bundle savedInstanceState)
@@ -41,6 +47,7 @@ public class SettingActivity extends PreferenceActivity
 		super.onCreate(savedInstanceState);
 		initView();
 		initPreference();
+        bindService();
 	}
 
 	private void initView()
@@ -82,23 +89,19 @@ public class SettingActivity extends PreferenceActivity
 			}
 		});
 		imageLoadCb = (CheckBoxPreference) findPreference("pref_imageLoad");
-		imageLoadCb.setOnPreferenceClickListener(new OnPreferenceClickListener()
+		imageLoadCb.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
 		{
-			@Override
-			public boolean onPreferenceClick(Preference preference)
-			{
-				if(mPreferences.getBoolean("pref_imageLoad", true))
-				{
-					//显示图片
-					imageLoadCb.setSummary("加载图片");
-				}
-				else
-				{
-					imageLoadCb.setSummary("不加载图片");
-				}
-				return false;
-			}
-		});
+
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if ((Boolean)newValue){
+                    imageLoadCb.setSummary("加载图片");
+                }else {
+                    imageLoadCb.setSummary("不加载图片");
+                }
+                return true;
+            }
+        });
 		//缓存
 		// 计算缓存大小
 		long fileSize = 0;
@@ -140,19 +143,15 @@ public class SettingActivity extends PreferenceActivity
 		});
 		//push
         mPushSwitch = (CheckBoxPreference) findPreference("pref_push");
-        mPushSwitch.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+        mPushSwitch.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
-            public boolean onPreferenceClick(Preference preference) {
-                if(mPreferences.getBoolean("pref_push", true))
-                {
-                    startService(new Intent(SettingActivity.this, PushService.class));
-
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                if ((Boolean)newValue){
+                    bindService();
+                }else {
+                    unBindService();
                 }
-                else
-                {
-                    stopService(new Intent(SettingActivity.this, PushService.class));
-                }
-                return false;
+                return true;
             }
         });
 
@@ -167,17 +166,7 @@ public class SettingActivity extends PreferenceActivity
 			}
 		});
 		
-//		//alarm tts
-//		findPreference("pref_alarm").setOnPreferenceClickListener(new OnPreferenceClickListener() {
-//			@Override
-//			public boolean onPreferenceClick(Preference preference) {
-//				Intent intent = new Intent();
-//				intent.setClass(SettingActivity.this, AlarmTts.class);
-//				SettingActivity.this.startActivity(intent);
-//				return true;
-//			}
-//		});
-		
+
 		//update
 		findPreference("pref_update").setOnPreferenceClickListener(new OnPreferenceClickListener()
 		{
@@ -211,4 +200,31 @@ public class SettingActivity extends PreferenceActivity
 			}
 		});
 	}
+    private void bindService(){
+        Intent intent = new Intent(SettingActivity.this,PushService.class);
+        bindService(intent,conn,BIND_AUTO_CREATE);
+    }
+
+    private void unBindService(){
+        if (isServiceBind && conn!=null){
+            unbindService(conn);
+            isServiceBind = false;
+            mPushService.cancelPush();
+        }
+    }
+
+    private ServiceConnection conn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            PushService.MyBinder binder = (PushService.MyBinder) service;
+            mPushService = binder.getService();
+            isServiceBind = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            ToastUtil.makeShortToast("推送服务启动失败");
+            isServiceBind = false;
+        }
+    };
 }

@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -19,34 +20,36 @@ import com.rssreader.app.ui.activity.MainActivity;
 public class PushService extends Service{
     private boolean isDestroy = false;
     private int mCount = 0;
+    private MyBinder mBinder;
 
     @Override
     public IBinder onBind(Intent arg0) {
-        return null;
+        return mBinder;
     }
 
+    public class MyBinder extends Binder{
+        public PushService getService(){
+            return PushService.this;
+        }
+    }
+
+    public void cancelPush(){
+        isDestroy = true;
+    }
 
     @Override
     public void onCreate()
     {
         super.onCreate();
         Log.i("push_service", "push_service onCreate");
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onStart(Intent intent,int startId)
-    {
-        super.onStart(intent, startId);
-        Log.i("push_service", "push_service start");
-
+        mBinder = new MyBinder();
         ThreadUtil.runOnAnsy(new Runnable() {
 
             @Override
             public void run() {
                 try {
                     while (!isDestroy){
-                        Thread.sleep(3000);
+                        Thread.sleep(30000);
                         Log.i("push_service", "push_service foreach");
 
                         //获取到通知管理器
@@ -79,6 +82,15 @@ public class PushService extends Service{
 
             }
         },"push_thread");
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public void onStart(Intent intent,int startId)
+    {
+        super.onStart(intent, startId);
+        Log.i("push_service", "push_service start");
+
     }
 
     @Override

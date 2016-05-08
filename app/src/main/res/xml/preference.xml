@@ -24,7 +24,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="推送设置" >
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="pref_push"
             android:summary="开启推送"
             android:title="推送猜你喜欢" />
