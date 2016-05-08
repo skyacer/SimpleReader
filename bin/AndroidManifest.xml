@@ -44,7 +44,7 @@
         </activity>
         <activity android:name="com.rssreader.app.ui.activity.FeedUIActivity" >
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.Setting" >
+        <activity android:name="com.rssreader.app.ui.activity.SettingActivity" >
         </activity>
         <activity android:name="com.rssreader.app.ui.activity.FeedbackUIActivity" >
         </activity>

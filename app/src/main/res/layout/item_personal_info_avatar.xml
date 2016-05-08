@@ -11,6 +11,7 @@
         android:layout_height="@dimen/size_82dp"
         android:layout_marginTop="@dimen/size_30dp"
         android:layout_centerHorizontal="true"
+        android:src="@color/white"
         android:background="@drawable/item_personal_info_avatar"
     />
     <RelativeLayout

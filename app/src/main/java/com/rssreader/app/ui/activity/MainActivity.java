@@ -32,6 +32,7 @@ import com.rssreader.app.commons.UIHelper;
 import com.rssreader.app.dao.SectionDao;
 import com.rssreader.app.entity.ItemListEntity;
 import com.rssreader.app.entity.Section;
+import com.rssreader.app.service.PushService;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.ui.base.BaseActivity;
 import com.rssreader.app.ui.presenter.MainPresenter;
@@ -77,7 +78,10 @@ public class MainActivity extends BaseActivity<MainPresenter>
 		initPathMenu();
 		initPager();
 		initBroadcast();
+//        initService();
 	}
+
+
 
     @Override
     protected void initPresenter() {
@@ -100,6 +104,10 @@ public class MainActivity extends BaseActivity<MainPresenter>
 		filter.addAction(SwitchBgActivity.SWITCH_HOME_BG);
 		registerReceiver(mReceiver, filter);
 	}
+
+    private void initService() {
+        startService(new Intent(this, PushService.class));
+    }
 
 	private void initPathMenu()
 	{
@@ -415,5 +423,6 @@ public class MainActivity extends BaseActivity<MainPresenter>
 		}
 		return false;
 	}
+
 
  }

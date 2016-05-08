@@ -22,6 +22,14 @@
             android:title="清除缓存" >
         </Preference>
     </PreferenceCategory>
+    <PreferenceCategory android:title="推送设置" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_push"
+            android:summary="开启推送"
+            android:title="推送猜你喜欢" />
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="语音设置">
 <!--         <PreferenceScreen android:title="播报时间设置"  -->
 <!--             android:key="pref_alarm" /> -->

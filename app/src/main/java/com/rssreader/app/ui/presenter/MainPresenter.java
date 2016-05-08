@@ -16,7 +16,7 @@ import com.rssreader.app.ui.activity.FavoriteItemListActivity;
 import com.rssreader.app.ui.activity.FeedCategoryActivity;
 import com.rssreader.app.ui.activity.ItemListActivity;
 import com.rssreader.app.ui.activity.MainActivity;
-import com.rssreader.app.ui.activity.Setting;
+import com.rssreader.app.ui.activity.SettingActivity;
 import com.rssreader.app.ui.activity.SwitchBgActivity;
 import com.rssreader.app.ui.activity.UserInfoActivity;
 import com.rssreader.app.ui.base.BasePresenter;
@@ -99,7 +99,7 @@ public class MainPresenter extends BasePresenter<MainActivity> implements View.O
     private void openSetting()
     {
         Intent intent = new Intent();
-        intent.setClass(target, Setting.class);
+        intent.setClass(target, SettingActivity.class);
         target.startActivity(intent);
     }
 
@@ -240,5 +240,7 @@ public class MainPresenter extends BasePresenter<MainActivity> implements View.O
                 break;
         }
     }
+
+
 
 }

@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.rssreader.app.commons.AppConfig;
 import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.service.PushService;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.utils.FileUtils;
 import com.umeng.update.UmengUpdateAgent;
@@ -26,10 +27,11 @@ import com.umeng.update.UpdateStatus;
 
 import java.io.File;
 
-public class Setting extends PreferenceActivity
+public class SettingActivity extends PreferenceActivity
 {
 	private SharedPreferences mPreferences;
 	private CheckBoxPreference imageLoadCb;
+    private CheckBoxPreference mPushSwitch;
 	private Preference clearCachePref;
 	private Preference feedbackPref;
 	
@@ -74,8 +76,8 @@ public class Setting extends PreferenceActivity
 			public boolean onPreferenceClick(Preference preference)
 			{
 				Intent intent = new Intent();
-				intent.setClass(Setting.this, FeedbackUIActivity.class);
-				Setting.this.startActivity(intent);
+				intent.setClass(SettingActivity.this, FeedbackUIActivity.class);
+				SettingActivity.this.startActivity(intent);
 				return false;
 			}
 		});
@@ -85,7 +87,7 @@ public class Setting extends PreferenceActivity
 			@Override
 			public boolean onPreferenceClick(Preference preference)
 			{
-				if(mPreferences.getBoolean("imageLoad", true))
+				if(mPreferences.getBoolean("pref_imageLoad", true))
 				{
 					//显示图片
 					imageLoadCb.setSummary("加载图片");
@@ -122,28 +124,45 @@ public class Setting extends PreferenceActivity
 					@Override
 					protected void onPostExecute(Integer result)
 					{
-						Toast.makeText(Setting.this, "清理完毕！", Toast.LENGTH_SHORT).show();
+						Toast.makeText(SettingActivity.this, "清理完毕！", Toast.LENGTH_SHORT).show();
 						clearCachePref.setSummary("0KB");
 					}
 
 					@Override
 					protected Integer doInBackground(Integer... params)
 					{
-						AppContext.clearCache(Setting.this);
+						AppContext.clearCache(SettingActivity.this);
 						return 0;
 					}
 				}.execute(0);
 				return false;
 			}
 		});
-		
+		//push
+        mPushSwitch = (CheckBoxPreference) findPreference("pref_push");
+        mPushSwitch.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                if(mPreferences.getBoolean("pref_push", true))
+                {
+                    startService(new Intent(SettingActivity.this, PushService.class));
+
+                }
+                else
+                {
+                    stopService(new Intent(SettingActivity.this, PushService.class));
+                }
+                return false;
+            }
+        });
+
 		//about
 		findPreference("pref_about").setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
 				Intent intent = new Intent();
-				intent.setClass(Setting.this, AboutActivity.class);
-				Setting.this.startActivity(intent);
+				intent.setClass(SettingActivity.this, AboutActivity.class);
+				SettingActivity.this.startActivity(intent);
 				return true;
 			}
 		});
@@ -153,8 +172,8 @@ public class Setting extends PreferenceActivity
 //			@Override
 //			public boolean onPreferenceClick(Preference preference) {
 //				Intent intent = new Intent();
-//				intent.setClass(Setting.this, AlarmTts.class);
-//				Setting.this.startActivity(intent);
+//				intent.setClass(SettingActivity.this, AlarmTts.class);
+//				SettingActivity.this.startActivity(intent);
 //				return true;
 //			}
 //		});
@@ -165,7 +184,7 @@ public class Setting extends PreferenceActivity
 			@Override
 			public boolean onPreferenceClick(Preference preference)
 			{
-				final Context mContext = Setting.this;
+				final Context mContext = SettingActivity.this;
 				
 				UmengUpdateAgent.setUpdateAutoPopup(false);
 				UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.rssreader.app.application.UserInfo;
 import com.rssreader.app.commons.AppContext;
+import com.rssreader.app.commons.util.ResourcesUtil;
 import com.rssreader.app.commons.util.ThreadUtil;
 import com.rssreader.app.ui.R;
 import com.rssreader.app.ui.base.BaseActionBarActivity;
@@ -100,7 +101,7 @@ public class UserInfoActivity extends BaseActionBarActivity<UserInfoPresenter>{
         setNickName("");
         setSex(-1);
         setArea("");
-        mAvatarIv.setImageBitmap(null);
+        mAvatarIv.setImageDrawable(ResourcesUtil.getDrawable(R.color.white));
         UserInfo.clearData();
     }
 
