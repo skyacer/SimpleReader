@@ -40,14 +40,15 @@ public class SettingActivity extends PreferenceActivity
 	private Preference feedbackPref;
     private PushService mPushService;
     private static boolean isServiceBind = false;
-	
-	
+
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		initView();
 		initPreference();
-        bindService();
+        if (mPushSwitch.isChecked()) {
+            bindService();
+        }
 	}
 
 	private void initView()
@@ -218,6 +219,7 @@ public class SettingActivity extends PreferenceActivity
         public void onServiceConnected(ComponentName name, IBinder service) {
             PushService.MyBinder binder = (PushService.MyBinder) service;
             mPushService = binder.getService();
+            mPushService.startPush();
             isServiceBind = true;
         }
 

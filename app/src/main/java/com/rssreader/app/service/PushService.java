@@ -18,7 +18,7 @@ import com.rssreader.app.ui.activity.MainActivity;
  * Created by LuoChangAn on 16/5/7.
  */
 public class PushService extends Service{
-    private boolean isDestroy = false;
+    private static boolean isDestroy = false;
     private int mCount = 0;
     private MyBinder mBinder;
 
@@ -35,6 +35,10 @@ public class PushService extends Service{
 
     public void cancelPush(){
         isDestroy = true;
+    }
+
+    public void startPush(){
+        isDestroy = false;
     }
 
     @Override
@@ -98,7 +102,6 @@ public class PushService extends Service{
     {
         super.onDestroy();
         Log.i("push_service", "push_service destroy");
-        isDestroy = true;
     }
 
 }
