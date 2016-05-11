@@ -20,6 +20,7 @@ import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.commons.HtmlFilter;
 import com.rssreader.app.commons.SeriaHelper;
 import com.rssreader.app.commons.UIHelper;
+import com.rssreader.app.commons.util.ToastUtil;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.db.FavoItemDbHelper;
 import com.rssreader.app.entity.FeedItem;
@@ -167,27 +168,31 @@ public class ItemDetailActivity extends BaseActionBarActivity<ItemDetailPresente
 
 
     private void loadData() {
-        StringBuffer sb = new StringBuffer();
-        //过滤style
-        itemDetail = itemDetail.replaceAll(HtmlFilter.regexpForStyle, "");
-        //过滤img宽和高
-        itemDetail = itemDetail.replaceAll("(<img[^>]*?)\\s+width\\s*=\\s*\\S+", "$1");
-        itemDetail = itemDetail.replaceAll(
-                "(<img[^>]*?)\\s+height\\s*=\\s*\\S+", "$1");
-        //图片双击
-        itemDetail = itemDetail.replaceAll("(<img[^>]+src=\")(\\S+)\"",
-                "$1$2\" onClick=\"javascript:mWebViewImageListener.onImageClick('$2')\"");
-        mWebView.addJavascriptInterface(this, "mWebViewImageListener");
-        //是否加载图片
-        SharedPreferences pref = AppContext.getPrefrences(this);
-        if (!pref.getBoolean("pref_imageLoad", true)) {
-            itemDetail = itemDetail.replaceAll("(<|;)\\s*(IMG|img)\\s+([^;^>]*)\\s*(;|>)", "");
-        }
-        sb.append("<h1>" + title + "</h1>");
-        sb.append("<body>" + itemDetail + "</body>");
-        mWebView.loadDataWithBaseURL(null, css + sb.toString(), "text/html", "UTF-8", null);
+        if (itemDetail!=null) {
+            StringBuffer sb = new StringBuffer();
+            //过滤style
+            itemDetail = itemDetail.replaceAll(HtmlFilter.regexpForStyle, "");
+            //过滤img宽和高
+            itemDetail = itemDetail.replaceAll("(<img[^>]*?)\\s+width\\s*=\\s*\\S+", "$1");
+            itemDetail = itemDetail.replaceAll(
+                    "(<img[^>]*?)\\s+height\\s*=\\s*\\S+", "$1");
+            //图片双击
+            itemDetail = itemDetail.replaceAll("(<img[^>]+src=\")(\\S+)\"",
+                    "$1$2\" onClick=\"javascript:mWebViewImageListener.onImageClick('$2')\"");
+            mWebView.addJavascriptInterface(this, "mWebViewImageListener");
+            //是否加载图片
+            SharedPreferences pref = AppContext.getPrefrences(this);
+            if (!pref.getBoolean("pref_imageLoad", true)) {
+                itemDetail = itemDetail.replaceAll("(<|;)\\s*(IMG|img)\\s+([^;^>]*)\\s*(;|>)", "");
+            }
+            sb.append("<h1>" + title + "</h1>");
+            sb.append("<body>" + itemDetail + "</body>");
+            mWebView.loadDataWithBaseURL(null, css + sb.toString(), "text/html", "UTF-8", null);
 
-        speechText = HtmlFilter.filterHtml(title+itemDetail);
+            speechText = HtmlFilter.filterHtml(title + itemDetail);
+        }else {
+            ToastUtil.makeShortToast("暂无内容");
+        }
     }
 
     @Override
