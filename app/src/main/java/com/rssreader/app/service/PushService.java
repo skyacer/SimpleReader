@@ -11,8 +11,8 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.rssreader.app.commons.util.ThreadUtil;
-import com.rssreader.app.ui.R;
-import com.rssreader.app.ui.activity.MainActivity;
+import com.rssreader.app.module.R;
+import com.rssreader.app.module.activity.MainActivity;
 
 /**
  * Created by LuoChangAn on 16/5/7.

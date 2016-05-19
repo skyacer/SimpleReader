@@ -3,9 +3,10 @@ package com.rssreader.app.commons;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.rssreader.app.application.AppConfig;
 import com.rssreader.app.db.DbConstant;
-import com.rssreader.app.utils.FileUtils;
-import com.rssreader.app.utils.MD5;
+import com.rssreader.app.commons.util.FileUtils;
+import com.rssreader.app.commons.util.MD5;
 
 import java.io.File;
 

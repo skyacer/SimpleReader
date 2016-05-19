@@ -1,4 +1,4 @@
-package com.rssreader.app.adapter;
+package com.rssreader.app.module.adapter;
 
 import java.util.ArrayList;
 

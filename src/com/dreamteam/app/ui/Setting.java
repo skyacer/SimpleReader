@@ -1,4 +1,4 @@
-package com.rssreader.app.ui;
+package com.rssreader.app.module;
 
 import java.io.File;
 
@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.rssreader.app.commons.AppConfig;
 import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.utils.FileUtils;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;

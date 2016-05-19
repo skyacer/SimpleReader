@@ -1,4 +1,4 @@
-package com.rssreader.app.ui;
+package com.rssreader.app.module;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.rssreader.app.utils.HttpUtils;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 
 public class ImageDialog extends Activity
 {

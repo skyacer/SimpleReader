@@ -1,4 +1,4 @@
-package com.rssreader.app.adapter;
+package com.rssreader.app.module.adapter;
 
 import java.util.ArrayList;
 
@@ -17,9 +17,9 @@ import com.rssreader.app.commons.SectionHelper;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.db.FeedDBManager;
 import com.rssreader.app.entity.Section;
-import com.rssreader.app.ui.Main;
+import com.rssreader.app.module.Main;
 import com.rssreader.app.utils.FileUtils;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 
 public class GridAdapter extends BaseAdapter
 {

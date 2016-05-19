@@ -1,4 +1,4 @@
-package com.rssreader.app.ui;
+package com.rssreader.app.module;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 
 /**
  * 

@@ -5,7 +5,7 @@
     android:background="@color/transparent"
     android:fitsSystemWindows="true"
     android:id="@+id/root_view">
-    <com.rssreader.app.ui.common.SlidingFinishLayout
+    <com.rssreader.app.module.common.SlidingFinishLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/content_view"

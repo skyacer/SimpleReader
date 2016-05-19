@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.rssreader.app.adapter;
+package com.rssreader.app.module.adapter;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ import android.widget.TextView;
 import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.entity.FeedItem;
 import com.rssreader.app.utils.ImageLoader;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 
 /**
  * @author:	LuoChangAn

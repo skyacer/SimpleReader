@@ -1,4 +1,4 @@
-package com.rssreader.app.adapter;
+package com.rssreader.app.module.adapter;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
-import com.rssreader.app.ui.Main;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.Main;
+import com.rssreader.app.module.R;
 
 
 /**

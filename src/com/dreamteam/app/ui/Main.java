@@ -1,4 +1,4 @@
-package com.rssreader.app.ui;
+package com.rssreader.app.module;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -28,8 +28,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.rssreader.app.adapter.GridAdapter;
-import com.rssreader.app.adapter.MPagerAdapter;
+import com.rssreader.app.module.adapter.GridAdapter;
+import com.rssreader.app.module.adapter.MPagerAdapter;
 import com.rssreader.app.commons.AppConfig;
 import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.commons.ItemListEntityParser;
@@ -41,7 +41,7 @@ import com.rssreader.app.entity.ItemListEntity;
 import com.rssreader.app.entity.Section;
 import com.rssreader.app.utils.ImageUtils;
 import com.rssreader.custom.ui.PathAnimations;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 import com.umeng.socialize.controller.UMInfoAgent;
 import com.umeng.update.UmengUpdateAgent;
 

@@ -10,7 +10,7 @@ import android.util.Log;
 import com.rssreader.app.db.DbConstant;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.entity.Section;
-import com.rssreader.app.ui.Main;
+import com.rssreader.app.module.Main;
 
 /**
  * @description TODO

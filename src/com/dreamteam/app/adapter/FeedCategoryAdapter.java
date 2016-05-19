@@ -1,4 +1,4 @@
-package com.rssreader.app.adapter;
+package com.rssreader.app.module.adapter;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.rssreader.app.dao.FeedCategoryDao;
 import com.rssreader.app.entity.FeedCategory;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 
 /**
  * @description 

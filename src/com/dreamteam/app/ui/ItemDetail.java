@@ -1,4 +1,4 @@
-package com.rssreader.app.ui;
+package com.rssreader.app.module;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ import com.rssreader.app.db.FavoItemDbHelper;
 import com.rssreader.app.entity.FeedItem;
 import com.rssreader.app.entity.ItemListEntity;
 import com.rssreader.app.utils.MD5;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.bean.UMComment;
 import com.umeng.socialize.controller.RequestType;

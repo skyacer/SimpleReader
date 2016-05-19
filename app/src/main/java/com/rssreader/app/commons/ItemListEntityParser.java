@@ -4,8 +4,8 @@ import android.util.Log;
 
 import com.rssreader.app.entity.FeedItem;
 import com.rssreader.app.entity.ItemListEntity;
-import com.rssreader.app.utils.DateUtils;
-import com.rssreader.app.utils.HttpUtils;
+import com.rssreader.app.commons.util.DateUtils;
+import com.rssreader.app.commons.util.HttpUtils;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;

@@ -1,4 +1,4 @@
-package com.rssreader.app.ui;
+package com.rssreader.app.module;
 
 import java.io.File;
 
@@ -27,7 +27,7 @@ import com.rssreader.app.commons.SeriaHelper;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.entity.ItemListEntity;
 import com.rssreader.app.utils.CategoryNameExchange;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 
 public class AddDialog extends DialogFragment implements OnItemSelectedListener
 {

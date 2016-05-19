@@ -1,4 +1,4 @@
-package com.rssreader.app.ui;
+package com.rssreader.app.module;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.rssreader.app.adapter.CommentAdapter;
+import com.rssreader.app.module.adapter.CommentAdapter;
 import com.rssreader.app.commons.UMHelper;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;

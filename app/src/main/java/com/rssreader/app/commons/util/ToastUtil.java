@@ -6,7 +6,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rssreader.app.application.AppProfile;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 
 /**
  * Created by LuoChangAn on 16/4/1.
@@ -89,12 +89,12 @@ public class ToastUtil {
             toast.cancel();
         }
         //为了让上一个先消失，不然的话，可能下一个show不出来
-        HandleUtil.doDelay(new Runnable() {
+        HandlerUtil.doDelay(new Runnable() {
             @Override
             public void run() {
                 isShowing = true;
                 toast.show();
-                HandleUtil.doDelay(new Runnable() {
+                HandlerUtil.doDelay(new Runnable() {
                     @Override
                     public void run() {
                         toast.cancel();

@@ -1,4 +1,4 @@
-package com.rssreader.app.ui;
+package com.rssreader.app.module;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,11 +18,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.rssreader.app.adapter.GuideViewPagerAdapter;
+import com.rssreader.app.module.adapter.GuideViewPagerAdapter;
 import com.rssreader.app.commons.AppConfig;
 import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.db.FeedDBManager;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 
 /**
  * 

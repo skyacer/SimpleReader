@@ -1,4 +1,4 @@
-package com.rssreader.app.ui;
+package com.rssreader.app.module;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -23,7 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.rssreader.app.adapter.ItemListAdapter;
+import com.rssreader.app.module.adapter.ItemListAdapter;
 import com.rssreader.app.commons.AppContext;
 import com.rssreader.app.commons.HtmlFilter;
 import com.rssreader.app.commons.IFlyHelper;
@@ -33,7 +33,7 @@ import com.rssreader.app.commons.SeriaHelper;
 import com.rssreader.app.commons.UIHelper;
 import com.rssreader.app.entity.FeedItem;
 import com.rssreader.app.entity.ItemListEntity;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;

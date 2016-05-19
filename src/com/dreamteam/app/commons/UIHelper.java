@@ -1,6 +1,6 @@
 package com.rssreader.app.commons;
 
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 
 import android.content.Context;
 import android.content.SharedPreferences;

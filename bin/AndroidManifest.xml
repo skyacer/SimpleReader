@@ -26,33 +26,33 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.rssreader.app.ui.activity.SplashActivity"
+            android:name="com.rssreader.app.module.activity.SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.MainActivity" >
+        <activity android:name="com.rssreader.app.module.activity.MainActivity" >
            <intent-filter>
                 <action android:name="com.rssreader.action.ENTER_BY_SHORTCUT"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.GuideActivity" >
+        <activity android:name="com.rssreader.app.module.activity.GuideActivity" >
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.FeedCategoryActivity" >
+        <activity android:name="com.rssreader.app.module.activity.FeedCategoryActivity" >
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.FeedUIActivity" >
+        <activity android:name="com.rssreader.app.module.activity.FeedUIActivity" >
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.SettingActivity" >
+        <activity android:name="com.rssreader.app.module.activity.SettingActivity" >
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.FeedbackUIActivity" >
+        <activity android:name="com.rssreader.app.module.activity.FeedbackUIActivity" >
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.SwitchBgActivity" >
+        <activity android:name="com.rssreader.app.module.activity.SwitchBgActivity" >
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.ItemListActivity" >
+        <activity android:name="com.rssreader.app.module.activity.ItemListActivity" >
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.ItemDetailActivity" >
+        <activity android:name="com.rssreader.app.module.activity.ItemDetailActivity" >
         </activity>
 
         <!-- ###################注册SDK使用的Activity###################### -->
@@ -108,9 +108,9 @@
             android:value="5269be4956240b2d8b048955" >
         </meta-data>
 
-        <activity android:name="com.rssreader.app.ui.activity.FavoriteItemListActivity" >
+        <activity android:name="com.rssreader.app.module.activity.FavoriteItemListActivity" >
         </activity>
-        <receiver android:name="com.rssreader.app.ui.activity.WidgetProvider"
+        <receiver android:name="com.rssreader.app.module.activity.WidgetProvider"
             	android:label="SimpleReader">
              <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -120,9 +120,9 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget"/>
         </receiver>
-        <activity android:name="com.rssreader.app.ui.activity.ImageDialog"></activity>
-        <activity android:name="com.rssreader.app.ui.activity.AboutActivity"></activity>
-        <activity android:name="com.rssreader.app.ui.activity.CommentActivity"></activity>
+        <activity android:name="com.rssreader.app.module.activity.ImageDialog"></activity>
+        <activity android:name="com.rssreader.app.module.activity.AboutActivity"></activity>
+        <activity android:name="com.rssreader.app.module.activity.CommentActivity"></activity>
     </application>
 
 </manifest>

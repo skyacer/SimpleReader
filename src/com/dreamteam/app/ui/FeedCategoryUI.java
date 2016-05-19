@@ -1,4 +1,4 @@
-package com.rssreader.app.ui;
+package com.rssreader.app.module;
 
 import java.util.ArrayList;
 
@@ -13,10 +13,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.rssreader.app.adapter.FeedCategoryAdapter;
+import com.rssreader.app.module.adapter.FeedCategoryAdapter;
 import com.rssreader.app.dao.FeedCategoryDao;
 import com.rssreader.app.entity.FeedCategory;
-import com.rssreader.app.ui.R;
+import com.rssreader.app.module.R;
 
 public class FeedCategoryUI extends FragmentActivity
 {

@@ -1,10 +1,11 @@
 package com.rssreader.app.commons;
 
-import com.rssreader.app.ui.R;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+
+import com.rssreader.app.application.AppContext;
+import com.rssreader.app.module.R;
 
 public class UIHelper
 {

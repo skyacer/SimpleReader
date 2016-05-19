@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rssreader.app.ui"
+    package="com.rssreader.app.module"
     android:versionCode="2"
     android:versionName="1.0" >
 
@@ -24,37 +24,37 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >w
         <activity
-            android:name="com.rssreader.app.ui.activity.SplashActivity"
+            android:name="com.rssreader.app.module.activity.SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" >
+        <activity android:name="com.rssreader.app.module.activity.MainActivity" >
            <intent-filter>
                 <action android:name="com.rssreader.action.ENTER_BY_SHORTCUT"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.GuideActivity" >
+        <activity android:name="com.rssreader.app.module.activity.GuideActivity" >
         </activity>
-        <activity android:name=".activity.FeedCategoryActivity" >
+        <activity android:name="com.rssreader.app.module.activity.FeedCategoryActivity" >
         </activity>
-        <activity android:name=".activity.FeedUIActivity" >
+        <activity android:name="com.rssreader.app.module.activity.FeedUIActivity" >
         </activity>
-        <activity android:name=".activity.SettingActivity" >
+        <activity android:name="com.rssreader.app.module.activity.SettingActivity" >
         </activity>
-        <activity android:name=".activity.FeedbackUIActivity" >
+        <activity android:name="com.rssreader.app.module.activity.FeedbackUIActivity" >
         </activity>
-        <activity android:name=".activity.SwitchBgActivity" >
+        <activity android:name="com.rssreader.app.module.activity.SwitchBgActivity" >
         </activity>
-        <activity android:name=".activity.ItemListActivity" >
+        <activity android:name="com.rssreader.app.module.activity.ItemListActivity" >
         </activity>
-        <activity android:name=".activity.ItemDetailActivity" >
+        <activity android:name="com.rssreader.app.module.activity.ItemDetailActivity" >
         </activity>
-        <activity android:name="com.rssreader.app.ui.activity.AddFeedActivity">
+        <activity android:name="com.rssreader.app.module.activity.AddFeedActivity">
         </activity>
-        <activity android:name=".activity.UserInfoActivity">
+        <activity android:name="com.rssreader.app.module.activity.UserInfoActivity">
         </activity>
 
         <!-- ###################注册SDK使用的Activity###################### -->
@@ -90,7 +90,7 @@
 
         <!--微信的回调-->
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name="com.rssreader.app.module.wxapi.WXEntryActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
@@ -139,9 +139,9 @@
 		</activity>
         
 
-        <activity android:name=".activity.FavoriteItemListActivity" >
+        <activity android:name="com.rssreader.app.module.activity.FavoriteItemListActivity" >
         </activity>
-        <receiver android:name="com.rssreader.app.ui.activity.WidgetProvider"
+        <receiver android:name="com.rssreader.app.module.activity.WidgetProvider"
             	android:label="SimpleReader">
              <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -151,9 +151,9 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget"/>
         </receiver>
-        <activity android:name="com.rssreader.app.ui.activity.ImageDialog"></activity>
-        <activity android:name=".activity.AboutActivity"></activity>
-        <activity android:name=".activity.CommentActivity"></activity>
+        <activity android:name="com.rssreader.app.module.activity.ImageDialog"></activity>
+        <activity android:name="com.rssreader.app.module.activity.AboutActivity"></activity>
+        <activity android:name="com.rssreader.app.module.activity.CommentActivity"></activity>
     </application>
 
 </manifest>

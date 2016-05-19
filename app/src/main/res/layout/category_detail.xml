@@ -6,7 +6,7 @@
     android:background="@color/white">
 	
 
-	<com.rssreader.app.ui.common.SwipeListView
+	<com.rssreader.app.module.common.SwipeListView
         android:id="@+id/catagory_detail_lv_feed"
         android:divider="@color/gray"
         android:dividerHeight="1dp"
