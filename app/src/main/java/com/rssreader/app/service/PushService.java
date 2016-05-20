@@ -53,7 +53,7 @@ public class PushService extends Service{
             public void run() {
                 try {
                     while (!isDestroy){
-                        Thread.sleep(30000);
+                        Thread.sleep(5000);
                         Log.i("push_service", "push_service foreach");
 
                         //获取到通知管理器

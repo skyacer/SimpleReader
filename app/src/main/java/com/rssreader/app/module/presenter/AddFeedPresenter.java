@@ -3,12 +3,14 @@ package com.rssreader.app.module.presenter;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.rssreader.app.commons.ItemListEntityParser;
 import com.rssreader.app.commons.DatabaseHelper;
+import com.rssreader.app.commons.ItemListEntityParser;
 import com.rssreader.app.commons.SeriaHelper;
+import com.rssreader.app.commons.util.CategoryNameExchange;
 import com.rssreader.app.commons.util.ToastUtil;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.entity.ItemListEntity;
@@ -16,7 +18,6 @@ import com.rssreader.app.module.R;
 import com.rssreader.app.module.activity.AddFeedActivity;
 import com.rssreader.app.module.activity.MainActivity;
 import com.rssreader.app.module.base.BasePresenter;
-import com.rssreader.app.commons.util.CategoryNameExchange;
 
 import java.io.File;
 
@@ -46,7 +47,12 @@ public class AddFeedPresenter extends BasePresenter<AddFeedActivity> implements 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.nav_right_text:
-                saveRssFeed();
+                if (TextUtils.isEmpty(target.getRssName())||
+                        TextUtils.isEmpty(target.getRssAddress())){
+                    ToastUtil.makeShortToast(R.string.add_feed_please_input_info);
+                }else {
+                    saveRssFeed();
+                }
                 break;
             default:
                 break;

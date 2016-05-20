@@ -78,6 +78,7 @@
     <string name="add_feed_category_hint">添加分类</string>
     <string name="add_feed_fail">抱歉，暂不支持该rss</string>
     <string name="add_feed_success">添加成功!</string>
+    <string name="add_feed_please_input_info">对应信息不能为空</string>
 
     <!--评论界面-->
     <string name="comment_list_title">评论列表</string>
