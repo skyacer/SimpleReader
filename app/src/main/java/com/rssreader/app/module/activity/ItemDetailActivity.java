@@ -20,6 +20,7 @@ import com.rssreader.app.application.AppContext;
 import com.rssreader.app.commons.HtmlFilter;
 import com.rssreader.app.commons.SeriaHelper;
 import com.rssreader.app.commons.UIHelper;
+import com.rssreader.app.commons.util.ThreadUtil;
 import com.rssreader.app.commons.util.ToastUtil;
 import com.rssreader.app.db.DbManager;
 import com.rssreader.app.db.FavoItemDbHelper;
@@ -142,7 +143,7 @@ public class ItemDetailActivity extends BaseActionBarActivity<ItemDetailPresente
                 intent.setAction(ItemListActivity.ACTION_UPDATE_ITEM_LIST);
                 sendBroadcast(intent);
 
-                new Thread() {
+                ThreadUtil.runOnAnsy(new Runnable() {
                     @Override
                     public void run() {
                         SeriaHelper helper = SeriaHelper.newInstance();
@@ -157,7 +158,8 @@ public class ItemDetailActivity extends BaseActionBarActivity<ItemDetailPresente
                         entity.setItemList(items);
                         helper.saveObject(entity, cache);
                     }
-                }.start();
+                },"Favorite Thread");
+
             }
         });
         countTv = (TextView) findViewById(R.id.fid_tv_comment_count);

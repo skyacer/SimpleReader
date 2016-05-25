@@ -101,8 +101,6 @@ public class ItemListActivity extends BaseActionBarActivity<ItemListPresenter>
 	}
 
 	private void initData() {
-
-
 		File file = DatabaseHelper.getSdCache(sectionUrl);
 		if (file.exists())
 		{

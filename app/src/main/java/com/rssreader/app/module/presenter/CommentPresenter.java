@@ -40,6 +40,8 @@ public class CommentPresenter extends BasePresenter<CommentActivity> {
                         if (status == HttpStatus.SC_OK) {
                             ToastUtil.makeShortToast(ResourcesUtil.getString(R.string.publish_success));
                             target.refreshComments();
+                        }else {
+                            ToastUtil.makeShortToast(ResourcesUtil.getString(R.string.publish_failed));
                         }
                     }
                 }, SocializeConfig.getSelectedPlatfrom());

@@ -67,6 +67,7 @@
     <string name="complete">完成</string>
     <string name="add">新增</string>
     <string name="publish_success">发布成功</string>
+    <string name="publish_failed">发布失败</string>
 
     <!--添加rss源页面-->
     <string name="add_feed_title">自定义RSS源</string>
@@ -76,7 +77,7 @@
     <string name="add_feed_address_hint">请输入源地址</string>
     <string name="add_feed_category">分类</string>
     <string name="add_feed_category_hint">添加分类</string>
-    <string name="add_feed_fail">抱歉，暂不支持该rss</string>
+    <string name="add_feed_fail">抱歉，请重新检查该rss</string>
     <string name="add_feed_success">添加成功!</string>
     <string name="add_feed_please_input_info">对应信息不能为空</string>
 
